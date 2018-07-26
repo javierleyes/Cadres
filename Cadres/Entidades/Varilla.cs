@@ -1,6 +1,6 @@
 ﻿namespace Entidades
 {
-    public class Varrilla
+    public class Varilla
     {
         public long Id { get; set; }
         public string Nombre { get; set; }
