@@ -9,11 +9,11 @@ namespace Test
     [TestClass]
     public class VarillaDAOTestCase
     {
-        private VarillaDAO VarillaDB { get; set; }
+        private VarillaDAO VarillaDAO { get; set; }
 
         private void SetUp()
         {
-            this.VarillaDB = new VarillaDAO();
+            this.VarillaDAO = new VarillaDAO();
         }
 
         [TestMethod]
@@ -21,11 +21,10 @@ namespace Test
         {
             this.SetUp();
 
-            this.VarillaDB.Varillas.Add(CrearVarilla(false));
-            this.VarillaDB.Add(CrearVarilla(false));
-            this.VarillaDB.SaveChanges();
+            this.VarillaDAO.Add(CrearVarilla(false));
+            this.VarillaDAO.SaveChanges();
 
-            Assert.IsTrue(VarillaDB.GetAll().Count > 0);
+            Assert.IsTrue(VarillaDAO.GetAll().Count > 0);
         }
 
         [TestMethod]
@@ -33,10 +32,10 @@ namespace Test
         {
             this.SetUp();
 
-            this.VarillaDB.Varillas.Add(CrearVarilla(false));
-            this.VarillaDB.SaveChanges();
+            this.VarillaDAO.Add(CrearVarilla(false));
+            this.VarillaDAO.SaveChanges();
 
-            Varilla varillaObtenida = this.VarillaDB.GetById(1);
+            Varilla varillaObtenida = this.VarillaDAO.GetById(1);
 
             Assert.AreEqual(varillaObtenida.Nombre, "Bombre 1,5 Negro Brilloso");
             Assert.AreEqual(varillaObtenida.Precio, Convert.ToDecimal(16.8));
@@ -48,10 +47,10 @@ namespace Test
         {
             this.SetUp();
 
-            this.VarillaDB.Varillas.Add(CrearVarilla(true));
-            this.VarillaDB.SaveChanges();
+            this.VarillaDAO.Add(CrearVarilla(true));
+            this.VarillaDAO.SaveChanges();
 
-            IList<Varilla> varillasDisponibles = this.VarillaDB.GetByEstadoDisponibilidad(true);
+            IList<Varilla> varillasDisponibles = this.VarillaDAO.GetByEstadoDisponibilidad(true);
 
             Assert.IsTrue(varillasDisponibles.Count > 0);
         }
@@ -61,10 +60,10 @@ namespace Test
         {
             this.SetUp();
 
-            this.VarillaDB.Varillas.Add(CrearVarilla(false));
-            this.VarillaDB.SaveChanges();
+            this.VarillaDAO.Add(CrearVarilla(false));
+            this.VarillaDAO.SaveChanges();
 
-            IList<Varilla> varillasNoDisponibles = this.VarillaDB.GetByEstadoDisponibilidad(false);
+            IList<Varilla> varillasNoDisponibles = this.VarillaDAO.GetByEstadoDisponibilidad(false);
 
             Assert.IsTrue(varillasNoDisponibles.Count > 0);
         }
