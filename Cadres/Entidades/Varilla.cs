@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entidades
 {
+    [Table("Varilla", Schema = "VAR")]
     public class Varilla
     {
         public long Id { get; set; }
@@ -15,5 +17,8 @@ namespace Entidades
 
         [Required]
         public int Cantidad { get; set; }
+
+        [Required]
+        public bool Disponible { get; set; }
     }
 }
