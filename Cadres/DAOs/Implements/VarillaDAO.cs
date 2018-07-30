@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace DAOs
 {
-    public class VarillaDAO : DbContext, IGenericDAO<Varilla>, IVarillaDAO
+    public class VarillaDAO : DbContext, IVarillaDAO
     {
         public VarillaDAO() : base("Base") { }
 
@@ -25,6 +25,7 @@ namespace DAOs
         public void Add(Varilla entidad)
         {
             this.Varillas.Add(entidad);
+            this.SaveChanges();
         }
 
         public IList<Varilla> GetByEstadoDisponibilidad(bool estado)

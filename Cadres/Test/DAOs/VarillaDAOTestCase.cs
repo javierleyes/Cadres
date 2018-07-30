@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 
-namespace Test
+namespace Test.DAOs
 {
     [TestClass]
     public class VarillaDAOTestCase
@@ -22,7 +22,7 @@ namespace Test
             this.SetUp();
 
             this.VarillaDAO.Add(CrearVarilla(false));
-            this.VarillaDAO.SaveChanges();
+            //this.VarillaDAO.SaveChanges();
 
             Assert.IsTrue(VarillaDAO.GetAll().Count > 0);
         }
@@ -33,7 +33,7 @@ namespace Test
             this.SetUp();
 
             this.VarillaDAO.Add(CrearVarilla(false));
-            this.VarillaDAO.SaveChanges();
+            //this.VarillaDAO.SaveChanges();
 
             Varilla varillaObtenida = this.VarillaDAO.GetById(1);
 
@@ -48,7 +48,7 @@ namespace Test
             this.SetUp();
 
             this.VarillaDAO.Add(CrearVarilla(true));
-            this.VarillaDAO.SaveChanges();
+            //this.VarillaDAO.SaveChanges();
 
             IList<Varilla> varillasDisponibles = this.VarillaDAO.GetByEstadoDisponibilidad(true);
 
@@ -61,7 +61,7 @@ namespace Test
             this.SetUp();
 
             this.VarillaDAO.Add(CrearVarilla(false));
-            this.VarillaDAO.SaveChanges();
+            //this.VarillaDAO.SaveChanges();
 
             IList<Varilla> varillasNoDisponibles = this.VarillaDAO.GetByEstadoDisponibilidad(false);
 
