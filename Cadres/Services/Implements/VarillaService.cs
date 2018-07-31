@@ -9,9 +9,15 @@ namespace Services.Implements
     {
         public IVarillaDAO VarillaDAO { get; set; }
 
-        public void AgregarVarilla(Varilla varilla)
+        public void Agregar(Varilla varilla)
         {
             this.VarillaDAO.Add(varilla);
+        }
+
+        public void DarDeBaja(Varilla varilla)
+        {
+            varilla.Disponible = false;
+            this.VarillaDAO.Update(varilla);
         }
 
         public IList<Varilla> GetAll()
@@ -24,12 +30,12 @@ namespace Services.Implements
             return this.VarillaDAO.GetById(idVarilla);
         }
 
-        public IList<Varilla> GetVarillasByDisponibilidad(bool estaDisponible)
+        public IList<Varilla> GetByDisponibilidad(bool estaDisponible)
         {
             return this.VarillaDAO.GetByEstadoDisponibilidad(estaDisponible);
         }
 
-        public void UpdatePrecio(Varilla varilla, decimal precio)
+        public void ActualizarPrecio(Varilla varilla, decimal precio)
         {
             varilla.Precio = precio;
             this.VarillaDAO.Update(varilla);
