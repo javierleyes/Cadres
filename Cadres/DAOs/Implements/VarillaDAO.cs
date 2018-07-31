@@ -32,5 +32,11 @@ namespace DAOs
         {
             return this.Varillas.Where(x => x.Disponible == estado).ToList<Varilla>();
         }
+
+        public void Update(Varilla varilla)
+        {
+            this.Varillas.Attach(varilla);
+            this.SaveChanges();
+        }
     }
 }
