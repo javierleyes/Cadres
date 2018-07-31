@@ -12,5 +12,7 @@ namespace Services.Interfaces
         void AgregarVarilla(Varilla varilla);
 
         IList<Varilla> GetVarillasByDisponibilidad(bool estaDisponible);
+
+        void UpdatePrecio(Varilla varilla, decimal precio);
     }
 }

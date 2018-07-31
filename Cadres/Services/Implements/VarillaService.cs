@@ -28,5 +28,11 @@ namespace Services.Implements
         {
             return this.VarillaDAO.GetByEstadoDisponibilidad(estaDisponible);
         }
+
+        public void UpdatePrecio(Varilla varilla, decimal precio)
+        {
+            varilla.Precio = precio;
+            this.VarillaDAO.Update(varilla);
+        }
     }
 }

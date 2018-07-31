@@ -22,7 +22,6 @@ namespace Test.DAOs
             this.SetUp();
 
             this.VarillaDAO.Add(CrearVarilla(false));
-            //this.VarillaDAO.SaveChanges();
 
             Assert.IsTrue(VarillaDAO.GetAll().Count > 0);
         }
@@ -33,9 +32,9 @@ namespace Test.DAOs
             this.SetUp();
 
             this.VarillaDAO.Add(CrearVarilla(false));
-            //this.VarillaDAO.SaveChanges();
 
-            Varilla varillaObtenida = this.VarillaDAO.GetById(1);
+            int ultimoAgregado = this.VarillaDAO.GetAll().Count;
+            Varilla varillaObtenida = this.VarillaDAO.GetById(ultimoAgregado);
 
             Assert.AreEqual(varillaObtenida.Nombre, "Bombre 1,5 Negro Brilloso");
             Assert.AreEqual(varillaObtenida.Precio, Convert.ToDecimal(16.8));
@@ -48,7 +47,6 @@ namespace Test.DAOs
             this.SetUp();
 
             this.VarillaDAO.Add(CrearVarilla(true));
-            //this.VarillaDAO.SaveChanges();
 
             IList<Varilla> varillasDisponibles = this.VarillaDAO.GetByEstadoDisponibilidad(true);
 
@@ -61,11 +59,30 @@ namespace Test.DAOs
             this.SetUp();
 
             this.VarillaDAO.Add(CrearVarilla(false));
-            //this.VarillaDAO.SaveChanges();
 
             IList<Varilla> varillasNoDisponibles = this.VarillaDAO.GetByEstadoDisponibilidad(false);
 
             Assert.IsTrue(varillasNoDisponibles.Count > 0);
+        }
+
+        [TestMethod]
+        public void ActualizarPrecio_OK()
+        {
+            this.SetUp();
+
+            this.VarillaDAO.Add(CrearVarilla(false));
+
+            int ultimoAgregado = this.VarillaDAO.GetAll().Count;
+            Varilla varilla = this.VarillaDAO.GetById(ultimoAgregado);
+
+            decimal precioViejo = varilla.Precio;
+
+            varilla.Precio = Convert.ToDecimal(19.25);
+
+            this.VarillaDAO.Update(varilla);
+
+            Assert.AreEqual(this.VarillaDAO.GetById(ultimoAgregado).Precio, Convert.ToDecimal(19.25));
+            Assert.AreNotEqual(this.VarillaDAO.GetById(ultimoAgregado).Precio, precioViejo);
         }
 
         private static Varilla CrearVarilla(bool estado)
