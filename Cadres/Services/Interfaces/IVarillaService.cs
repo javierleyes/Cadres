@@ -9,10 +9,12 @@ namespace Services.Interfaces
 
         IList<Varilla> GetAll();
 
-        void AgregarVarilla(Varilla varilla);
+        void Agregar(Varilla varilla);
 
-        IList<Varilla> GetVarillasByDisponibilidad(bool estaDisponible);
+        IList<Varilla> GetByDisponibilidad(bool estaDisponible);
 
-        void UpdatePrecio(Varilla varilla, decimal precio);
+        void ActualizarPrecio(Varilla varilla, decimal precio);
+
+        void DarDeBaja(Varilla varilla);
     }
 }

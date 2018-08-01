@@ -25,7 +25,7 @@ namespace Test.Services
 
             int totalVarilla = this.VarillaService.GetAll().Count;
 
-            this.VarillaService.AgregarVarilla(CrearVarilla(true));
+            this.VarillaService.Agregar(CrearVarilla(true));
 
             Assert.AreEqual(totalVarilla + 1, this.VarillaService.GetAll().Count);
         }
@@ -35,9 +35,22 @@ namespace Test.Services
         {
             this.SetUp();
 
-            IList<Varilla> varillasDisponibles = this.VarillaService.GetVarillasByDisponibilidad(true);
+            IList<Varilla> varillasDisponibles = this.VarillaService.GetByDisponibilidad(true);
 
             Assert.IsTrue(varillasDisponibles.Count > 0);
+        }
+
+        [TestMethod]
+        public void DarDeBaja_OK()
+        {
+            this.SetUp();
+
+            this.VarillaService.Agregar(CrearVarilla(true));
+            int ultimo = this.VarillaService.GetAll().Count;
+
+            this.VarillaService.DarDeBaja(this.VarillaService.GetById(ultimo));
+
+            Assert.IsTrue(this.VarillaService.GetById(ultimo).Disponible == false);
         }
 
         private static Varilla CrearVarilla(bool estado)
