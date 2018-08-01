@@ -13,6 +13,9 @@ namespace Entidades
         public string Nombre { get; set; }
 
         [Required]
+        public decimal Ancho { get; set; }
+
+        [Required]
         public decimal Precio { get; set; }
 
         [Required]
