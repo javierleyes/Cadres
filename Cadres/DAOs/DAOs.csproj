@@ -51,18 +51,13 @@
     <Compile Include="Implements\GenericDAO.cs" />
     <Compile Include="Interfaces\IGenericDAO.cs" />
     <Compile Include="Interfaces\IVarillaDAO.cs" />
-    <Compile Include="Migrations\201808010157573_Varilla.cs" />
-    <Compile Include="Migrations\201808010157573_Varilla.Designer.cs">
-      <DependentUpon>201808010157573_Varilla.cs</DependentUpon>
+    <Compile Include="Migrations\201808050616332_Varilla.cs" />
+    <Compile Include="Migrations\201808050616332_Varilla.Designer.cs">
+      <DependentUpon>201808050616332_Varilla.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implements\VarillaDAO.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808010157573_Varilla.resx">
-      <DependentUpon>201808010157573_Varilla.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -73,6 +68,11 @@
       <Project>{DB8C14D1-B51E-4839-B36D-614889C2E4DE}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808050616332_Varilla.resx">
+      <DependentUpon>201808050616332_Varilla.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

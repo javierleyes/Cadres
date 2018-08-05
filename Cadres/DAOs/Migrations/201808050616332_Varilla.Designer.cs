@@ -13,7 +13,7 @@ namespace DAOs.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201808010157573_Varilla"; }
+            get { return "201808050616332_Varilla"; }
         }
         
         string IMigrationMetadata.Source

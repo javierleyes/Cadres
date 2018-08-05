@@ -19,5 +19,10 @@ namespace Services.Interfaces
         where TEntity : IEntity<TKey>
         where TKey : IEquatable<TKey>
     {
+        TEntity GetById(TKey id);
+
+        IList<TEntity> GetAll();
+
+        TEntity Save(TEntity entity);
     }
 }

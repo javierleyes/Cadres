@@ -11,7 +11,7 @@ namespace DAOs.Migrations
                 "VAR.Varilla",
                 c => new
                     {
-                        Id = c.Long(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         Nombre = c.String(nullable: false, maxLength: 60),
                         Precio = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Cantidad = c.Int(nullable: false),

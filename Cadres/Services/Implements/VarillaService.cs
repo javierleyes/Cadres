@@ -1,4 +1,6 @@
-﻿using DAOs.Interfaces;
+﻿using DAOs;
+using DAOs.Context;
+using DAOs.Interfaces;
 using Entidades;
 using Services.Interfaces;
 using System.Collections.Generic;
@@ -6,40 +8,27 @@ using System.Linq;
 
 namespace Services.Implements
 {
-    public class VarillaService : IVarillaService
+    public class VarillaService : GenericService<VarillaDAO, Varilla, int>, IVarillaService
     {
-        public IVarillaDAO VarillaDAO { get; set; }
-
-        public void Agregar(Varilla varilla)
+        public VarillaService(VarillaDAO entityDAO) : base(entityDAO)
         {
-            this.VarillaDAO.Add(varilla);
         }
 
         public void DarDeBaja(Varilla varilla)
         {
             varilla.Disponible = false;
-            this.VarillaDAO.Update(varilla);
-        }
-
-        public IList<Varilla> GetAll()
-        {
-            return this.VarillaDAO.GetAll().ToList();
-        }
-
-        public Varilla GetById(long idVarilla)
-        {
-            return this.VarillaDAO.GetById(idVarilla);
+            Save(varilla);
         }
 
         public IList<Varilla> GetByDisponibilidad(bool estaDisponible)
         {
-            return this.VarillaDAO.GetByEstadoDisponibilidad(estaDisponible);
+            return EntityDAO.GetByEstadoDisponibilidad(estaDisponible);
         }
 
         public void ActualizarPrecio(Varilla varilla, decimal precio)
         {
             varilla.Precio = precio;
-            this.VarillaDAO.Update(varilla);
+            Save(varilla);
         }
     }
 }
