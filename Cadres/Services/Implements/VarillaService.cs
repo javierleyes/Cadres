@@ -2,6 +2,7 @@
 using Entidades;
 using Services.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Services.Implements
 {
@@ -22,7 +23,7 @@ namespace Services.Implements
 
         public IList<Varilla> GetAll()
         {
-            return this.VarillaDAO.GetAll();
+            return this.VarillaDAO.GetAll().ToList();
         }
 
         public Varilla GetById(long idVarilla)

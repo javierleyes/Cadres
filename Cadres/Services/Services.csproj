@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implements\GenericService.cs" />
     <Compile Include="Implements\VarillaService.cs" />
+    <Compile Include="Interfaces\IGenericService.cs" />
     <Compile Include="Interfaces\IVarillaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

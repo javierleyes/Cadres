@@ -1,13 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Entidades.Base;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entidades
 {
     [Table("Varilla", Schema = "VAR")]
-    public class Varilla
+    public class Varilla : Entity<int>
     {
-        public long Id { get; set; }
-
         [Required]
         [MaxLength(60), MinLength(3)]
         public string Nombre { get; set; }
