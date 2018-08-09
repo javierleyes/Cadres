@@ -5,7 +5,7 @@ namespace Entidades.DTOs
 {
     public class PedidoDTO
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public decimal Ancho { get; set; }
 
