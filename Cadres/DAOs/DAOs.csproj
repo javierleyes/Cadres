@@ -55,6 +55,10 @@
     <Compile Include="Migrations\201808050616332_Varilla.Designer.cs">
       <DependentUpon>201808050616332_Varilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808090209332_Entidad Pedido.cs" />
+    <Compile Include="Migrations\201808090209332_Entidad Pedido.Designer.cs">
+      <DependentUpon>201808090209332_Entidad Pedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implements\VarillaDAO.cs" />
@@ -72,6 +76,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201808050616332_Varilla.resx">
       <DependentUpon>201808050616332_Varilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808090209332_Entidad Pedido.resx">
+      <DependentUpon>201808090209332_Entidad Pedido.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
