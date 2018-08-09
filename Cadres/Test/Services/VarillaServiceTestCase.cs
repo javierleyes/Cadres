@@ -1,4 +1,5 @@
 ﻿using DAOs;
+using DAOs.Context;
 using Entidades;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Services.Implements;
@@ -12,20 +13,18 @@ namespace Test.Services
     {
         private VarillaService VarillaService { get; set; }
 
-        private void SetUp()
+        [TestInitialize]
+        public void SetUp()
         {
-            this.VarillaService = new VarillaService();
-            this.VarillaService.VarillaDAO = new VarillaDAO();
+            this.VarillaService = new VarillaService(new VarillaDAO(new CadresContext()));
         }
 
         [TestMethod]
         public void AgregarVarillaNueva()
         {
-            this.SetUp();
-
             int totalVarilla = this.VarillaService.GetAll().Count;
 
-            this.VarillaService.Agregar(CrearVarilla(true));
+            this.VarillaService.Save(CrearVarilla(true));
 
             Assert.AreEqual(totalVarilla + 1, this.VarillaService.GetAll().Count);
         }
@@ -33,8 +32,6 @@ namespace Test.Services
         [TestMethod]
         public void ObtenerVarillasDisponibles_OK()
         {
-            this.SetUp();
-
             IList<Varilla> varillasDisponibles = this.VarillaService.GetByDisponibilidad(true);
 
             Assert.IsTrue(varillasDisponibles.Count > 0);
@@ -43,9 +40,7 @@ namespace Test.Services
         [TestMethod]
         public void DarDeBaja_OK()
         {
-            this.SetUp();
-
-            this.VarillaService.Agregar(CrearVarilla(true));
+            this.VarillaService.Save(CrearVarilla(true));
             int ultimo = this.VarillaService.GetAll().Count;
 
             this.VarillaService.DarDeBaja(this.VarillaService.GetById(ultimo));
