@@ -36,7 +36,5 @@ namespace Test.Services
             Assert.AreEqual(obtenido.Observaciones, "Pintado de negro");
             Assert.AreEqual(cantidadPedidos, this.PedidoService.GetDTOAll().Count - 1);
         }
-
-
     }
 }

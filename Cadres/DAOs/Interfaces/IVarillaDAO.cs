@@ -6,5 +6,7 @@ namespace DAOs.Interfaces
     public interface IVarillaDAO : IGenericDAO<Varilla>
     {
         IList<Varilla> GetByEstadoDisponibilidad(bool estado);
+
+        IList<Varilla> GetByAncho(decimal ancho);
     }
 }

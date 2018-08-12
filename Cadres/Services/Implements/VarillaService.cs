@@ -60,5 +60,10 @@ namespace Services.Implements
 
             this.Save(varilla);
         }
+
+        public IList<VarillaDTO> GetByAncho(decimal ancho)
+        {
+            return this.EntityDAO.GetByAncho(ancho).ToList().Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
+        }
     }
 }

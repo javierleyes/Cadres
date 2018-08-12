@@ -20,7 +20,7 @@ namespace Services.Implements
 
             foreach (Pedido pedido in EntityDAO.GetByEstado(estado))
             {
-                pedidosDTO.Add(EntityConverter.ConvertoPedidoToPedidoDTO(pedido));
+                pedidosDTO.Add(EntityConverter.ConvertPedidoToPedidoDTO(pedido));
             }
 
             return pedidosDTO;
@@ -28,14 +28,14 @@ namespace Services.Implements
 
         public IList<PedidoDTO> GetDTOAll()
         {
-            return this.GetAll().Select(x => EntityConverter.ConvertoPedidoToPedidoDTO(x)).ToList();
+            return this.GetAll().Select(x => EntityConverter.ConvertPedidoToPedidoDTO(x)).ToList();
         }
 
         public PedidoDTO GetDTOById(int id)
         {
             Pedido pedido = this.GetById(id);
 
-            return EntityConverter.ConvertoPedidoToPedidoDTO(pedido);
+            return EntityConverter.ConvertPedidoToPedidoDTO(pedido);
         }
 
         public void Insert(PedidoDTO pedidoDTO)

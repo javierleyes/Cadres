@@ -20,5 +20,7 @@ namespace Services.Interfaces
         void DarDeBaja(VarillaDTO varillaDTO);
 
         IList<VarillaDTO> GetByDisponibilidad(bool estaDisponible);
+
+        IList<VarillaDTO> GetByAncho(decimal ancho);
     }
 }
