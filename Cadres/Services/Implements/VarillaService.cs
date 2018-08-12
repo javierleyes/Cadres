@@ -1,7 +1,9 @@
 ﻿using DAOs;
 using Entidades;
+using Entidades.DTOs;
 using Services.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Services.Implements
 {
@@ -11,21 +13,52 @@ namespace Services.Implements
         {
         }
 
-        public void DarDeBaja(Varilla varilla)
+        public void Insert(VarillaDTO varillaDTO)
         {
+            Varilla varilla = EntityConverter.ConvertVarillaDTOToVarilla(varillaDTO);
+
+            this.Save(varilla);
+        }
+
+        public VarillaDTO GetDTOById(int id)
+        {
+            Varilla varilla = this.GetById(id);
+
+            VarillaDTO dto = EntityConverter.ConvertVarillaToVarillaDTO(varilla);
+
+            return dto;
+        }
+
+        public IList<VarillaDTO> GetDTOAll()
+        {
+            return this.GetAll().ToList().Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
+        }
+
+        public IList<VarillaDTO> GetByDisponibilidad(bool estaDisponible)
+        {
+            return this.EntityDAO.GetByEstadoDisponibilidad(estaDisponible).Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
+        }
+
+        public void DarDeBaja(VarillaDTO varillaDTO)
+        {
+            Varilla varilla = EntityConverter.ConvertVarillaDTOToVarilla(varillaDTO);
             varilla.Disponible = false;
-            Save(varilla);
+
+            this.Save(varilla);
         }
 
-        public IList<Varilla> GetByDisponibilidad(bool estaDisponible)
+        public void SetCantidad(VarillaDTO varillaDTO)
         {
-            return EntityDAO.GetByEstadoDisponibilidad(estaDisponible);
+            Varilla varilla = EntityConverter.ConvertVarillaDTOToVarilla(varillaDTO);
+
+            this.Save(varilla);
         }
 
-        public void ActualizarPrecio(Varilla varilla, decimal precio)
+        public void SetPrecio(VarillaDTO varillaDTO)
         {
-            varilla.Precio = precio;
-            Save(varilla);
+            Varilla varilla = EntityConverter.ConvertVarillaDTOToVarilla(varillaDTO);
+
+            this.Save(varilla);
         }
     }
 }

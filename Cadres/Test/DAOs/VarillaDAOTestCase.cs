@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Test.Common;
 
 namespace Test.DAOs
 {
@@ -24,7 +25,7 @@ namespace Test.DAOs
         [TestMethod]
         public void ObtenerTodasLasVarillas_Ok()
         {
-            this.VarillaDAO.InsertOrUpdate(CrearVarilla(false));
+            this.VarillaDAO.InsertOrUpdate(Utils.CrearVarilla(false));
 
             Assert.IsTrue(VarillaDAO.GetAll().Count() > 0);
         }
@@ -34,7 +35,7 @@ namespace Test.DAOs
         {
             int cantidadVarillas = this.VarillaDAO.GetAll().Count();
 
-            this.VarillaDAO.InsertOrUpdate(CrearVarilla(false));
+            this.VarillaDAO.InsertOrUpdate(Utils.CrearVarilla(false));
 
             int ultimoAgregado = this.VarillaDAO.GetAll().ToList().LastOrDefault().Id;
             Varilla varillaObtenida = this.VarillaDAO.GetById(ultimoAgregado);
@@ -49,7 +50,7 @@ namespace Test.DAOs
         [TestMethod]
         public void ObtenerTodasLasVarillasDisponibles_Ok()
         {
-            this.VarillaDAO.InsertOrUpdate(CrearVarilla(true));
+            this.VarillaDAO.InsertOrUpdate(Utils.CrearVarilla(true));
 
             IList<Varilla> varillasDisponibles = this.VarillaDAO.GetByEstadoDisponibilidad(true);
 
@@ -59,7 +60,7 @@ namespace Test.DAOs
         [TestMethod]
         public void ObtenerTodasLasVarillasNoDisponibles_Ok()
         {
-            this.VarillaDAO.InsertOrUpdate(CrearVarilla(false));
+            this.VarillaDAO.InsertOrUpdate(Utils.CrearVarilla(false));
 
             IList<Varilla> varillasNoDisponibles = this.VarillaDAO.GetByEstadoDisponibilidad(false);
 
@@ -69,7 +70,7 @@ namespace Test.DAOs
         [TestMethod]
         public void ActualizarPrecio_OK()
         {
-            this.VarillaDAO.InsertOrUpdate(CrearVarilla(false));
+            this.VarillaDAO.InsertOrUpdate(Utils.CrearVarilla(false));
 
             int ultimoAgregado = this.VarillaDAO.GetAll().ToList().LastOrDefault().Id;
             Varilla varilla = this.VarillaDAO.GetById(ultimoAgregado);
@@ -82,18 +83,6 @@ namespace Test.DAOs
 
             Assert.AreEqual(this.VarillaDAO.GetById(ultimoAgregado).Precio, Convert.ToDecimal(19.25));
             Assert.AreNotEqual(this.VarillaDAO.GetById(ultimoAgregado).Precio, precioViejo);
-        }
-
-        private static Varilla CrearVarilla(bool estado)
-        {
-            return new Varilla()
-            {
-                Nombre = "Bombre 1,5 Negro Brilloso",
-                Precio = Convert.ToDecimal(16.8),
-                Ancho = 3,
-                Cantidad = 8,
-                Disponible = estado
-            };
         }
     }
 }
