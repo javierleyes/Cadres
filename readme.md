@@ -7,3 +7,4 @@
 * Se agrega Entidad pedido (Entidad, DAO, Services, Test DAO y Test Service).
 * Se agrega proyecto Base, contiene enumerados usados en la aplicación.
 * Se agrego carpeta Common en el proyecto de Test con clase Utils para test.
+* Se agrega clase EntityConverter en el proyectos entidades, realizar las conversiones entre entidad y DTO provisoriamente.
