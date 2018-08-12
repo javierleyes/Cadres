@@ -55,8 +55,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Utils.cs" />
+    <Compile Include="DAOs\PedidoDAOTestCase.cs" />
     <Compile Include="DAOs\VarillaDAOTestCase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\PedidoServiceTestCase.cs" />
     <Compile Include="Services\VarillaServiceTestCase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +67,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{53EDC033-41EE-408D-85CA-A902B7447E12}</Project>
+      <Name>Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAOs\DAOs.csproj">
       <Project>{A96F45C1-F8EE-4E6A-AFD1-5F5ACEA4A1AE}</Project>
       <Name>DAOs</Name>

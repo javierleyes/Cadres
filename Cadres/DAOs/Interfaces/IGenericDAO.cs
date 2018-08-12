@@ -1,6 +1,5 @@
 ﻿using Entidades.Base;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DAOs.Interfaces

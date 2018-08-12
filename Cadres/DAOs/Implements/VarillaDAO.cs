@@ -13,9 +13,14 @@ namespace DAOs
         {
         }
 
+        public IList<Varilla> GetByAncho(decimal ancho)
+        {
+            return this.GetAll().Where(x => x.Ancho == ancho).ToList();
+        }
+
         public IList<Varilla> GetByEstadoDisponibilidad(bool estado)
         {
-            return this.GetAll().Where(x => x.Disponible == estado).ToList<Varilla>();
+            return this.GetAll().Where(x => x.Disponible == estado).ToList();
         }
     }
 }

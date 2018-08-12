@@ -1,17 +1,20 @@
 ﻿using DAOs;
 using DAOs.Context;
-using Entidades;
+using Entidades.DTOs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Services.Implements;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Test.Common;
 
 namespace Test.Services
 {
     [TestClass]
     public class VarillaServiceTestCase
     {
-        private VarillaService VarillaService { get; set; }
+        private IVarillaService VarillaService { get; set; }
 
         [TestInitialize]
         public void SetUp()
@@ -22,17 +25,17 @@ namespace Test.Services
         [TestMethod]
         public void AgregarVarillaNueva()
         {
-            int totalVarilla = this.VarillaService.GetAll().Count;
+            int totalVarilla = this.VarillaService.GetDTOAll().Count;
 
-            this.VarillaService.Save(CrearVarilla(true));
+            this.VarillaService.Insert(Utils.CrearVarillaDTO(true));
 
-            Assert.AreEqual(totalVarilla + 1, this.VarillaService.GetAll().Count);
+            Assert.AreEqual(totalVarilla + 1, this.VarillaService.GetDTOAll().Count);
         }
 
         [TestMethod]
         public void ObtenerVarillasDisponibles_OK()
         {
-            IList<Varilla> varillasDisponibles = this.VarillaService.GetByDisponibilidad(true);
+            IList<VarillaDTO> varillasDisponibles = this.VarillaService.GetByDisponibilidad(true);
 
             Assert.IsTrue(varillasDisponibles.Count > 0);
         }
@@ -40,23 +43,28 @@ namespace Test.Services
         [TestMethod]
         public void DarDeBaja_OK()
         {
-            this.VarillaService.Save(CrearVarilla(true));
-            int ultimo = this.VarillaService.GetAll().Count;
+            this.VarillaService.Insert(Utils.CrearVarillaDTO(true));
 
-            this.VarillaService.DarDeBaja(this.VarillaService.GetById(ultimo));
+            int cantidadVarillas = this.VarillaService.GetDTOAll().Count();
+
+            int ultimo = this.VarillaService.GetDTOAll().LastOrDefault().Id;
+
+            this.VarillaService.DarDeBaja(this.VarillaService.GetDTOById(ultimo));
 
             Assert.IsTrue(this.VarillaService.GetById(ultimo).Disponible == false);
+            Assert.AreEqual(cantidadVarillas, this.VarillaService.GetDTOAll().Count());
         }
 
-        private static Varilla CrearVarilla(bool estado)
+        [TestMethod]
+        public void ObtenerByAncho_OK()
         {
-            return new Varilla()
-            {
-                Nombre = "Bombre 1,5 Negro Brilloso",
-                Precio = Convert.ToDecimal(16.8),
-                Cantidad = 8,
-                Disponible = estado
-            };
+            VarillaDTO varilla = Utils.CrearVarillaDTO(true, Convert.ToDecimal(10.50));
+
+            int cantidadVarillaAncho = this.VarillaService.GetByAncho(Convert.ToDecimal(10.50)).Count;
+
+            this.VarillaService.Insert(varilla);
+
+            Assert.AreEqual(cantidadVarillaAncho, this.VarillaService.GetByAncho(Convert.ToDecimal(10.50)).Count - 1);
         }
     }
 }
