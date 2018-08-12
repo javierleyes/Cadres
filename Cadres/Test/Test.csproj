@@ -59,6 +59,7 @@
     <Compile Include="DAOs\PedidoDAOTestCase.cs" />
     <Compile Include="DAOs\VarillaDAOTestCase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\PedidoServiceTestCase.cs" />
     <Compile Include="Services\VarillaServiceTestCase.cs" />
   </ItemGroup>
   <ItemGroup>

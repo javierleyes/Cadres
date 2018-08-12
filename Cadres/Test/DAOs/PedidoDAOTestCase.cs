@@ -29,7 +29,7 @@ namespace Test.DAOs
         [TestMethod]
         public void InsertPedido_ok()
         {
-            Pedido pedido = CrearPedido();
+            Pedido pedido = Utils.CrearPedido();
 
             this.PedidoDAO.InsertOrUpdate(pedido);
 
@@ -48,7 +48,7 @@ namespace Test.DAOs
         [TestMethod]
         public void EditarPedido()
         {
-            Pedido pedido = CrearPedido();
+            Pedido pedido = Utils.CrearPedido();
 
             this.PedidoDAO.InsertOrUpdate(pedido);
 
@@ -69,36 +69,11 @@ namespace Test.DAOs
         {
             int cantidadPedidosOriginal = this.PedidoDAO.GetAll().ToList().Count();
 
-            this.PedidoDAO.InsertOrUpdate(this.CrearPedido());
+            this.PedidoDAO.InsertOrUpdate(Utils.CrearPedido());
 
             IList<Pedido> pedidos = this.PedidoDAO.GetAll().ToList();
 
             Assert.IsTrue(cantidadPedidosOriginal == pedidos.Count() - 1);
-        }
-
-        private Pedido CrearPedido()
-        {
-            int ultimoId = CrearVarillaYGuardar();
-
-            Pedido pedido = new Pedido()
-            {
-                Ancho = Convert.ToDecimal(210.50),
-                Largo = Convert.ToDecimal(297.60),
-                Fecha = DateTime.Now,
-                Observaciones = "Pintado de negro",
-                Precio = 250,
-                Varilla = this.VarillaDAO.GetById(ultimoId),
-                Estado = Estados.EstadoPedido.Pendiente
-            };
-
-            return pedido;
-        }
-
-        private int CrearVarillaYGuardar()
-        {
-            this.VarillaDAO.InsertOrUpdate(Utils.CrearVarilla(true));
-
-            return this.VarillaDAO.GetAll().ToList().LastOrDefault().Id;
         }
     }
 }

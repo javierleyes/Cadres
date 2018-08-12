@@ -44,13 +44,14 @@ namespace Test.Services
         {
             this.VarillaService.Insert(Utils.CrearVarillaDTO(true));
 
+            int cantidadVarillas = this.VarillaService.GetDTOAll().Count();
+
             int ultimo = this.VarillaService.GetDTOAll().LastOrDefault().Id;
 
             this.VarillaService.DarDeBaja(this.VarillaService.GetDTOById(ultimo));
 
             Assert.IsTrue(this.VarillaService.GetById(ultimo).Disponible == false);
+            Assert.AreEqual(cantidadVarillas, this.VarillaService.GetDTOAll().Count());
         }
-
-
     }
 }

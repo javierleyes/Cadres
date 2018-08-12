@@ -4,6 +4,7 @@ using Entidades;
 using Entidades.DTOs;
 using Services.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Services.Implements
 {
@@ -23,6 +24,25 @@ namespace Services.Implements
             }
 
             return pedidosDTO;
+        }
+
+        public IList<PedidoDTO> GetDTOAll()
+        {
+            return this.GetAll().Select(x => EntityConverter.ConvertoPedidoToPedidoDTO(x)).ToList();
+        }
+
+        public PedidoDTO GetDTOById(int id)
+        {
+            Pedido pedido = this.GetById(id);
+
+            return EntityConverter.ConvertoPedidoToPedidoDTO(pedido);
+        }
+
+        public void Insert(PedidoDTO pedidoDTO)
+        {
+            Pedido pedido = EntityConverter.ConvertPedidoDTOToPedido(pedidoDTO);
+
+            this.Save(pedido);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using Base;
+using Entidades;
 using Entidades.DTOs;
 using System;
 
@@ -30,6 +31,38 @@ namespace Test.Common
                 Cantidad = 8,
                 Disponible = estado
             };
+        }
+
+        public static Pedido CrearPedido()
+        {
+            Pedido pedido = new Pedido()
+            {
+                Ancho = Convert.ToDecimal(210.50),
+                Largo = Convert.ToDecimal(297.60),
+                Fecha = DateTime.Now,
+                Observaciones = "Pintado de negro",
+                Precio = 250,
+                Varilla = CrearVarilla(true),
+                Estado = Estados.EstadoPedido.Pendiente
+            };
+
+            return pedido;
+        }
+
+        public static PedidoDTO CrearPedidoDTO()
+        {
+            PedidoDTO pedido = new PedidoDTO()
+            {
+                Ancho = Convert.ToDecimal(210.50),
+                Largo = Convert.ToDecimal(297.60),
+                Fecha = DateTime.Now,
+                Observaciones = "Pintado de negro",
+                Precio = 250,
+                Varilla = CrearVarillaDTO(true),
+                Estado = Estados.EstadoPedido.Pendiente
+            };
+
+            return pedido;
         }
     }
 }

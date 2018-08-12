@@ -15,7 +15,7 @@ namespace DAOs
 
         public IList<Varilla> GetByEstadoDisponibilidad(bool estado)
         {
-            return this.GetAll().Where(x => x.Disponible == estado).ToList<Varilla>();
+            return this.GetAll().Where(x => x.Disponible == estado).ToList();
         }
     }
 }
