@@ -46,7 +46,7 @@ namespace Entidades
             };
         }
 
-        public static PedidoDTO ConvertoPedidoToPedidoDTO(Pedido pedido)
+        public static PedidoDTO ConvertPedidoToPedidoDTO(Pedido pedido)
         {
             return new PedidoDTO()
             {

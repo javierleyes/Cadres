@@ -7,13 +7,13 @@ namespace Test.Common
 {
     public static class Utils
     {
-        public static VarillaDTO CrearVarillaDTO(bool estado)
+        public static VarillaDTO CrearVarillaDTO(bool estado, decimal? ancho = 3)
         {
             Varilla varilla = new Varilla()
             {
                 Nombre = "Bombre 1,5 Negro Brilloso",
                 Precio = Convert.ToDecimal(16.8),
-                Ancho = 3,
+                Ancho = ancho.HasValue ? ancho.Value : 3,
                 Cantidad = 8,
                 Disponible = estado
             };

@@ -4,6 +4,7 @@ using Entidades.DTOs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Services.Implements;
 using Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Test.Common;
@@ -52,6 +53,18 @@ namespace Test.Services
 
             Assert.IsTrue(this.VarillaService.GetById(ultimo).Disponible == false);
             Assert.AreEqual(cantidadVarillas, this.VarillaService.GetDTOAll().Count());
+        }
+
+        [TestMethod]
+        public void ObtenerByAncho_OK()
+        {
+            VarillaDTO varilla = Utils.CrearVarillaDTO(true, Convert.ToDecimal(10.50));
+
+            int cantidadVarillaAncho = this.VarillaService.GetByAncho(Convert.ToDecimal(10.50)).Count;
+
+            this.VarillaService.Insert(varilla);
+
+            Assert.AreEqual(cantidadVarillaAncho, this.VarillaService.GetByAncho(Convert.ToDecimal(10.50)).Count - 1);
         }
     }
 }
