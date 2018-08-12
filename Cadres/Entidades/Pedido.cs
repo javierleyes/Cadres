@@ -16,8 +16,7 @@ namespace Entidades
         public decimal Largo { get; set; }
 
         [Required]
-        [ForeignKey("VarillaId")]
-        public Varilla Varilla { get; set; }
+        public virtual Varilla Varilla { get; set; }
 
         [Required]
         [StringLength(256)]

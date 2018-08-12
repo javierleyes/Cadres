@@ -32,14 +32,18 @@ namespace Test.DAOs
         [TestMethod]
         public void PersistirVarillaYObtener_Ok()
         {
+            int cantidadVarillas = this.VarillaDAO.GetAll().Count();
+
             this.VarillaDAO.InsertOrUpdate(CrearVarilla(false));
 
-            int ultimoAgregado = this.VarillaDAO.GetAll().Count();
+            int ultimoAgregado = this.VarillaDAO.GetAll().ToList().LastOrDefault().Id;
             Varilla varillaObtenida = this.VarillaDAO.GetById(ultimoAgregado);
 
             Assert.AreEqual(varillaObtenida.Nombre, "Bombre 1,5 Negro Brilloso");
             Assert.AreEqual(varillaObtenida.Precio, Convert.ToDecimal(16.8));
             Assert.AreEqual(varillaObtenida.Cantidad, 8);
+
+            Assert.AreEqual(cantidadVarillas + 1, this.VarillaDAO.GetAll().Count());
         }
 
         [TestMethod]
@@ -67,7 +71,7 @@ namespace Test.DAOs
         {
             this.VarillaDAO.InsertOrUpdate(CrearVarilla(false));
 
-            int ultimoAgregado = this.VarillaDAO.GetAll().Count();
+            int ultimoAgregado = this.VarillaDAO.GetAll().ToList().LastOrDefault().Id;
             Varilla varilla = this.VarillaDAO.GetById(ultimoAgregado);
 
             decimal precioViejo = varilla.Precio;
@@ -86,6 +90,7 @@ namespace Test.DAOs
             {
                 Nombre = "Bombre 1,5 Negro Brilloso",
                 Precio = Convert.ToDecimal(16.8),
+                Ancho = 3,
                 Cantidad = 8,
                 Disponible = estado
             };

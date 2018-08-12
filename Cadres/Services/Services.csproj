@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implements\GenericService.cs" />
+    <Compile Include="Implements\PedidoService.cs" />
     <Compile Include="Implements\VarillaService.cs" />
     <Compile Include="Interfaces\IGenericService.cs" />
+    <Compile Include="Interfaces\IPedidoService.cs" />
     <Compile Include="Interfaces\IVarillaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -52,6 +54,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{53EDC033-41EE-408D-85CA-A902B7447E12}</Project>
+      <Name>Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAOs\DAOs.csproj">
       <Project>{A96F45C1-F8EE-4E6A-AFD1-5F5ACEA4A1AE}</Project>
       <Name>DAOs</Name>

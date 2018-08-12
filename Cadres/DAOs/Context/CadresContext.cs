@@ -9,7 +9,9 @@ namespace DAOs.Context
         {
             Database.SetInitializer<CadresContext>(null);
         }
-        
+
         public IDbSet<Varilla> Varillas { get; set; }
+
+        public IDbSet<Pedido> Pedidos { get; set; }
     }
 }

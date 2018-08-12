@@ -1,10 +1,7 @@
 ﻿using DAOs;
-using DAOs.Context;
-using DAOs.Interfaces;
 using Entidades;
 using Services.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Services.Implements
 {
