@@ -1,20 +1,26 @@
-﻿using Entidades;
+﻿using DAOs.Interfaces;
+using Entidades;
+using Entidades.DTOs;
 using System.Collections.Generic;
 
 namespace Services.Interfaces
 {
-    public interface IVarillaService
+    public interface IVarillaService : IGenericService<IVarillaDAO, Varilla, int>
     {
-        Varilla GetById(long idVarilla);
+        void Insert(VarillaDTO varillaDTO);
 
-        IList<Varilla> GetAll();
+        VarillaDTO GetDTOById(int id);
 
-        void Agregar(Varilla varilla);
+        IList<VarillaDTO> GetDTOAll();
 
-        IList<Varilla> GetByDisponibilidad(bool estaDisponible);
+        void SetCantidad(VarillaDTO varillaDTO);
 
-        void ActualizarPrecio(Varilla varilla, decimal precio);
+        void SetPrecio(VarillaDTO varillaDTO);
 
-        void DarDeBaja(Varilla varilla);
+        void DarDeBaja(VarillaDTO varillaDTO);
+
+        IList<VarillaDTO> GetByDisponibilidad(bool estaDisponible);
+
+        IList<VarillaDTO> GetByAncho(decimal ancho);
     }
 }

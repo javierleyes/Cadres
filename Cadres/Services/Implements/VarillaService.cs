@@ -1,44 +1,69 @@
-﻿using DAOs.Interfaces;
+﻿using DAOs;
 using Entidades;
+using Entidades.DTOs;
 using Services.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Services.Implements
 {
-    public class VarillaService : IVarillaService
+    public class VarillaService : GenericService<VarillaDAO, Varilla, int>, IVarillaService
     {
-        public IVarillaDAO VarillaDAO { get; set; }
-
-        public void Agregar(Varilla varilla)
+        public VarillaService(VarillaDAO entityDAO) : base(entityDAO)
         {
-            this.VarillaDAO.Add(varilla);
         }
 
-        public void DarDeBaja(Varilla varilla)
+        public void Insert(VarillaDTO varillaDTO)
         {
+            Varilla varilla = EntityConverter.ConvertVarillaDTOToVarilla(varillaDTO);
+
+            this.Save(varilla);
+        }
+
+        public VarillaDTO GetDTOById(int id)
+        {
+            Varilla varilla = this.GetById(id);
+
+            VarillaDTO dto = EntityConverter.ConvertVarillaToVarillaDTO(varilla);
+
+            return dto;
+        }
+
+        public IList<VarillaDTO> GetDTOAll()
+        {
+            return this.GetAll().ToList().Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
+        }
+
+        public IList<VarillaDTO> GetByDisponibilidad(bool estaDisponible)
+        {
+            return this.EntityDAO.GetByEstadoDisponibilidad(estaDisponible).Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
+        }
+
+        public void DarDeBaja(VarillaDTO varillaDTO)
+        {
+            Varilla varilla = EntityConverter.ConvertVarillaDTOToVarilla(varillaDTO);
             varilla.Disponible = false;
-            this.VarillaDAO.Update(varilla);
+
+            this.Save(varilla);
         }
 
-        public IList<Varilla> GetAll()
+        public void SetCantidad(VarillaDTO varillaDTO)
         {
-            return this.VarillaDAO.GetAll();
+            Varilla varilla = EntityConverter.ConvertVarillaDTOToVarilla(varillaDTO);
+
+            this.Save(varilla);
         }
 
-        public Varilla GetById(long idVarilla)
+        public void SetPrecio(VarillaDTO varillaDTO)
         {
-            return this.VarillaDAO.GetById(idVarilla);
+            Varilla varilla = EntityConverter.ConvertVarillaDTOToVarilla(varillaDTO);
+
+            this.Save(varilla);
         }
 
-        public IList<Varilla> GetByDisponibilidad(bool estaDisponible)
+        public IList<VarillaDTO> GetByAncho(decimal ancho)
         {
-            return this.VarillaDAO.GetByEstadoDisponibilidad(estaDisponible);
-        }
-
-        public void ActualizarPrecio(Varilla varilla, decimal precio)
-        {
-            varilla.Precio = precio;
-            this.VarillaDAO.Update(varilla);
+            return this.EntityDAO.GetByAncho(ancho).ToList().Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
         }
     }
 }

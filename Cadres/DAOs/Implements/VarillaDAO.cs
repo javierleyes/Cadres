@@ -1,4 +1,5 @@
-﻿using DAOs.Interfaces;
+﻿using DAOs.Implements;
+using DAOs.Interfaces;
 using Entidades;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,37 +7,20 @@ using System.Linq;
 
 namespace DAOs
 {
-    public class VarillaDAO : DbContext, IVarillaDAO
+    public class VarillaDAO : GenericDAO<Varilla>, IVarillaDAO
     {
-        public VarillaDAO() : base("Base") { }
-
-        public DbSet<Varilla> Varillas { get; set; }
-
-        public IList<Varilla> GetAll()
+        public VarillaDAO(DbContext dbContext) : base(dbContext)
         {
-            return this.Varillas.ToList();
         }
 
-        public Varilla GetById(long id)
+        public IList<Varilla> GetByAncho(decimal ancho)
         {
-            return this.Varillas.Where(x => x.Id == id).FirstOrDefault<Varilla>();
-        }
-
-        public void Add(Varilla entidad)
-        {
-            this.Varillas.Add(entidad);
-            this.SaveChanges();
+            return this.GetAll().Where(x => x.Ancho == ancho).ToList();
         }
 
         public IList<Varilla> GetByEstadoDisponibilidad(bool estado)
         {
-            return this.Varillas.Where(x => x.Disponible == estado).ToList<Varilla>();
-        }
-
-        public void Update(Varilla varilla)
-        {
-            this.Varillas.Attach(varilla);
-            this.SaveChanges();
+            return this.GetAll().Where(x => x.Disponible == estado).ToList();
         }
     }
 }

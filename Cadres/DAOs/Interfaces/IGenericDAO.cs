@@ -1,13 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using Entidades.Base;
+using System;
+using System.Linq;
 
 namespace DAOs.Interfaces
 {
-    public interface IGenericDAO<T>
+    public interface IGenericDAO<TEntity> : IGenericDAO<TEntity, int>
+        where TEntity : IEntity<int>
     {
-        IList<T> GetAll();
+    }
 
-        T GetById(long id);
+    public interface IGenericDAO<TEntity, TKey>
+        where TEntity : IEntity<TKey>
+        where TKey : IEquatable<TKey>
+    {
+        TEntity GetById(TKey id);
 
-        void Add(T entidad);
+        IQueryable<TEntity> GetAll();
+
+        TEntity InsertOrUpdate(TEntity entity);
     }
 }

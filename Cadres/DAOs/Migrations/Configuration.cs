@@ -1,15 +1,18 @@
 namespace DAOs.Migrations
 {
+    using System;
+    using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DAOs.VarillaDAO>
+    internal sealed class Configuration : DbMigrationsConfiguration<DAOs.Context.CadresContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(DAOs.VarillaDAO context)
+        protected override void Seed(DAOs.Context.CadresContext context)
         {
             //  This method will be called after migrating to the latest version.
 
