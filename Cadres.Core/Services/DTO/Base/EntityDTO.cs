@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Services.Interfaces
+namespace Services.DTO.Base
 {
-    interface IBaseService
+    public class EntityDTO
     {
     }
 }

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Services.Implements
+namespace Services.Interfaces.Inventario
 {
-    class BaseService
+    public interface IVarillaService
     {
+
     }
 }
