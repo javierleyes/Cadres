@@ -7,13 +7,13 @@ namespace DAOs.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Pedido : IMigrationMetadata
+    public sealed partial class Entidad_pedido : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Pedido));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Entidad_pedido));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808121439322_Pedido"; }
+            get { return "201808140048343_Entidad_pedido"; }
         }
         
         string IMigrationMetadata.Source

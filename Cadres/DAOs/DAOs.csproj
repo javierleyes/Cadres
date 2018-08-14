@@ -53,13 +53,13 @@
     <Compile Include="Interfaces\IGenericDAO.cs" />
     <Compile Include="Interfaces\IPedidoDAO.cs" />
     <Compile Include="Interfaces\IVarillaDAO.cs" />
-    <Compile Include="Migrations\201808050616332_Varilla.cs" />
-    <Compile Include="Migrations\201808050616332_Varilla.Designer.cs">
-      <DependentUpon>201808050616332_Varilla.cs</DependentUpon>
+    <Compile Include="Migrations\201808140042000_Entidad_varilla.cs" />
+    <Compile Include="Migrations\201808140042000_Entidad_varilla.Designer.cs">
+      <DependentUpon>201808140042000_Entidad_varilla.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808121439322_Pedido.cs" />
-    <Compile Include="Migrations\201808121439322_Pedido.Designer.cs">
-      <DependentUpon>201808121439322_Pedido.cs</DependentUpon>
+    <Compile Include="Migrations\201808140048343_Entidad_pedido.cs" />
+    <Compile Include="Migrations\201808140048343_Entidad_pedido.Designer.cs">
+      <DependentUpon>201808140048343_Entidad_pedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,11 +80,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808050616332_Varilla.resx">
-      <DependentUpon>201808050616332_Varilla.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808140042000_Entidad_varilla.resx">
+      <DependentUpon>201808140042000_Entidad_varilla.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808121439322_Pedido.resx">
-      <DependentUpon>201808121439322_Pedido.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808140048343_Entidad_pedido.resx">
+      <DependentUpon>201808140048343_Entidad_pedido.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
