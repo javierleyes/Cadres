@@ -1,4 +1,4 @@
-﻿using Entidades;
+﻿using Entidades.Inventtario;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

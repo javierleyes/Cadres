@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Entidades
+namespace Entidades.Inventtario
 {
     [Table("Varilla", Schema = "VAR")]
     public class Varilla : Entity<int>
