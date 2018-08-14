@@ -3,7 +3,7 @@ namespace DAOs.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Varilla : DbMigration
+    public partial class Entidad_varilla : DbMigration
     {
         public override void Up()
         {
@@ -13,6 +13,7 @@ namespace DAOs.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Nombre = c.String(nullable: false, maxLength: 60),
+                        Ancho = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Precio = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Cantidad = c.Int(nullable: false),
                         Disponible = c.Boolean(nullable: false),
