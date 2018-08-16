@@ -15,5 +15,7 @@ namespace Services.Interfaces
         IList<PedidoDTO> GetDTOAll();
 
         IList<PedidoDTO> GetByEstado(Estados.EstadoPedido estado);
+
+        decimal CalcularPrecio(PedidoDTO pedidoDTO);
     }
 }
