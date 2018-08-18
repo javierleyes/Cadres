@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\CadresContext.cs" />
-    <Compile Include="Filter\FilterComprador.cs" />
     <Compile Include="Implements\CompradorDAO.cs" />
     <Compile Include="Implements\GenericDAO.cs" />
     <Compile Include="Implements\PedidoDAO.cs" />

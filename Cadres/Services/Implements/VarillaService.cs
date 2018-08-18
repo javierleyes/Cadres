@@ -1,6 +1,6 @@
 ﻿using DAOs;
 using Entidades;
-using Entidades.DTOs;
+using Entidades.DTO;
 using Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +31,7 @@ namespace Services.Implements
 
         public IList<VarillaDTO> GetDTOAll()
         {
-            return this.GetAll().ToList().Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
+            return this.GetAll().Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
         }
 
         public IList<VarillaDTO> GetByDisponibilidad(bool estaDisponible)

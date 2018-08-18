@@ -1,6 +1,6 @@
 ﻿using Base;
 using Entidades;
-using Entidades.DTOs;
+using Entidades.DTO;
 using System;
 
 namespace Test.Common
@@ -60,7 +60,8 @@ namespace Test.Common
                 Observaciones = "Pintado de negro",
                 Precio = 250,
                 Varilla = CrearVarillaDTO(true),
-                Estado = Estados.EstadoPedido.Pendiente
+                Estado = Estados.EstadoPedido.Pendiente,
+                Comprador = CrearCompradorDTO()
             };
 
             return pedido;
@@ -77,6 +78,19 @@ namespace Test.Common
             };
 
             return comprador;
+        }
+
+        public static CompradorDTO CrearCompradorDTO()
+        {
+            CompradorDTO compradorDTO = new CompradorDTO()
+            {
+                Nombre = "Nombre del Cliente",
+                Direccion = "Calle falsa 123",
+                Telefono = "4512-8754",
+                Observaciones = "Las observaciones de test.",
+            };
+
+            return compradorDTO;
         }
     }
 }

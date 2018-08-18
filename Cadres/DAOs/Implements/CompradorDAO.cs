@@ -1,6 +1,6 @@
-﻿using DAOs.Filter;
-using DAOs.Interfaces;
+﻿using DAOs.Interfaces;
 using Entidades;
+using Entidades.Filter;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;

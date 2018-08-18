@@ -1,6 +1,6 @@
 ﻿using DAOs.Context;
 using DAOs.Implements;
-using Entidades.DTOs;
+using Entidades.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Services.Implements;
 using Services.Interfaces;
@@ -57,7 +57,8 @@ namespace Test.Services
                 Varilla = varillaDTO,
                 Fecha = DateTime.Now,
                 Estado = Base.Estados.EstadoPedido.Pendiente,
-                Observaciones = "Es un test :P"
+                Observaciones = "Es un test :P",
+                Comprador = Utils.CrearCompradorDTO()
             };
 
             decimal precio = this.PedidoService.CalcularPrecio(pedidoDTO);

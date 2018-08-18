@@ -1,7 +1,7 @@
 ﻿using Base;
 using DAOs.Interfaces;
 using Entidades;
-using Entidades.DTOs;
+using Entidades.DTO;
 using System.Collections.Generic;
 
 namespace Services.Interfaces

@@ -1,4 +1,4 @@
-﻿namespace DAOs.Filter
+﻿namespace Entidades.Filter
 {
     public class FilterComprador
     {

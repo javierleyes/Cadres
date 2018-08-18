@@ -1,11 +1,11 @@
 ﻿using DAOs.Context;
 using DAOs.Implements;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Test.Common;
-using System.Linq;
 using Entidades;
-using DAOs.Filter;
+using Entidades.Filter;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Linq;
+using Test.Common;
 
 namespace Test.DAOs
 {

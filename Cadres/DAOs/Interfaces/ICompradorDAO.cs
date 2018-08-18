@@ -1,5 +1,5 @@
-﻿using DAOs.Filter;
-using Entidades;
+﻿using Entidades;
+using Entidades.Filter;
 using System.Collections.Generic;
 
 namespace DAOs.Interfaces
