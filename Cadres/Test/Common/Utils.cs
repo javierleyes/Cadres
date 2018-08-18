@@ -43,7 +43,8 @@ namespace Test.Common
                 Observaciones = "Pintado de negro",
                 Precio = 250,
                 Varilla = CrearVarilla(true),
-                Estado = Estados.EstadoPedido.Pendiente
+                Estado = Estados.EstadoPedido.Pendiente,
+                Comprador = CrearComprador()
             };
 
             return pedido;
@@ -63,6 +64,19 @@ namespace Test.Common
             };
 
             return pedido;
+        }
+
+        public static Comprador CrearComprador()
+        {
+            Comprador comprador = new Comprador()
+            {
+                Nombre = "Nombre del Cliente",
+                Direccion = "Calle falsa 123",
+                Telefono = "4512-8754",
+                Observaciones = "Las observaciones de test.",
+            };
+
+            return comprador;
         }
     }
 }

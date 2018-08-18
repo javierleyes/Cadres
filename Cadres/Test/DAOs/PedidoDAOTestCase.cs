@@ -14,16 +14,16 @@ namespace Test.DAOs
     [TestClass]
     public class PedidoDAOTestCase
     {
-        private CadresContext context { get; set; }
+        private CadresContext Context { get; set; }
         private PedidoDAO PedidoDAO { get; set; }
         private VarillaDAO VarillaDAO { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.context = new CadresContext();
-            this.PedidoDAO = new PedidoDAO(this.context);
-            this.VarillaDAO = new VarillaDAO(this.context);
+            this.Context = new CadresContext();
+            this.PedidoDAO = new PedidoDAO(this.Context);
+            this.VarillaDAO = new VarillaDAO(this.Context);
         }
 
         [TestMethod]
