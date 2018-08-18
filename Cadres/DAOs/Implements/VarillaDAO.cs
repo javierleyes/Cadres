@@ -1,11 +1,11 @@
-﻿using DAOs.Implements;
-using DAOs.Interfaces;
+﻿using DAO.Implements;
+using DAO.Interfaces;
 using Entidades;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace DAOs
+namespace DAO
 {
     public class VarillaDAO : GenericDAO<Varilla>, IVarillaDAO
     {

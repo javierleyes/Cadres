@@ -1,5 +1,5 @@
-﻿using DAOs;
-using DAOs.Context;
+﻿using DAO;
+using DAO.Context;
 using Entidades;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;

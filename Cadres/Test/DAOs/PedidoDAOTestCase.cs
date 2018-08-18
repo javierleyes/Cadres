@@ -1,7 +1,7 @@
 ﻿using Base;
-using DAOs;
-using DAOs.Context;
-using DAOs.Implements;
+using DAO;
+using DAO.Context;
+using DAO.Implements;
 using Entidades;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;

@@ -1,5 +1,5 @@
 ﻿using Base;
-using DAOs.Implements;
+using DAO.Implements;
 using Entidades;
 using Entidades.DTO;
 using Services.Interfaces;

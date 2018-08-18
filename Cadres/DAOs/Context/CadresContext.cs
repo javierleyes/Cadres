@@ -1,7 +1,7 @@
 ﻿using Entidades;
 using System.Data.Entity;
 
-namespace DAOs.Context
+namespace DAO.Context
 {
     public class CadresContext : DbContext
     {

@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace DAOs.Interfaces
+namespace DAO.Interfaces
 {
     public interface IGenericDAO<TEntity> : IGenericDAO<TEntity, int>
         where TEntity : IEntity<int>

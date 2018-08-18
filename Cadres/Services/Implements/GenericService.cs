@@ -1,4 +1,4 @@
-﻿using DAOs.Interfaces;
+﻿using DAO.Interfaces;
 using Entidades.Base;
 using Services.Interfaces;
 using System;
