@@ -35,6 +35,11 @@ namespace Entidades
         [Required]
         public Estados.EstadoPedido Estado { get; set; }
 
-        //EntidadCliente
+        [Required]
+        public int CompradorId { get; set; }
+
+        [Required]
+        [ForeignKey("CompradorId")]
+        public Comprador Comprador { get; set; }
     }
 }

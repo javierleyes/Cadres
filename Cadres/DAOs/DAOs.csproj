@@ -57,9 +57,9 @@
     <Compile Include="Migrations\201808140042000_Entidad_varilla.Designer.cs">
       <DependentUpon>201808140042000_Entidad_varilla.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808140048343_Entidad_pedido.cs" />
-    <Compile Include="Migrations\201808140048343_Entidad_pedido.Designer.cs">
-      <DependentUpon>201808140048343_Entidad_pedido.cs</DependentUpon>
+    <Compile Include="Migrations\201808181354069_Entidad_Pedido.cs" />
+    <Compile Include="Migrations\201808181354069_Entidad_Pedido.Designer.cs">
+      <DependentUpon>201808181354069_Entidad_Pedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,8 +83,8 @@
     <EmbeddedResource Include="Migrations\201808140042000_Entidad_varilla.resx">
       <DependentUpon>201808140042000_Entidad_varilla.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808140048343_Entidad_pedido.resx">
-      <DependentUpon>201808140048343_Entidad_pedido.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808181354069_Entidad_Pedido.resx">
+      <DependentUpon>201808181354069_Entidad_Pedido.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

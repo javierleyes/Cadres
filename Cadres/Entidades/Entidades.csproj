@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Base\Entity.cs" />
     <Compile Include="Base\IEntity.cs" />
+    <Compile Include="Comprador.cs" />
     <Compile Include="DTOs\PedidoDTO.cs" />
     <Compile Include="DTOs\VarillaDTO.cs" />
     <Compile Include="EntityConverter.cs" />

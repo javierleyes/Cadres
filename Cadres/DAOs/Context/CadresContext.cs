@@ -13,5 +13,7 @@ namespace DAOs.Context
         public IDbSet<Varilla> Varillas { get; set; }
 
         public IDbSet<Pedido> Pedidos { get; set; }
+
+        public IDbSet<Comprador> Compradores { get; set; }
     }
 }
