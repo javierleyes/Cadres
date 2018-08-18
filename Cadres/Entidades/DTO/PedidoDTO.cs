@@ -1,7 +1,7 @@
 ﻿using Base;
 using System;
 
-namespace Entidades.DTOs
+namespace Entidades.DTO
 {
     public class PedidoDTO
     {
@@ -20,5 +20,7 @@ namespace Entidades.DTOs
         public decimal Precio { get; set; }
 
         public Estados.EstadoPedido Estado { get; set; }
+
+        public CompradorDTO Comprador { get; set; }
     }
 }

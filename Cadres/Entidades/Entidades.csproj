@@ -43,9 +43,12 @@
   <ItemGroup>
     <Compile Include="Base\Entity.cs" />
     <Compile Include="Base\IEntity.cs" />
-    <Compile Include="DTOs\PedidoDTO.cs" />
-    <Compile Include="DTOs\VarillaDTO.cs" />
+    <Compile Include="Comprador.cs" />
+    <Compile Include="DTO\CompradorDTO.cs" />
+    <Compile Include="DTO\PedidoDTO.cs" />
+    <Compile Include="DTO\VarillaDTO.cs" />
     <Compile Include="EntityConverter.cs" />
+    <Compile Include="Filter\FilterComprador.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Varilla.cs" />

@@ -1,6 +1,6 @@
 ﻿using DAOs;
 using DAOs.Context;
-using Entidades.DTOs;
+using Entidades.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Services.Implements;
 using Services.Interfaces;

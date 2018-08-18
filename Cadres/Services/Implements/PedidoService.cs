@@ -1,7 +1,7 @@
 ﻿using Base;
 using DAOs.Implements;
 using Entidades;
-using Entidades.DTOs;
+using Entidades.DTO;
 using Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
