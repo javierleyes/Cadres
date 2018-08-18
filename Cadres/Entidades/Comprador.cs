@@ -19,6 +19,6 @@ namespace Entidades
         public string Observaciones { get; set; }
 
         [Required]
-        public IList<Pedido> Pedidos { get; set; }
+        public virtual IList<Pedido> Pedidos { get; set; }
     }
 }
