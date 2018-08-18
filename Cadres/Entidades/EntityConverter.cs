@@ -1,10 +1,50 @@
-﻿using Entidades.DTOs;
+﻿using Entidades.DTO;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Crear otro proyecto "Aseembler" para los mismo e implementar AutoMapper
+    /// </summary>
     public static class EntityConverter
     {
-        //assembler 
+        public static CompradorDTO ConvertCompradorToCompradorDTO(Comprador comprador)
+        {
+            CompradorDTO compradorDTO = new CompradorDTO()
+            {
+                Id = comprador.Id,
+                Nombre = comprador.Nombre,
+                Direccion = comprador.Direccion,
+                Telefono = comprador.Telefono,
+                Observaciones = comprador.Observaciones
+            };
+
+            foreach (Pedido pedido in comprador.Pedidos)
+            {
+                compradorDTO.Pedidos.Add(ConvertPedidoToPedidoDTO(pedido));
+            }
+
+            return compradorDTO;
+        }
+
+        public static Comprador ConvertCompradorDTOToComprador(CompradorDTO compradorDTO)
+        {
+            Comprador comprador = new Comprador()
+            {
+                Id = compradorDTO.Id,
+                Nombre = compradorDTO.Nombre,
+                Direccion = compradorDTO.Direccion,
+                Telefono = compradorDTO.Telefono,
+                Observaciones = compradorDTO.Observaciones,
+            };
+
+            foreach (PedidoDTO pedidoDTO in compradorDTO.Pedidos)
+            {
+                comprador.Pedidos.Add(ConvertPedidoDTOToPedido(pedidoDTO));
+            }
+
+            return comprador;
+        }
+
         public static VarillaDTO ConvertVarillaToVarillaDTO(Varilla varilla)
         {
             return new VarillaDTO()
@@ -29,7 +69,8 @@ namespace Entidades
                 Observaciones = pedidoDTO.Observaciones,
                 Precio = pedidoDTO.Precio,
                 Estado = pedidoDTO.Estado,
-                Varilla = ConvertVarillaDTOToVarilla(pedidoDTO.Varilla)
+                Varilla = ConvertVarillaDTOToVarilla(pedidoDTO.Varilla),
+                Comprador = ConvertCompradorDTOToComprador(pedidoDTO.Comprador)
             };
         }
 

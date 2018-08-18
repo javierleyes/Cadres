@@ -7,13 +7,13 @@ namespace DAOs.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Varilla : IMigrationMetadata
+    public sealed partial class Entidad_varilla : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Varilla));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Entidad_varilla));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808050616332_Varilla"; }
+            get { return "201808140042000_Entidad_varilla"; }
         }
         
         string IMigrationMetadata.Source

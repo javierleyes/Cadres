@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implements\CompradorService.cs" />
     <Compile Include="Implements\GenericService.cs" />
     <Compile Include="Implements\PedidoService.cs" />
     <Compile Include="Implements\VarillaService.cs" />
+    <Compile Include="Interfaces\ICompradorService.cs" />
     <Compile Include="Interfaces\IGenericService.cs" />
     <Compile Include="Interfaces\IPedidoService.cs" />
     <Compile Include="Interfaces\IVarillaService.cs" />

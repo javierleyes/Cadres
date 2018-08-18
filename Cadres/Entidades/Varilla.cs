@@ -22,5 +22,6 @@ namespace Entidades
 
         [Required]
         public bool Disponible { get; set; }
+
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Base;
 using DAOs.Interfaces;
 using Entidades;
-using Entidades.DTOs;
+using Entidades.DTO;
 using System.Collections.Generic;
 
 namespace Services.Interfaces
@@ -15,5 +15,7 @@ namespace Services.Interfaces
         IList<PedidoDTO> GetDTOAll();
 
         IList<PedidoDTO> GetByEstado(Estados.EstadoPedido estado);
+
+        decimal CalcularPrecio(PedidoDTO pedidoDTO);
     }
 }

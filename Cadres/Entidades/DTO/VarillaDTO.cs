@@ -1,4 +1,4 @@
-﻿namespace Entidades.DTOs
+﻿namespace Entidades.DTO
 {
     public class VarillaDTO
     {
