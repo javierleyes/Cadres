@@ -19,7 +19,11 @@ namespace Entidades.Operaciones
         public decimal Largo { get; set; }
 
         [Required]
+        [ForeignKey("VarillaId")]
         public virtual Varilla Varilla { get; set; }
+
+        [Required]
+        public int VarillaId { get; set; }
 
         [Required]
         [StringLength(256)]
@@ -33,6 +37,13 @@ namespace Entidades.Operaciones
 
         [Required]
         public Estados.EstadoPedido Estado { get; set; }
+
+        [Required]
+        public int CompradorId { get; set; }
+
+        [Required]
+        [ForeignKey("CompradorId")]
+        public Comprador Comprador { get; set; }
 
     }
 }

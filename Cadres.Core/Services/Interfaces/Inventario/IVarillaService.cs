@@ -1,11 +1,14 @@
-﻿using Services.DTO.Inventario;
+﻿using DAL.Interfaces.Inventario;
+using Entidades.Inventtario;
+using Services.DTO.Inventario;
+using Services.Interfaces.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Services.Interfaces.Inventario
 {
-    public interface IVarillaService
+    public interface IVarillaService : IBaseService<IVarillaRepository, Varilla>
     {
         void Insert(VarillaDTO varillaDTO);
 

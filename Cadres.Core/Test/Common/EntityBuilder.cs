@@ -1,5 +1,7 @@
 ﻿using Entidades.Inventtario;
+using Entidades.Operaciones;
 using Services.DTO.Inventario;
+using Services.DTO.Operaciones;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,6 +32,32 @@ namespace Test.Common
                 Cantidad = 8,
                 Disponible = disponible
             };
+        }
+
+        public static Comprador CrearComprador()
+        {
+            Comprador comprador = new Comprador()
+            {
+                Nombre = "Nombre del Cliente",
+                Direccion = "Calle falsa 123",
+                Telefono = "4512-8754",
+                Observaciones = "Las observaciones de test.",
+            };
+
+            return comprador;
+        }
+
+        public static CompradorDTO CrearCompradorDTO()
+        {
+            CompradorDTO compradorDTO = new CompradorDTO()
+            {
+                Nombre = "Nombre del Cliente",
+                Direccion = "Calle falsa 123",
+                Telefono = "4512-8754",
+                Observaciones = "Las observaciones de test.",
+            };
+
+            return compradorDTO;
         }
     }
 }

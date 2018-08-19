@@ -17,10 +17,7 @@ namespace Test.DAL.Inventario
 
         public VarillaRepositoryTestCase()
         {
-            var options = new DbContextOptionsBuilder<InMemoryDbContext>()
-                .UseInMemoryDatabase(Guid.NewGuid().ToString())
-                .Options;
-            Context = new InMemoryDbContext(options);
+            Context = new ContextBuilder().Build();
             this.VarillaRepository = new VarillaRepository(Context);
         }
 

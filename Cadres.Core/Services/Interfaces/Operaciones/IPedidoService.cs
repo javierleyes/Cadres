@@ -1,4 +1,7 @@
-﻿using Services.DTO.Operaciones;
+﻿using DAL.Interfaces.Operaciones;
+using Entidades.Operaciones;
+using Services.DTO.Operaciones;
+using Services.Interfaces.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +9,7 @@ using Utils.Enums;
 
 namespace Services.Interfaces.Operaciones
 {
-    public interface IPedidoService
+    public interface IPedidoService : IBaseService<IPedidoRepository, Pedido>
     {
         void Insert(PedidoDTO pedidoDTO);
 
