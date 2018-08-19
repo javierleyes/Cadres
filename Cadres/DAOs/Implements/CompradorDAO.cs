@@ -1,4 +1,5 @@
-﻿using DAO.Interfaces;
+﻿using DAO.Base;
+using DAO.Interfaces;
 using Entidades;
 using Entidades.Filter;
 using System.Collections.Generic;

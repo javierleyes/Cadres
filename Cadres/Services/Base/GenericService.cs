@@ -1,11 +1,12 @@
-﻿using DAO.Interfaces;
+﻿using DAO.Base;
+using DAO.Interfaces;
 using Entidades.Base;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Services.Implements
+namespace Services.Base
 {
     public class GenericService 
         <TEntityDAO, TEntity, TKey> : IGenericService

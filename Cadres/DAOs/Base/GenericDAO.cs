@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
-namespace DAO.Implements
+namespace DAO.Base
 {
     public class GenericDAO<TEntity, TKey> : GenericDAO<TEntity, TKey, DbContext>
         where TEntity : Entity<TKey>

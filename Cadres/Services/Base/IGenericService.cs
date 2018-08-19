@@ -1,9 +1,10 @@
-﻿using DAO.Interfaces;
+﻿using DAO.Base;
+using DAO.Interfaces;
 using Entidades.Base;
 using System;
 using System.Collections.Generic;
 
-namespace Services.Interfaces
+namespace Services.Base
 {
     public interface IGenericService<TDAO, TEntity>
         where TDAO : IGenericDAO<TEntity, int>

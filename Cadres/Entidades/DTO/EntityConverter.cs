@@ -1,6 +1,6 @@
 ﻿using Entidades.DTO;
 
-namespace Entidades
+namespace Entidades.DTO
 {
     /// <summary>
     /// Crear otro proyecto "Aseembler" para los mismo e implementar AutoMapper

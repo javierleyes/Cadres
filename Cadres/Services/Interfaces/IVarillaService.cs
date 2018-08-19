@@ -1,6 +1,7 @@
 ﻿using DAO.Interfaces;
 using Entidades;
 using Entidades.DTO;
+using Services.Base;
 using System.Collections.Generic;
 
 namespace Services.Interfaces

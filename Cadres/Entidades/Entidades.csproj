@@ -47,7 +47,7 @@
     <Compile Include="DTO\CompradorDTO.cs" />
     <Compile Include="DTO\PedidoDTO.cs" />
     <Compile Include="DTO\VarillaDTO.cs" />
-    <Compile Include="EntityConverter.cs" />
+    <Compile Include="DTO\EntityConverter.cs" />
     <Compile Include="Filter\FilterComprador.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

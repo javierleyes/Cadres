@@ -1,4 +1,5 @@
 ﻿using Base;
+using DAO.Base;
 using DAO.Interfaces;
 using Entidades;
 using System.Collections.Generic;

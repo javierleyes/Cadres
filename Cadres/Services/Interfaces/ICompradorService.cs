@@ -2,6 +2,7 @@
 using Entidades;
 using Entidades.DTO;
 using Entidades.Filter;
+using Services.Base;
 using System.Collections.Generic;
 
 namespace Services.Interfaces
