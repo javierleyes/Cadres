@@ -41,6 +41,7 @@ namespace Test.Common
                 Observaciones = "Pintado de negro",
                 Precio = 250,
                 Estado = Estados.EstadoPedido.Pendiente,
+                Comprador = new Comprador() { Nombre = "Comprador Test.", Telefono = "5487-9658", },
             };
 
             Marco marco = CrearMarco();
@@ -59,7 +60,7 @@ namespace Test.Common
                 Observaciones = "Pintado de negro",
                 Precio = 250,
                 Estado = Estados.EstadoPedido.Pendiente,
-                Comprador = CrearCompradorDTO(),
+                Comprador = new CompradorDTO() { Nombre = "Nombre test", Telefono = "7854-6958", },
             };
 
             pedido.Marcos.Add(CrearMarcoDTO());
