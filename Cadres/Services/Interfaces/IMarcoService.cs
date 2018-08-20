@@ -11,6 +11,10 @@ namespace Services.Interfaces
     {
         IList<MarcoDTO> GetByFilter(FilterMarco filter);
 
+        void SetearEstadoListo(MarcoDTO marco);
+
+        void SetearEstadoSinMateriales(MarcoDTO marco);
+
         decimal CalcularPrecio(MarcoDTO marco);
     }
 }

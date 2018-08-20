@@ -41,13 +41,16 @@ namespace Services.Implements
             return EntityConverter.ConvertPedidoToPedidoDTO(pedido);
         }
 
-        public void Insert(PedidoDTO pedidoDTO)
+        public void GuardarPedido(PedidoDTO pedidoDTO)
         {
-            pedidoDTO.Precio = this.CalcularPrecioTotal(pedidoDTO);
+            if (pedidoDTO.Estado == Estados.EstadoPedido.Pendiente)
+            {
+                pedidoDTO.Precio = this.CalcularPrecioTotal(pedidoDTO);
+            }
 
             Pedido pedido = EntityConverter.ConvertPedidoDTOToPedido(pedidoDTO);
 
-            this.Save(pedido);
+            pedido = this.Save(pedido);
         }
 
         public decimal CalcularPrecioTotal(PedidoDTO pedidoDTO)
@@ -66,6 +69,23 @@ namespace Services.Implements
         {
             marcoDTO.Precio = this.MarcoService.CalcularPrecio(marcoDTO);
             pedidoDTO.Marcos.Add(marcoDTO);
+            marcoDTO.Pedido = pedidoDTO;
+        }
+
+        public void AgregarComprador(PedidoDTO pedidoDTO, CompradorDTO compradorDTO)
+        {
+            pedidoDTO.Comprador = compradorDTO;
+            compradorDTO.Pedido = pedidoDTO;
+        }
+
+        public void SetearEstadoTerminado(PedidoDTO pedidoDTO)
+        {
+            pedidoDTO.Estado = Estados.EstadoPedido.Terminado;
+        }
+
+        public void SetearEstadoEntregado(PedidoDTO pedidoDTO)
+        {
+            pedidoDTO.Estado = Estados.EstadoPedido.Entregado;
         }
     }
 }

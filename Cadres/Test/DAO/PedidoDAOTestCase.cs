@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Test.Common;
 
-namespace Test.DAOs
+namespace Test.DAO
 {
     [TestClass]
     public class PedidoDAOTestCase

@@ -1,4 +1,5 @@
-﻿using DAOs.Implements;
+﻿using Base;
+using DAOs.Implements;
 using Entidades;
 using Entidades.DTO;
 using Entidades.Filter;
@@ -44,6 +45,16 @@ namespace Services.Implements
         private static decimal CalcularPerimetro(MarcoDTO marco)
         {
             return ((marco.Ancho * 2) + (marco.Largo * 2));
+        }
+
+        public void SetearEstadoListo(MarcoDTO marco)
+        {
+            marco.Estado = Estados.EstadoMarco.Listo;
+        }
+
+        public void SetearEstadoSinMateriales(MarcoDTO marco)
+        {
+            marco.Estado = Estados.EstadoMarco.Falta_Insumo;
         }
     }
 }

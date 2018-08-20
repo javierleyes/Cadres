@@ -82,11 +82,11 @@ namespace Entidades.DTO
             }
 
             pedidoDTO.Comprador = new CompradorDTO();
+            pedidoDTO.Comprador.Id = pedido.Comprador.Id;
             pedidoDTO.Comprador.Nombre = pedido.Comprador.Nombre;
             pedidoDTO.Comprador.Direccion = pedido.Comprador.Direccion;
             pedidoDTO.Comprador.Telefono = pedido.Comprador.Telefono;
             pedidoDTO.Comprador.Pedido = pedidoDTO;
-
 
             return pedidoDTO;
         }

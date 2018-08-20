@@ -9,9 +9,15 @@ namespace Services.Interfaces
 {
     public interface IPedidoService : IGenericService<IPedidoDAO, Pedido, int>
     {
-        void Insert(PedidoDTO pedidoDTO);
+        void GuardarPedido(PedidoDTO pedidoDTO);
 
         void AgregarMarco(PedidoDTO pedidoDTO, MarcoDTO marcoDTO);
+
+        void AgregarComprador(PedidoDTO pedidoDTO, CompradorDTO compradorDTO);
+
+        void SetearEstadoTerminado(PedidoDTO pedidoDTO);
+
+        void SetearEstadoEntregado(PedidoDTO pedidoDTO);
 
         PedidoDTO GetDTOById(int id);
 

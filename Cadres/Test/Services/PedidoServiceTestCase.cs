@@ -33,7 +33,7 @@ namespace Test.Services
 
             PedidoDTO pedido = Utils.CrearPedidoDTO();
 
-            this.PedidoService.Insert(pedido);
+            this.PedidoService.GuardarPedido(pedido);
 
             int ultimoId = this.PedidoService.GetDTOAll().LastOrDefault().Id;
 
@@ -75,7 +75,7 @@ namespace Test.Services
 
             decimal precio = this.PedidoService.CalcularPrecioTotal(pedidoDTO);
 
-            this.PedidoService.Insert(pedidoDTO);
+            this.PedidoService.GuardarPedido(pedidoDTO);
 
             int ultimoPedido = this.PedidoService.GetDTOAll().LastOrDefault().Id;
 
