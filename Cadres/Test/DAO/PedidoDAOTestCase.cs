@@ -1,29 +1,28 @@
 ﻿using Base;
-using DAOs;
-using DAOs.Context;
-using DAOs.Implements;
+using DAO;
+using DAO.Context;
+using DAO.Implements;
 using Entidades;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Test.Common;
 
-namespace Test.DAOs
+namespace Test.DAO
 {
     [TestClass]
     public class PedidoDAOTestCase
     {
-        private CadresContext context { get; set; }
+        private CadresContext Context { get; set; }
         private PedidoDAO PedidoDAO { get; set; }
         private VarillaDAO VarillaDAO { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.context = new CadresContext();
-            this.PedidoDAO = new PedidoDAO(this.context);
-            this.VarillaDAO = new VarillaDAO(this.context);
+            this.Context = new CadresContext();
+            this.PedidoDAO = new PedidoDAO(this.Context);
+            this.VarillaDAO = new VarillaDAO(this.Context);
         }
 
         [TestMethod]
@@ -33,15 +32,14 @@ namespace Test.DAOs
 
             this.PedidoDAO.InsertOrUpdate(pedido);
 
+            pedido.Comprador = new Comprador() { Nombre = "Comprador Test." };
+
             int ultimoId = this.PedidoDAO.GetAll().ToList().LastOrDefault().Id;
 
             Pedido pedidoIngresado = this.PedidoDAO.GetById(ultimoId);
 
-            Assert.AreEqual(pedidoIngresado.Ancho, Convert.ToDecimal(210.50));
-            Assert.AreEqual(pedidoIngresado.Largo, Convert.ToDecimal(297.60));
             Assert.AreEqual(pedidoIngresado.Observaciones, "Pintado de negro");
             Assert.AreEqual(pedidoIngresado.Precio, 250);
-            Assert.AreEqual(pedidoIngresado.Varilla.Nombre, "Bombre 1,5 Negro Brilloso");
             Assert.AreEqual(pedidoIngresado.Estado, Estados.EstadoPedido.Pendiente);
         }
 

@@ -1,8 +1,9 @@
 ﻿using Base;
+using DAO.Base;
 using Entidades;
 using System.Collections.Generic;
 
-namespace DAOs.Interfaces
+namespace DAO.Interfaces
 {
     public interface IPedidoDAO : IGenericDAO<Pedido>
     {

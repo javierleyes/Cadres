@@ -1,11 +1,11 @@
-﻿using DAOs.Interfaces;
+﻿using DAO.Interfaces;
 using Entidades.Base;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
-namespace DAOs.Implements
+namespace DAO.Base
 {
     public class GenericDAO<TEntity, TKey> : GenericDAO<TEntity, TKey, DbContext>
         where TEntity : Entity<TKey>

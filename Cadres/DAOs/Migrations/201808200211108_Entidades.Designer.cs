@@ -7,18 +7,18 @@ namespace DAOs.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Agregoanchodelavarilla : IMigrationMetadata
+    public sealed partial class Entidades : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Agregoanchodelavarilla));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Entidades));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808012353314_Agrego ancho de la varilla"; }
+            get { return "201808200211108_Entidades"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

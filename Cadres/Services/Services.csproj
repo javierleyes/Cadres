@@ -41,10 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implements\GenericService.cs" />
+    <Compile Include="Implements\CompradorService.cs" />
+    <Compile Include="Base\GenericService.cs" />
+    <Compile Include="Implements\MarcoService.cs" />
     <Compile Include="Implements\PedidoService.cs" />
     <Compile Include="Implements\VarillaService.cs" />
-    <Compile Include="Interfaces\IGenericService.cs" />
+    <Compile Include="Interfaces\ICompradorService.cs" />
+    <Compile Include="Base\IGenericService.cs" />
+    <Compile Include="Interfaces\IMarcoService.cs" />
     <Compile Include="Interfaces\IPedidoService.cs" />
     <Compile Include="Interfaces\IVarillaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,9 +62,9 @@
       <Project>{53EDC033-41EE-408D-85CA-A902B7447E12}</Project>
       <Name>Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAOs\DAOs.csproj">
+    <ProjectReference Include="..\DAOs\DAO.csproj">
       <Project>{A96F45C1-F8EE-4E6A-AFD1-5F5ACEA4A1AE}</Project>
-      <Name>DAOs</Name>
+      <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{DB8C14D1-B51E-4839-B36D-614889C2E4DE}</Project>

@@ -1,0 +1,15 @@
+﻿namespace Entidades.DTO
+{
+    public class CompradorDTO
+    {
+        public int Id { get; set; }
+
+        public string Nombre { get; set; }
+
+        public string Telefono { get; set; }
+
+        public string Direccion { get; set; }
+
+        public PedidoDTO Pedido { get; set; }
+    }
+}

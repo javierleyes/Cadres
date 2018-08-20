@@ -48,18 +48,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\CadresContext.cs" />
-    <Compile Include="Implements\GenericDAO.cs" />
+    <Compile Include="Implements\CompradorDAO.cs" />
+    <Compile Include="Base\GenericDAO.cs" />
+    <Compile Include="Implements\MarcoDAO.cs" />
     <Compile Include="Implements\PedidoDAO.cs" />
-    <Compile Include="Interfaces\IGenericDAO.cs" />
+    <Compile Include="Interfaces\ICompradorDAO.cs" />
+    <Compile Include="Base\IGenericDAO.cs" />
+    <Compile Include="Interfaces\IMarcoDAO.cs" />
     <Compile Include="Interfaces\IPedidoDAO.cs" />
     <Compile Include="Interfaces\IVarillaDAO.cs" />
-    <Compile Include="Migrations\201808140042000_Entidad_varilla.cs" />
-    <Compile Include="Migrations\201808140042000_Entidad_varilla.Designer.cs">
-      <DependentUpon>201808140042000_Entidad_varilla.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808140048343_Entidad_pedido.cs" />
-    <Compile Include="Migrations\201808140048343_Entidad_pedido.Designer.cs">
-      <DependentUpon>201808140048343_Entidad_pedido.cs</DependentUpon>
+    <Compile Include="Migrations\201808200211108_Entidades.cs" />
+    <Compile Include="Migrations\201808200211108_Entidades.Designer.cs">
+      <DependentUpon>201808200211108_Entidades.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,11 +80,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808140042000_Entidad_varilla.resx">
-      <DependentUpon>201808140042000_Entidad_varilla.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808140048343_Entidad_pedido.resx">
-      <DependentUpon>201808140048343_Entidad_pedido.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808200211108_Entidades.resx">
+      <DependentUpon>201808200211108_Entidades.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

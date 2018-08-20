@@ -1,5 +1,5 @@
-﻿using DAOs;
-using DAOs.Context;
+﻿using DAO;
+using DAO.Context;
 using Entidades;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Test.Common;
 
-namespace Test.DAOs
+namespace Test.DAO
 {
     [TestClass]
     public class VarillaDAOTestCase

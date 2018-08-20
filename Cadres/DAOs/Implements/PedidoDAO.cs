@@ -1,11 +1,12 @@
 ﻿using Base;
-using DAOs.Interfaces;
+using DAO.Base;
+using DAO.Interfaces;
 using Entidades;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace DAOs.Implements
+namespace DAO.Implements
 {
     public class PedidoDAO : GenericDAO<Pedido>, IPedidoDAO
     {

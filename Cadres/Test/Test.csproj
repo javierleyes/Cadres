@@ -56,9 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Utils.cs" />
-    <Compile Include="DAOs\PedidoDAOTestCase.cs" />
-    <Compile Include="DAOs\VarillaDAOTestCase.cs" />
+    <Compile Include="DAO\CompradorDAOTestCase.cs" />
+    <Compile Include="DAO\PedidoDAOTestCase.cs" />
+    <Compile Include="DAO\VarillaDAOTestCase.cs" />
+    <Compile Include="Integracion\IntegracionTestCase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CompradorServiceTestCase.cs" />
+    <Compile Include="Services\MarcoServiceTestCase.cs" />
     <Compile Include="Services\PedidoServiceTestCase.cs" />
     <Compile Include="Services\VarillaServiceTestCase.cs" />
   </ItemGroup>
@@ -71,9 +75,9 @@
       <Project>{53EDC033-41EE-408D-85CA-A902B7447E12}</Project>
       <Name>Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAOs\DAOs.csproj">
+    <ProjectReference Include="..\DAOs\DAO.csproj">
       <Project>{A96F45C1-F8EE-4E6A-AFD1-5F5ACEA4A1AE}</Project>
-      <Name>DAOs</Name>
+      <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{DB8C14D1-B51E-4839-B36D-614889C2E4DE}</Project>
@@ -84,6 +88,7 @@
       <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

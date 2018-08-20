@@ -1,7 +1,7 @@
 ﻿using Entidades;
 using System.Data.Entity;
 
-namespace DAOs.Context
+namespace DAO.Context
 {
     public class CadresContext : DbContext
     {
@@ -13,5 +13,9 @@ namespace DAOs.Context
         public IDbSet<Varilla> Varillas { get; set; }
 
         public IDbSet<Pedido> Pedidos { get; set; }
+
+        public IDbSet<Comprador> Compradores { get; set; }
+
+        public IDbSet<Marco> Marcos { get; set; }
     }
 }

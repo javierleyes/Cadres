@@ -1,6 +1,6 @@
 ﻿using Base;
 using Entidades;
-using Entidades.DTOs;
+using Entidades.DTO;
 using System;
 
 namespace Test.Common
@@ -37,14 +37,17 @@ namespace Test.Common
         {
             Pedido pedido = new Pedido()
             {
-                Ancho = Convert.ToDecimal(210.50),
-                Largo = Convert.ToDecimal(297.60),
                 Fecha = DateTime.Now,
                 Observaciones = "Pintado de negro",
                 Precio = 250,
-                Varilla = CrearVarilla(true),
-                Estado = Estados.EstadoPedido.Pendiente
+                Estado = Estados.EstadoPedido.Pendiente,
+                Comprador = new Comprador() { Nombre = "Comprador Test.", Telefono = "5487-9658", },
             };
+
+            Marco marco = CrearMarco();
+            marco.Pedido = pedido;
+
+            pedido.Marcos.Add(marco);
 
             return pedido;
         }
@@ -53,16 +56,80 @@ namespace Test.Common
         {
             PedidoDTO pedido = new PedidoDTO()
             {
-                Ancho = Convert.ToDecimal(210.50),
-                Largo = Convert.ToDecimal(297.60),
                 Fecha = DateTime.Now,
                 Observaciones = "Pintado de negro",
                 Precio = 250,
-                Varilla = CrearVarillaDTO(true),
-                Estado = Estados.EstadoPedido.Pendiente
+                Estado = Estados.EstadoPedido.Pendiente,
+                Comprador = new CompradorDTO() { Nombre = "Nombre test", Telefono = "7854-6958", },
             };
 
+            pedido.Marcos.Add(CrearMarcoDTO());
+
             return pedido;
+        }
+
+        public static Comprador CrearComprador()
+        {
+            Pedido pedido = new Pedido()
+            {
+                Fecha = DateTime.Now,
+                Observaciones = "Pintado de negro",
+                Precio = 250,
+                Estado = Estados.EstadoPedido.Pendiente,
+            };
+
+            Marco marco = CrearMarco();
+            marco.Pedido = pedido;
+
+            pedido.Marcos.Add(marco);
+
+            Comprador comprador = new Comprador()
+            {
+                Nombre = "Nombre del Cliente",
+                Direccion = "Calle falsa 123",
+                Telefono = "4512-8754",
+                Pedido = pedido,
+            };
+
+            pedido.Comprador = comprador;
+
+            return comprador;
+        }
+
+        public static CompradorDTO CrearCompradorDTO()
+        {
+            CompradorDTO compradorDTO = new CompradorDTO()
+            {
+                Nombre = "Nombre del Cliente",
+                Direccion = "Calle falsa 123",
+                Telefono = "4512-8754",
+            };
+
+            return compradorDTO;
+        }
+
+        public static Marco CrearMarco()
+        {
+            return new Marco()
+            {
+                Ancho = Convert.ToDecimal(45.5),
+                Largo = Convert.ToDecimal(4.5),
+                Estado = Estados.EstadoMarco.Pendiente,
+                Varilla = CrearVarilla(true),
+                Precio = Convert.ToDecimal(71.89),
+            };
+        }
+
+        public static MarcoDTO CrearMarcoDTO()
+        {
+            return new MarcoDTO()
+            {
+                Ancho = Convert.ToDecimal(45.5),
+                Largo = Convert.ToDecimal(4.5),
+                Estado = Estados.EstadoMarco.Pendiente,
+                Varilla = CrearVarillaDTO(true),
+                Precio = Convert.ToDecimal(71.89),
+            };
         }
     }
 }

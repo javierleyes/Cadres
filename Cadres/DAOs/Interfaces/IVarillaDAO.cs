@@ -1,7 +1,8 @@
-﻿using Entidades;
+﻿using DAO.Base;
+using Entidades;
 using System.Collections.Generic;
 
-namespace DAOs.Interfaces
+namespace DAO.Interfaces
 {
     public interface IVarillaDAO : IGenericDAO<Varilla>
     {

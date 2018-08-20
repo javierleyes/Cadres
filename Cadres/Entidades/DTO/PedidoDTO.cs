@@ -1,17 +1,12 @@
 ﻿using Base;
 using System;
+using System.Collections.Generic;
 
-namespace Entidades.DTOs
+namespace Entidades.DTO
 {
     public class PedidoDTO
     {
         public int Id { get; set; }
-
-        public decimal Ancho { get; set; }
-
-        public decimal Largo { get; set; }
-
-        public VarillaDTO Varilla { get; set; }
 
         public string Observaciones { get; set; }
 
@@ -20,5 +15,14 @@ namespace Entidades.DTOs
         public decimal Precio { get; set; }
 
         public Estados.EstadoPedido Estado { get; set; }
+
+        public IList<MarcoDTO> Marcos { get; set; }
+
+        public CompradorDTO Comprador { get; set; }
+
+        public PedidoDTO()
+        {
+            this.Marcos = new List<MarcoDTO>();
+        }
     }
 }
