@@ -47,21 +47,28 @@ namespace Test.Services
                 Precio = Convert.ToDecimal(45.5),
                 Cantidad = 10,
                 Disponible = true,
-                Nombre = "Varilla 4.5 Test"
+                Nombre = "Varilla 4.5 Test",
             };
 
             PedidoDTO pedidoDTO = new PedidoDTO()
             {
-                Ancho = Convert.ToDecimal(40.5),
-                Largo = Convert.ToDecimal(20.5),
-                Varilla = varillaDTO,
                 Fecha = DateTime.Now,
                 Estado = Base.Estados.EstadoPedido.Pendiente,
                 Observaciones = "Es un test :P",
-                Comprador = Utils.CrearCompradorDTO()
+                Comprador = Utils.CrearCompradorDTO(),
             };
 
-            decimal precio = this.PedidoService.CalcularPrecio(pedidoDTO);
+            MarcoDTO marcoDTO = new MarcoDTO()
+            {
+                Ancho = Convert.ToDecimal(40.5),
+                Largo = Convert.ToDecimal(20.5),
+                Varilla = varillaDTO,
+                Precio = Convert.ToDecimal(71.89),
+            };
+
+            pedidoDTO.Marcos.Add(marcoDTO);
+
+            decimal precio = this.PedidoService.CalcularPrecioTotal(pedidoDTO);
 
             this.PedidoService.Insert(pedidoDTO);
 

@@ -37,11 +37,8 @@ namespace Test.DAOs
 
             Pedido pedidoIngresado = this.PedidoDAO.GetById(ultimoId);
 
-            Assert.AreEqual(pedidoIngresado.Ancho, Convert.ToDecimal(210.50));
-            Assert.AreEqual(pedidoIngresado.Largo, Convert.ToDecimal(297.60));
             Assert.AreEqual(pedidoIngresado.Observaciones, "Pintado de negro");
             Assert.AreEqual(pedidoIngresado.Precio, 250);
-            Assert.AreEqual(pedidoIngresado.Varilla.Nombre, "Bombre 1,5 Negro Brilloso");
             Assert.AreEqual(pedidoIngresado.Estado, Estados.EstadoPedido.Pendiente);
         }
 

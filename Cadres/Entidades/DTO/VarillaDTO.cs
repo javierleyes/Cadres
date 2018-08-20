@@ -13,10 +13,5 @@
         public int Cantidad { get; set; }
 
         public bool Disponible { get; set; }
-
-        public VarillaDTO()
-        {
-            this.Id = 0;
-        }
     }
 }

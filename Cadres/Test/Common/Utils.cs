@@ -37,15 +37,17 @@ namespace Test.Common
         {
             Pedido pedido = new Pedido()
             {
-                Ancho = Convert.ToDecimal(210.50),
-                Largo = Convert.ToDecimal(297.60),
                 Fecha = DateTime.Now,
                 Observaciones = "Pintado de negro",
                 Precio = 250,
-                Varilla = CrearVarilla(true),
                 Estado = Estados.EstadoPedido.Pendiente,
-                Comprador = CrearComprador()
+                Comprador = CrearComprador(),
             };
+
+            Marco marco = CrearMarco();
+            marco.Pedido = pedido;
+
+            pedido.Marcos.Add(marco);
 
             return pedido;
         }
@@ -54,15 +56,14 @@ namespace Test.Common
         {
             PedidoDTO pedido = new PedidoDTO()
             {
-                Ancho = Convert.ToDecimal(210.50),
-                Largo = Convert.ToDecimal(297.60),
                 Fecha = DateTime.Now,
                 Observaciones = "Pintado de negro",
                 Precio = 250,
-                Varilla = CrearVarillaDTO(true),
                 Estado = Estados.EstadoPedido.Pendiente,
-                Comprador = CrearCompradorDTO()
+                Comprador = CrearCompradorDTO(),
             };
+
+            pedido.Marcos.Add(CrearMarcoDTO());
 
             return pedido;
         }
@@ -74,7 +75,6 @@ namespace Test.Common
                 Nombre = "Nombre del Cliente",
                 Direccion = "Calle falsa 123",
                 Telefono = "4512-8754",
-                Observaciones = "Las observaciones de test.",
             };
 
             return comprador;
@@ -87,10 +87,33 @@ namespace Test.Common
                 Nombre = "Nombre del Cliente",
                 Direccion = "Calle falsa 123",
                 Telefono = "4512-8754",
-                Observaciones = "Las observaciones de test.",
             };
 
             return compradorDTO;
+        }
+
+        public static Marco CrearMarco()
+        {
+            return new Marco()
+            {
+                Ancho = Convert.ToDecimal(45.5),
+                Largo = Convert.ToDecimal(4.5),
+                Estado = Estados.EstadoMarco.Pendiente,
+                Varilla = CrearVarilla(true),
+                Precio = Convert.ToDecimal(71.89),
+            };
+        }
+
+        public static MarcoDTO CrearMarcoDTO()
+        {
+            return new MarcoDTO()
+            {
+                Ancho = Convert.ToDecimal(45.5),
+                Largo = Convert.ToDecimal(4.5),
+                Estado = Estados.EstadoMarco.Pendiente,
+                Varilla = CrearVarillaDTO(true),
+                Precio = Convert.ToDecimal(71.89),
+            };
         }
     }
 }

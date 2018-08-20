@@ -36,7 +36,6 @@ namespace Test.DAOs
             Assert.AreEqual(comprador.Nombre, "Nombre del Cliente");
             Assert.AreEqual(comprador.Direccion, "Calle falsa 123");
             Assert.AreEqual(comprador.Telefono, "4512-8754");
-            Assert.AreEqual(comprador.Observaciones, "Las observaciones de test.");
             Assert.AreEqual(this.CompradorDAO.GetAll().ToList().Count(), cantidadCompradores + 1);
         }
 

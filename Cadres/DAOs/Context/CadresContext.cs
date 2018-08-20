@@ -15,5 +15,7 @@ namespace DAO.Context
         public IDbSet<Pedido> Pedidos { get; set; }
 
         public IDbSet<Comprador> Compradores { get; set; }
+
+        public IDbSet<Marco> Marcos { get; set; }
     }
 }

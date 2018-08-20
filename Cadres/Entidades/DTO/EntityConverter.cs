@@ -1,4 +1,4 @@
-﻿using Entidades.DTO;
+﻿using System.Linq;
 
 namespace Entidades.DTO
 {
@@ -9,40 +9,24 @@ namespace Entidades.DTO
     {
         public static CompradorDTO ConvertCompradorToCompradorDTO(Comprador comprador)
         {
-            CompradorDTO compradorDTO = new CompradorDTO()
+            return new CompradorDTO()
             {
                 Id = comprador.Id,
                 Nombre = comprador.Nombre,
                 Direccion = comprador.Direccion,
                 Telefono = comprador.Telefono,
-                Observaciones = comprador.Observaciones
             };
-
-            foreach (Pedido pedido in comprador.Pedidos)
-            {
-                compradorDTO.Pedidos.Add(ConvertPedidoToPedidoDTO(pedido));
-            }
-
-            return compradorDTO;
         }
 
         public static Comprador ConvertCompradorDTOToComprador(CompradorDTO compradorDTO)
         {
-            Comprador comprador = new Comprador()
+            return new Comprador()
             {
                 Id = compradorDTO.Id,
                 Nombre = compradorDTO.Nombre,
                 Direccion = compradorDTO.Direccion,
                 Telefono = compradorDTO.Telefono,
-                Observaciones = compradorDTO.Observaciones,
             };
-
-            foreach (PedidoDTO pedidoDTO in compradorDTO.Pedidos)
-            {
-                comprador.Pedidos.Add(ConvertPedidoDTOToPedido(pedidoDTO));
-            }
-
-            return comprador;
         }
 
         public static VarillaDTO ConvertVarillaToVarillaDTO(Varilla varilla)
@@ -55,22 +39,6 @@ namespace Entidades.DTO
                 Precio = varilla.Precio,
                 Cantidad = varilla.Cantidad,
                 Disponible = varilla.Disponible
-            };
-        }
-
-        public static Pedido ConvertPedidoDTOToPedido(PedidoDTO pedidoDTO)
-        {
-            return new Pedido()
-            {
-                Id = pedidoDTO.Id,
-                Ancho = pedidoDTO.Ancho,
-                Largo = pedidoDTO.Largo,
-                Fecha = pedidoDTO.Fecha,
-                Observaciones = pedidoDTO.Observaciones,
-                Precio = pedidoDTO.Precio,
-                Estado = pedidoDTO.Estado,
-                Varilla = ConvertVarillaDTOToVarilla(pedidoDTO.Varilla),
-                Comprador = ConvertCompradorDTOToComprador(pedidoDTO.Comprador)
             };
         }
 
@@ -89,17 +57,93 @@ namespace Entidades.DTO
 
         public static PedidoDTO ConvertPedidoToPedidoDTO(Pedido pedido)
         {
-            return new PedidoDTO()
+            PedidoDTO pedidoDTO = new PedidoDTO()
             {
                 Id = pedido.Id,
-                Ancho = pedido.Ancho,
-                Largo = pedido.Largo,
-                Fecha = pedido.Fecha,
                 Observaciones = pedido.Observaciones,
+                Fecha = pedido.Fecha,
                 Precio = pedido.Precio,
                 Estado = pedido.Estado,
-                Varilla = ConvertVarillaToVarillaDTO(pedido.Varilla)
+                Comprador = ConvertCompradorToCompradorDTO(pedido.Comprador),
+            };
+
+            foreach (Marco marco in pedido.Marcos)
+            {
+                MarcoDTO marcoDTO = new MarcoDTO()
+                {
+                    Id = marco.Id,
+                    Ancho = marco.Ancho,
+                    Largo = marco.Largo,
+                    Estado = marco.Estado,
+                    Varilla = ConvertVarillaToVarillaDTO(marco.Varilla),
+                    Precio = marco.Precio,
+                };
+
+                pedidoDTO.Marcos.Add(marcoDTO);
+            }
+
+            return pedidoDTO;
+        }
+
+        public static Pedido ConvertPedidoDTOToPedido(PedidoDTO pedidoDTO)
+        {
+            Pedido pedido = new Pedido()
+            {
+                Id = pedidoDTO.Id,
+                Observaciones = pedidoDTO.Observaciones,
+                Fecha = pedidoDTO.Fecha,
+                Precio = pedidoDTO.Precio,
+                Estado = pedidoDTO.Estado,
+            };
+
+            foreach (MarcoDTO marcoDTO in pedidoDTO.Marcos)
+            {
+                Marco marco = new Marco()
+                {
+                    Id = marcoDTO.Id,
+                    Ancho = marcoDTO.Ancho,
+                    Largo = marcoDTO.Largo,
+                    Estado = marcoDTO.Estado,
+                    Varilla = ConvertVarillaDTOToVarilla(marcoDTO.Varilla),
+                    Precio = marcoDTO.Precio,
+                };
+
+                marco.Pedido = pedido;
+                pedido.Marcos.Add(marco);
+            }
+
+            pedido.Comprador = ConvertCompradorDTOToComprador(pedidoDTO.Comprador);
+
+            return pedido;
+        }
+
+        public static MarcoDTO ConvertMarcoToMarcoDTO(Marco marco)
+        {
+            return new MarcoDTO()
+            {
+                Id = marco.Id,
+                Ancho = marco.Ancho,
+                Largo = marco.Largo,
+                Estado = marco.Estado,
+                Varilla = ConvertVarillaToVarillaDTO(marco.Varilla),
+                Pedido = ConvertPedidoToPedidoDTO(marco.Pedido),
+                Precio = marco.Precio,
             };
         }
+
+        public static Marco ConvertMarcoDTOToMarco(MarcoDTO marcoDTO)
+        {
+            return new Marco()
+            {
+                Id = marcoDTO.Id,
+                Ancho = marcoDTO.Ancho,
+                Largo = marcoDTO.Largo,
+                Estado = marcoDTO.Estado,
+                Varilla = ConvertVarillaDTOToVarilla(marcoDTO.Varilla),
+                Pedido = ConvertPedidoDTOToPedido(marcoDTO.Pedido),
+                Precio = marcoDTO.Precio,
+            };
+        }
+
     }
 }

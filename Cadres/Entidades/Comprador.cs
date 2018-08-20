@@ -1,5 +1,4 @@
 ﻿using Entidades.Base;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,18 +15,7 @@ namespace Entidades
         [MaxLength(20), MinLength(8)]
         public string Telefono { get; set; }
 
-        [MaxLength(100), MinLength(3)]
+        [MaxLength(100), MinLength(4)]
         public string Direccion { get; set; }
-
-        [StringLength(256)]
-        public string Observaciones { get; set; }
-
-        [Required]
-        public virtual IList<Pedido> Pedidos { get; set; }
-
-        public Comprador()
-        {
-            this.Pedidos = new List<Pedido>();
-        }
     }
 }
