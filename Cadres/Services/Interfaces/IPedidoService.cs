@@ -11,6 +11,8 @@ namespace Services.Interfaces
     {
         void Insert(PedidoDTO pedidoDTO);
 
+        void AgregarMarco(PedidoDTO pedidoDTO, MarcoDTO marcoDTO);
+
         PedidoDTO GetDTOById(int id);
 
         IList<PedidoDTO> GetDTOAll();

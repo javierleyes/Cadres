@@ -11,6 +11,8 @@ namespace Services.Implements
 {
     public class PedidoService : GenericService<PedidoDAO, Pedido, int>, IPedidoService
     {
+        public IMarcoService MarcoService { get; set; }
+
         public PedidoService(PedidoDAO entityDAO) : base(entityDAO)
         {
         }
@@ -58,6 +60,12 @@ namespace Services.Implements
             }
 
             return total;
+        }
+
+        public void AgregarMarco(PedidoDTO pedidoDTO, MarcoDTO marcoDTO)
+        {
+            marcoDTO.Precio = this.MarcoService.CalcularPrecio(marcoDTO);
+            pedidoDTO.Marcos.Add(marcoDTO);
         }
     }
 }

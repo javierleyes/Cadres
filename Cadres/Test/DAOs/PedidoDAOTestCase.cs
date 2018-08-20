@@ -4,7 +4,6 @@ using DAO.Context;
 using DAO.Implements;
 using Entidades;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Test.Common;
