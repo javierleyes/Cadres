@@ -57,9 +57,9 @@
     <Compile Include="Interfaces\IMarcoDAO.cs" />
     <Compile Include="Interfaces\IPedidoDAO.cs" />
     <Compile Include="Interfaces\IVarillaDAO.cs" />
-    <Compile Include="Migrations\201808200110522_Entidades.cs" />
-    <Compile Include="Migrations\201808200110522_Entidades.Designer.cs">
-      <DependentUpon>201808200110522_Entidades.cs</DependentUpon>
+    <Compile Include="Migrations\201808200211108_Entidades.cs" />
+    <Compile Include="Migrations\201808200211108_Entidades.Designer.cs">
+      <DependentUpon>201808200211108_Entidades.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,8 +80,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808200110522_Entidades.resx">
-      <DependentUpon>201808200110522_Entidades.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808200211108_Entidades.resx">
+      <DependentUpon>201808200211108_Entidades.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

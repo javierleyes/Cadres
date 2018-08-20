@@ -64,7 +64,6 @@ namespace Entidades.DTO
                 Fecha = pedido.Fecha,
                 Precio = pedido.Precio,
                 Estado = pedido.Estado,
-                Comprador = ConvertCompradorToCompradorDTO(pedido.Comprador),
             };
 
             foreach (Marco marco in pedido.Marcos)
@@ -81,6 +80,13 @@ namespace Entidades.DTO
 
                 pedidoDTO.Marcos.Add(marcoDTO);
             }
+
+            pedidoDTO.Comprador = new CompradorDTO();
+            pedidoDTO.Comprador.Nombre = pedido.Comprador.Nombre;
+            pedidoDTO.Comprador.Direccion = pedido.Comprador.Direccion;
+            pedidoDTO.Comprador.Telefono = pedido.Comprador.Telefono;
+            pedidoDTO.Comprador.Pedido = pedidoDTO;
+
 
             return pedidoDTO;
         }

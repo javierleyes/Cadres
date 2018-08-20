@@ -33,6 +33,8 @@ namespace Test.DAOs
 
             this.PedidoDAO.InsertOrUpdate(pedido);
 
+            pedido.Comprador = new Comprador() { Nombre = "Comprador Test." };
+
             int ultimoId = this.PedidoDAO.GetAll().ToList().LastOrDefault().Id;
 
             Pedido pedidoIngresado = this.PedidoDAO.GetById(ultimoId);

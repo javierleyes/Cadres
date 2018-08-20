@@ -41,7 +41,6 @@ namespace Test.Common
                 Observaciones = "Pintado de negro",
                 Precio = 250,
                 Estado = Estados.EstadoPedido.Pendiente,
-                Comprador = CrearComprador(),
             };
 
             Marco marco = CrearMarco();
@@ -70,12 +69,28 @@ namespace Test.Common
 
         public static Comprador CrearComprador()
         {
+            Pedido pedido = new Pedido()
+            {
+                Fecha = DateTime.Now,
+                Observaciones = "Pintado de negro",
+                Precio = 250,
+                Estado = Estados.EstadoPedido.Pendiente,
+            };
+
+            Marco marco = CrearMarco();
+            marco.Pedido = pedido;
+
+            pedido.Marcos.Add(marco);
+
             Comprador comprador = new Comprador()
             {
                 Nombre = "Nombre del Cliente",
                 Direccion = "Calle falsa 123",
                 Telefono = "4512-8754",
+                Pedido = pedido,
             };
+
+            pedido.Comprador = comprador;
 
             return comprador;
         }

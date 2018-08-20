@@ -17,5 +17,8 @@ namespace Entidades
 
         [MaxLength(100), MinLength(4)]
         public string Direccion { get; set; }
+
+        [Required]
+        public Pedido Pedido { get; set; }
     }
 }

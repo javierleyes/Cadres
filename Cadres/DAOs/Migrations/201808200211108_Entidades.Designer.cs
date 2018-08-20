@@ -13,7 +13,7 @@ namespace DAOs.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201808200110522_Entidades"; }
+            get { return "201808200211108_Entidades"; }
         }
         
         string IMigrationMetadata.Source
