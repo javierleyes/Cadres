@@ -22,5 +22,7 @@ namespace Services.Base
         IList<TEntity> GetAll();
 
         TEntity Save(TEntity entity);
+
+        TEntity Update(TEntity entity);
     }
 }

@@ -17,6 +17,11 @@ namespace DAO.Base
 
         IQueryable<TEntity> GetAll();
 
+        // DELETE
         TEntity InsertOrUpdate(TEntity entity);
+
+        TEntity Add(TEntity entity);
+
+        TEntity Update(TEntity entity);
     }
 }
