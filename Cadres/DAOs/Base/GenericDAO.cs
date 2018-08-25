@@ -60,5 +60,26 @@ namespace DAO.Base
             DbContext.SaveChanges();
             return entity;
         }
+
+        public TEntity Add(TEntity entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException();
+
+            EntitySet.Add(entity);
+            DbContext.SaveChanges();
+            return entity;
+        }
+
+        public TEntity Update(TEntity entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException();
+
+            EntitySet.Attach(entity);
+            DbContext.Entry(entity).State = EntityState.Modified;
+            DbContext.SaveChanges();
+            return entity;
+        }
     }
 }

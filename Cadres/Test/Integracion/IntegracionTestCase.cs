@@ -34,49 +34,20 @@ namespace Test.Integracion
         [TestMethod]
         public void CrearPedido_OK()
         {
-            VarillaDTO varillaDTO = new VarillaDTO()
-            {
-                Nombre = "Chata 4.5 roble oscuro",
-                Ancho = Convert.ToDecimal(4.5),
-                Precio = Convert.ToDecimal(140),
-            };
+            VarillaDTO varillaDTO = CrearVarillaDTO();
+            PedidoDTO pedidoDTO = CrearPedidoDTO();
 
-            PedidoDTO pedidoDTO = new PedidoDTO()
-            {
-                Fecha = DateTime.Now,
-                Estado = Base.Estados.EstadoPedido.Pendiente,
+            MarcoDTO marcoDTO = CrearMarcoDTO(varillaDTO);
+            MarcoDTO marcoDTO_Otro = CrearMarcoDTO(varillaDTO);
 
-                Observaciones = "Estos marcos deben ir pintados con pintura acrilica negra.",
-            };
-
-            MarcoDTO marcoDTO = new MarcoDTO()
-            {
-                Ancho = Convert.ToDecimal(210),
-                Largo = Convert.ToDecimal(297),
-                Estado = Base.Estados.EstadoMarco.Pendiente,
-                Varilla = varillaDTO,
-            };
-
-            MarcoDTO marcoDTO_Otro = new MarcoDTO()
-            {
-                Ancho = Convert.ToDecimal(210),
-                Largo = Convert.ToDecimal(297),
-                Estado = Base.Estados.EstadoMarco.Pendiente,
-                Varilla = varillaDTO,
-            };
+            CompradorDTO compradorDTO = CrearCompradorDTO();
 
             this.PedidoService.AgregarMarco(pedidoDTO, marcoDTO);
             this.PedidoService.AgregarMarco(pedidoDTO, marcoDTO_Otro);
 
-            CompradorDTO compradorDTO = new CompradorDTO()
-            {
-                Nombre = "Gabriel",
-                Telefono = "4241-5798",
-            };
-
             this.PedidoService.AgregarComprador(pedidoDTO, compradorDTO);
 
-            this.PedidoService.GuardarPedido(pedidoDTO);
+            this.PedidoService.AgregarPedido(pedidoDTO);
 
             int ultimoPedido = this.PedidoService.GetDTOAll().LastOrDefault().Id;
 
@@ -101,25 +72,64 @@ namespace Test.Integracion
             }
 
             this.PedidoService.SetearEstadoTerminado(pedidoObtenido);
-            this.PedidoService.GuardarPedido(pedidoObtenido);
 
             pedidoObtenido = this.PedidoService.GetDTOById(ultimoPedido);
 
-            //foreach (MarcoDTO marcoIngresado in pedidoObtenido.Marcos)
-            //{
-            //    Assert.AreEqual(marcoIngresado.Estado, Base.Estados.EstadoMarco.Listo);
-            //}
+            foreach (MarcoDTO marcoIngresado in pedidoObtenido.Marcos)
+            {
+                Assert.AreEqual(marcoIngresado.Estado, Base.Estados.EstadoMarco.Listo);
+            }
 
             Assert.AreEqual(pedidoObtenido.Estado, Base.Estados.EstadoPedido.Terminado);
 
             pedidoObtenido = this.PedidoService.GetDTOById(ultimoPedido);
 
-            this.PedidoService.SetearEstadoTerminado(pedidoObtenido);
-            this.PedidoService.GuardarPedido(pedidoObtenido);
+            this.PedidoService.SetearEstadoEntregado(pedidoObtenido);
 
             pedidoObtenido = this.PedidoService.GetDTOById(ultimoPedido);
 
-            Assert.AreEqual(pedidoObtenido.Estado, Base.Estados.EstadoPedido.Terminado);
+            Assert.AreEqual(pedidoObtenido.Estado, Base.Estados.EstadoPedido.Entregado);
+        }
+
+        private static CompradorDTO CrearCompradorDTO()
+        {
+            return new CompradorDTO()
+            {
+                Nombre = "Gabriel",
+                Telefono = "4241-5798",
+            };
+        }
+
+        private static MarcoDTO CrearMarcoDTO(VarillaDTO varillaDTO)
+        {
+            return new MarcoDTO()
+            {
+                Ancho = Convert.ToDecimal(210),
+                Largo = Convert.ToDecimal(297),
+                Estado = Base.Estados.EstadoMarco.Pendiente,
+                Varilla = varillaDTO,
+            };
+        }
+
+        private static PedidoDTO CrearPedidoDTO()
+        {
+            return new PedidoDTO()
+            {
+                Fecha = DateTime.Now,
+                Estado = Base.Estados.EstadoPedido.Pendiente,
+
+                Observaciones = "Estos marcos deben ir pintados con pintura acrilica negra.",
+            };
+        }
+
+        private static VarillaDTO CrearVarillaDTO()
+        {
+            return new VarillaDTO()
+            {
+                Nombre = "Chata 4.5 roble oscuro",
+                Ancho = Convert.ToDecimal(4.5),
+                Precio = Convert.ToDecimal(140),
+            };
         }
     }
 }

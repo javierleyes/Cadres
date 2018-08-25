@@ -9,7 +9,7 @@ namespace Services.Interfaces
 {
     public interface IPedidoService : IGenericService<IPedidoDAO, Pedido, int>
     {
-        void GuardarPedido(PedidoDTO pedidoDTO);
+        void AgregarPedido(PedidoDTO pedidoDTO);
 
         void AgregarMarco(PedidoDTO pedidoDTO, MarcoDTO marcoDTO);
 

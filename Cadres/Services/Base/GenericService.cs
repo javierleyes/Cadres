@@ -7,8 +7,7 @@ using System.Linq;
 namespace Services.Base
 {
     public class GenericService
-        <TEntityDAO, TEntity, TKey> : IGenericService
-        <TEntityDAO, TEntity, TKey>
+        <TEntityDAO, TEntity, TKey> : IGenericService<TEntityDAO, TEntity, TKey>
         where TEntityDAO : IGenericDAO<TEntity, TKey>
         where TEntity : IEntity<TKey>
         where TKey : IEquatable<TKey>
@@ -33,6 +32,11 @@ namespace Services.Base
         public TEntity Save(TEntity entity)
         {
             return EntityDAO.InsertOrUpdate(entity);
+        }
+
+        public TEntity Update(TEntity entity)
+        {
+            return EntityDAO.Update(entity);
         }
     }
 }
