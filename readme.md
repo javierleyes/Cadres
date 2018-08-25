@@ -1,5 +1,10 @@
 ## Changelog
 
+**25-08-18, Hash: 2f3ab964103a73ffee3353c5ed3c497e5d540901**
+
+* Se implementan metodos Add y Update en GenericDAO (Cascade update #46). Mas info en Misc
+* Se crea proyecto Assembler con implementación temporal.
+
 **20-08-18, Hash: 045fb9deb127953518e1b15918f5b89bd7e0a142**
 
 * Se crea entidad Comprador.
