@@ -1,0 +1,40 @@
+﻿@model List<Entidades.DTO.VarillaDTO>
+
+<h2>Administracion de Varillas</h2>
+
+<br />
+<br />
+
+<h4>Todas las Varillas</h4>
+
+<br />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Nombre</td>
+            <td>Ancho [cm]</td>
+            <td>Precio [$/m]</td>
+            <td>Disponible</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var varilla in Model)
+        {
+            <tr>
+                <td>
+                    @varilla.Nombre
+                </td>
+                <td>
+                    @varilla.Ancho
+                </td>
+                <td>
+                    @varilla.Precio
+                </td>
+                <td>
+                    @varilla.Disponible
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
