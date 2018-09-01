@@ -2,6 +2,7 @@
 using DAO.Base;
 using DAO.Interfaces;
 using Entidades;
+using Entidades.Filter;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -14,9 +15,11 @@ namespace DAO.Implements
         {
         }
 
-        public IList<Pedido> GetByEstado(Estados.EstadoPedido estado)
+        public IList<Pedido> GetByFilter(FilterPedido filter)
         {
-            return this.GetAll().Where(x => x.Estado == estado).ToList();
+            return this.GetAll().Where(x => x.Estado == filter.Estado
+                                         || x.Fecha == filter.Fecha
+                                         || x.Comprador.Nombre == filter.NombreComprador).ToList();
         }
     }
 }

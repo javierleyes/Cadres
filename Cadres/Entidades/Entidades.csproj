@@ -51,6 +51,8 @@
     <Compile Include="DTO\EntityConverter.cs" />
     <Compile Include="Filter\FilterComprador.cs" />
     <Compile Include="Filter\FilterMarco.cs" />
+    <Compile Include="Filter\FilterPedido.cs" />
+    <Compile Include="Filter\FilterVarilla.cs" />
     <Compile Include="Marco.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

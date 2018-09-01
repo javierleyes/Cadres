@@ -1,7 +1,9 @@
-﻿using DAO.Context;
+﻿using DAO;
+using DAO.Context;
 using DAO.Implements;
 using DAOs.Implements;
 using Entidades.DTO;
+using Entidades.Filter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Services.Implements;
 using Services.Interfaces;
@@ -19,53 +21,45 @@ namespace Test.Integracion
         private CadresContext Context { get; set; }
         private IMarcoService MarcoService { get; set; }
         private PedidoService PedidoService { get; set; }
+        private IVarillaService VarillaService { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
             this.Context = new CadresContext();
 
+            this.VarillaService = new VarillaService(new VarillaDAO(this.Context));
             this.MarcoService = new MarcoService(new MarcoDAO(this.Context));
 
-            this.PedidoService = new PedidoService(new PedidoDAO(this.Context));
-            this.PedidoService.MarcoService = this.MarcoService;
+            this.PedidoService = new PedidoService(new PedidoDAO(this.Context))
+            {
+                MarcoService = this.MarcoService,
+            };
         }
 
         [TestMethod]
         public void CrearPedido_OK()
         {
-            VarillaDTO varillaDTO = CrearVarillaDTO();
-            PedidoDTO pedidoDTO = CrearPedidoDTO();
+            int ultimoPedido;
+            PedidoDTO pedidoObtenido;
 
-            MarcoDTO marcoDTO = CrearMarcoDTO(varillaDTO);
-            MarcoDTO marcoDTO_Otro = CrearMarcoDTO(varillaDTO);
+            IngresarPedido(out ultimoPedido, out pedidoObtenido);
+            pedidoObtenido = CambiarEstadoMarco(ultimoPedido, pedidoObtenido);
+            pedidoObtenido = EntregarPedido(ultimoPedido, pedidoObtenido);
+        }
 
-            CompradorDTO compradorDTO = CrearCompradorDTO();
+        private PedidoDTO EntregarPedido(int ultimoPedido, PedidoDTO pedidoObtenido)
+        {
+            this.PedidoService.SetearEstadoEntregado(pedidoObtenido);
 
-            this.PedidoService.AgregarMarco(pedidoDTO, marcoDTO);
-            this.PedidoService.AgregarMarco(pedidoDTO, marcoDTO_Otro);
+            pedidoObtenido = this.PedidoService.GetDTOById(ultimoPedido);
 
-            this.PedidoService.AgregarComprador(pedidoDTO, compradorDTO);
+            Assert.AreEqual(pedidoObtenido.Estado, Base.Estados.EstadoPedido.Entregado);
+            return pedidoObtenido;
+        }
 
-            this.PedidoService.AgregarPedido(pedidoDTO);
-
-            int ultimoPedido = this.PedidoService.GetDTOAll().LastOrDefault().Id;
-
-            PedidoDTO pedidoObtenido = this.PedidoService.GetDTOById(ultimoPedido);
-
-            Assert.AreEqual(this.PedidoService.CalcularPrecioTotal(pedidoDTO), Convert.ToDecimal(1470.0) * 2);
-            Assert.AreEqual(pedidoObtenido.Precio, this.PedidoService.CalcularPrecioTotal(pedidoDTO));
-            Assert.AreEqual(pedidoObtenido.Estado, Base.Estados.EstadoPedido.Pendiente);
-
-            Assert.IsTrue(pedidoObtenido.Id != 0);
-            Assert.IsTrue(pedidoObtenido.Comprador.Id != 0);
-
-            foreach (MarcoDTO marcoIngresado in pedidoObtenido.Marcos)
-            {
-                Assert.IsTrue(marcoIngresado.Id != 0);
-                Assert.IsTrue(marcoIngresado.Varilla.Id != 0);
-            }
-
+        private PedidoDTO CambiarEstadoMarco(int ultimoPedido, PedidoDTO pedidoObtenido)
+        {
             foreach (MarcoDTO marcoIngresado in pedidoObtenido.Marcos)
             {
                 this.MarcoService.SetearEstadoListo(marcoIngresado);
@@ -83,12 +77,40 @@ namespace Test.Integracion
             Assert.AreEqual(pedidoObtenido.Estado, Base.Estados.EstadoPedido.Terminado);
 
             pedidoObtenido = this.PedidoService.GetDTOById(ultimoPedido);
+            return pedidoObtenido;
+        }
 
-            this.PedidoService.SetearEstadoEntregado(pedidoObtenido);
+        private void IngresarPedido(out int ultimoPedido, out PedidoDTO pedidoObtenido)
+        {
+            VarillaDTO varillaDTO = CrearVarillaDTO();
+            PedidoDTO pedidoDTO = CrearPedidoDTO();
 
+            MarcoDTO marcoDTO = CrearMarcoDTO(varillaDTO);
+            MarcoDTO marcoDTO_Otro = CrearMarcoDTO(varillaDTO);
+
+            CompradorDTO compradorDTO = CrearCompradorDTO();
+
+            this.PedidoService.AgregarMarco(pedidoDTO, marcoDTO);
+            this.PedidoService.AgregarMarco(pedidoDTO, marcoDTO_Otro);
+
+            this.PedidoService.AgregarComprador(pedidoDTO, compradorDTO);
+
+            this.PedidoService.AgregarPedido(pedidoDTO);
+
+            ultimoPedido = this.PedidoService.GetDTOAll().LastOrDefault().Id;
             pedidoObtenido = this.PedidoService.GetDTOById(ultimoPedido);
+            Assert.AreEqual(this.PedidoService.CalcularPrecioTotal(pedidoDTO), Convert.ToDecimal(1470.0) * 2);
+            Assert.AreEqual(pedidoObtenido.Precio, this.PedidoService.CalcularPrecioTotal(pedidoDTO));
+            Assert.AreEqual(pedidoObtenido.Estado, Base.Estados.EstadoPedido.Pendiente);
 
-            Assert.AreEqual(pedidoObtenido.Estado, Base.Estados.EstadoPedido.Entregado);
+            Assert.IsTrue(pedidoObtenido.Id != 0);
+            Assert.IsTrue(pedidoObtenido.Comprador.Id != 0);
+
+            foreach (MarcoDTO marcoIngresado in pedidoObtenido.Marcos)
+            {
+                Assert.IsTrue(marcoIngresado.Id != 0);
+                Assert.IsTrue(marcoIngresado.Varilla.Id != 0);
+            }
         }
 
         private static CompradorDTO CrearCompradorDTO()
