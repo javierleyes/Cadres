@@ -3,6 +3,7 @@ using Base;
 using DAO.Implements;
 using Entidades;
 using Entidades.DTO;
+using Entidades.Filter;
 using Services.Base;
 using Services.Interfaces;
 using System.Collections.Generic;
@@ -16,18 +17,6 @@ namespace Services.Implements
 
         public PedidoService(PedidoDAO entityDAO) : base(entityDAO)
         {
-        }
-
-        public IList<PedidoDTO> GetByEstado(Estados.EstadoPedido estado)
-        {
-            IList<PedidoDTO> pedidosDTO = new List<PedidoDTO>();
-
-            foreach (Pedido pedido in EntityDAO.GetByEstado(estado))
-            {
-                pedidosDTO.Add(EntityConverter.ConvertPedidoToPedidoDTO(pedido));
-            }
-
-            return pedidosDTO;
         }
 
         public IList<PedidoDTO> GetDTOAll()
@@ -105,6 +94,13 @@ namespace Services.Implements
             PedidoAssembler.ConvertPedidoDTOToPedido(pedido, pedidoDTO);
 
             this.Update(pedido);
+        }
+
+        public IList<PedidoDTO> GetByFilter(FilterPedido filter)
+        {
+            IList<PedidoDTO> pedidosDTO = new List<PedidoDTO>();
+
+            return this.EntityDAO.GetByFilter(filter).Select(x => EntityConverter.ConvertPedidoToPedidoDTO(x)).ToList();
         }
     }
 }

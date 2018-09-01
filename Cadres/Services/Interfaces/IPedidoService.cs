@@ -2,6 +2,7 @@
 using DAO.Interfaces;
 using Entidades;
 using Entidades.DTO;
+using Entidades.Filter;
 using Services.Base;
 using System.Collections.Generic;
 
@@ -23,7 +24,7 @@ namespace Services.Interfaces
 
         IList<PedidoDTO> GetDTOAll();
 
-        IList<PedidoDTO> GetByEstado(Estados.EstadoPedido estado);
+        IList<PedidoDTO> GetByFilter(FilterPedido filter);
 
         decimal CalcularPrecioTotal(PedidoDTO pedidoDTO);
     }
