@@ -1,6 +1,7 @@
 ﻿using DAO;
 using DAO.Context;
 using Entidades.DTO;
+using Entidades.Filter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Services.Implements;
 using Services.Interfaces;
@@ -35,7 +36,9 @@ namespace Test.Services
         [TestMethod]
         public void ObtenerVarillasDisponibles_OK()
         {
-            IList<VarillaDTO> varillasDisponibles = this.VarillaService.GetByDisponibilidad(true);
+            FilterVarilla filter = new FilterVarilla() { Disponible = true, };
+
+            IList<VarillaDTO> varillasDisponibles = this.VarillaService.GetByFilter(filter);
 
             Assert.IsTrue(varillasDisponibles.Count > 0);
         }
@@ -60,11 +63,13 @@ namespace Test.Services
         {
             VarillaDTO varilla = Utils.CrearVarillaDTO(true, Convert.ToDecimal(10.50));
 
-            int cantidadVarillaAncho = this.VarillaService.GetByAncho(Convert.ToDecimal(10.50)).Count;
+            FilterVarilla filter = new FilterVarilla() { Ancho = Convert.ToDecimal(10.50), };
+
+            int cantidadVarillaAncho = this.VarillaService.GetByFilter(filter).Count;
 
             this.VarillaService.Insert(varilla);
 
-            Assert.AreEqual(cantidadVarillaAncho, this.VarillaService.GetByAncho(Convert.ToDecimal(10.50)).Count - 1);
+            Assert.AreEqual(cantidadVarillaAncho, this.VarillaService.GetByFilter(filter).Count - 1);
         }
     }
 }

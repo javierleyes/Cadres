@@ -1,6 +1,7 @@
 ﻿using DAO;
 using DAO.Context;
 using Entidades;
+using Entidades.Filter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,9 @@ namespace Test.DAO
         {
             this.VarillaDAO.InsertOrUpdate(Utils.CrearVarilla(true));
 
-            IList<Varilla> varillasDisponibles = this.VarillaDAO.GetByEstadoDisponibilidad(true);
+            FilterVarilla filter = new FilterVarilla() { Disponible = true, };
+
+            IList<Varilla> varillasDisponibles = this.VarillaDAO.GetByFilter(filter);
 
             Assert.IsTrue(varillasDisponibles.Count > 0);
         }
@@ -62,7 +65,9 @@ namespace Test.DAO
         {
             this.VarillaDAO.InsertOrUpdate(Utils.CrearVarilla(false));
 
-            IList<Varilla> varillasNoDisponibles = this.VarillaDAO.GetByEstadoDisponibilidad(false);
+            FilterVarilla filter = new FilterVarilla() { Disponible = false, };
+
+            IList<Varilla> varillasNoDisponibles = this.VarillaDAO.GetByFilter(filter);
 
             Assert.IsTrue(varillasNoDisponibles.Count > 0);
         }

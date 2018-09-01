@@ -1,6 +1,7 @@
 ﻿using DAO.Interfaces;
 using Entidades;
 using Entidades.DTO;
+using Entidades.Filter;
 using Services.Base;
 using System.Collections.Generic;
 
@@ -20,8 +21,6 @@ namespace Services.Interfaces
 
         void DarDeBaja(VarillaDTO varillaDTO);
 
-        IList<VarillaDTO> GetByDisponibilidad(bool estaDisponible);
-
-        IList<VarillaDTO> GetByAncho(decimal ancho);
+        IList<VarillaDTO> GetByFilter(FilterVarilla filter);
     }
 }

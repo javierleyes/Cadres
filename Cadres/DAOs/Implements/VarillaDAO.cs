@@ -2,6 +2,7 @@
 using DAO.Implements;
 using DAO.Interfaces;
 using Entidades;
+using Entidades.Filter;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -14,14 +15,11 @@ namespace DAO
         {
         }
 
-        public IList<Varilla> GetByAncho(decimal ancho)
+        public IList<Varilla> GetByFilter(FilterVarilla filter)
         {
-            return this.GetAll().Where(x => x.Ancho == ancho).ToList();
-        }
-
-        public IList<Varilla> GetByEstadoDisponibilidad(bool estado)
-        {
-            return this.GetAll().Where(x => x.Disponible == estado).ToList();
+            return this.GetAll().Where(x => x.Nombre == filter.Nombre ||
+                                            x.Ancho == filter.Ancho ||
+                                            x.Disponible == filter.Disponible).ToList();
         }
     }
 }

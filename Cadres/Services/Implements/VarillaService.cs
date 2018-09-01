@@ -1,6 +1,7 @@
 ﻿using DAO;
 using Entidades;
 using Entidades.DTO;
+using Entidades.Filter;
 using Services.Base;
 using Services.Interfaces;
 using System.Collections.Generic;
@@ -35,11 +36,6 @@ namespace Services.Implements
             return this.GetAll().Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
         }
 
-        public IList<VarillaDTO> GetByDisponibilidad(bool estaDisponible)
-        {
-            return this.EntityDAO.GetByEstadoDisponibilidad(estaDisponible).Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
-        }
-
         public void DarDeBaja(VarillaDTO varillaDTO)
         {
             Varilla varilla = EntityConverter.ConvertVarillaDTOToVarilla(varillaDTO);
@@ -62,9 +58,9 @@ namespace Services.Implements
             this.Save(varilla);
         }
 
-        public IList<VarillaDTO> GetByAncho(decimal ancho)
+        public IList<VarillaDTO> GetByFilter(FilterVarilla filter)
         {
-            return this.EntityDAO.GetByAncho(ancho).ToList().Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
+            return this.EntityDAO.GetByFilter(filter).Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
         }
     }
 }

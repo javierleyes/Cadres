@@ -1,5 +1,7 @@
 ## Changelog
 
+* Se implementa Filter para buscar en entidad Varilla.
+
 **25-08-18, Hash: 2f3ab964103a73ffee3353c5ed3c497e5d540901**
 
 * Se implementan metodos Add y Update en GenericDAO (Cascade update #46). Mas info en Misc
