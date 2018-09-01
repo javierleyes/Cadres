@@ -1,6 +1,8 @@
 ## Changelog
 
-* Se implementa Filter para buscar en entidad Varilla.
+**01-09-18, Hash: 019d65f6128119fa99be8b7925d680f5f894e742**
+
+* Se implementa Filter para buscar en entidad Varilla y Pedido.
 
 **25-08-18, Hash: 2f3ab964103a73ffee3353c5ed3c497e5d540901**
 
