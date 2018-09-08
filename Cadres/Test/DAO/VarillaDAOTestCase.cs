@@ -1,5 +1,6 @@
 ﻿using DAO.Context;
 using DAO.Implements;
+using DAO.Interfaces;
 using Entidades;
 using Entidades.Filter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,7 +14,7 @@ namespace Test.DAO
     [TestClass]
     public class VarillaDAOTestCase
     {
-        private VarillaDAO VarillaDAO { get; set; }
+        private IVarillaDAO VarillaDAO { get; set; }
         private CadresContext Context { get; set; }
 
         [TestInitialize]

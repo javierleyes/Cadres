@@ -2,10 +2,12 @@
 using DAO.Implements;
 using Entidades.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Ninject;
 using Services.Implements;
 using Services.Interfaces;
 using System;
 using System.Linq;
+using System.Reflection;
 
 namespace Test.Integracion
 {
@@ -30,6 +32,25 @@ namespace Test.Integracion
                 MarcoService = this.MarcoService,
             };
         }
+
+        //[TestInitialize]
+        //public void SetUp()
+        //{
+        //    this.Context = new CadresContext();
+
+        //    this.VarillaService = new VarillaService(new VarillaDAO(this.Context));
+        //    this.MarcoService = new MarcoService(new MarcoDAO(this.Context));
+
+        //    this.PedidoService = new PedidoService(new PedidoDAO(this.Context))
+        //    {
+        //        MarcoService = this.MarcoService,
+        //    };
+
+        //    var kernel = new StandardKernel();
+        //    kernel.Load(Assembly.GetExecutingAssembly());
+
+        //    var mailSender = kernel.Get<IMailSender>();
+        //}
 
         [TestMethod]
         public void CrearPedido_OK()

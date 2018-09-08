@@ -1,5 +1,6 @@
 ﻿using DAO.Context;
 using DAO.Implements;
+using DAO.Interfaces;
 using Entidades;
 using Entidades.Filter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,7 +14,7 @@ namespace Test.DAO
     public class CompradorDAOTestCase
     {
         private CadresContext Context { get; set; }
-        private CompradorDAO CompradorDAO { get; set; }
+        private ICompradorDAO CompradorDAO { get; set; }
 
         [TestInitialize]
         public void SetUp()

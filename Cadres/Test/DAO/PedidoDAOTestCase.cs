@@ -2,6 +2,7 @@
 using DAO;
 using DAO.Context;
 using DAO.Implements;
+using DAO.Interfaces;
 using Entidades;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -14,8 +15,8 @@ namespace Test.DAO
     public class PedidoDAOTestCase
     {
         private CadresContext Context { get; set; }
-        private PedidoDAO PedidoDAO { get; set; }
-        private VarillaDAO VarillaDAO { get; set; }
+        private IPedidoDAO PedidoDAO { get; set; }
+        private IVarillaDAO VarillaDAO { get; set; }
 
         [TestInitialize]
         public void SetUp()

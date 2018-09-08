@@ -19,15 +19,15 @@ namespace DependancyInjection
 
             /* DAO */
             Bind<ICompradorDAO>().To<CompradorDAO>();
+            Bind<IVarillaDAO>().To<VarillaDAO>();
             Bind<IMarcoDAO>().To<MarcoDAO>();
             Bind<IPedidoDAO>().To<PedidoDAO>();
-            Bind<IVarillaDAO>().To<VarillaDAO>();
 
             /* Services */
             Bind<ICompradorService>().To<CompradorService>();
+            Bind<IVarillaService>().To<VarillaService>();
             Bind<IMarcoService>().To<MarcoService>();
             Bind<IPedidoService>().To<PedidoService>();
-            Bind<IVarillaService>().To<VarillaService>();
         }
     }
 }
