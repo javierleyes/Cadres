@@ -1,17 +1,11 @@
-﻿using DAO;
-using DAO.Context;
+﻿using DAO.Context;
 using DAO.Implements;
-using DAOs.Implements;
 using Entidades.DTO;
-using Entidades.Filter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Services.Implements;
 using Services.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Test.Integracion
 {

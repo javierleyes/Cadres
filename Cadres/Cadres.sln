@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Base", "Base\Base.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembler", "Assembler\Assembler.csproj", "{7C4366C9-713E-434C-8643-FB076ACC546F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependancyInjection", "DependancyInjection\DependancyInjection.csproj", "{060FD5DD-6123-4CC6-9FA9-A5C056BDB2EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{7C4366C9-713E-434C-8643-FB076ACC546F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C4366C9-713E-434C-8643-FB076ACC546F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C4366C9-713E-434C-8643-FB076ACC546F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{060FD5DD-6123-4CC6-9FA9-A5C056BDB2EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{060FD5DD-6123-4CC6-9FA9-A5C056BDB2EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{060FD5DD-6123-4CC6-9FA9-A5C056BDB2EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{060FD5DD-6123-4CC6-9FA9-A5C056BDB2EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

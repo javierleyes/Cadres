@@ -3,7 +3,7 @@ using Entidades;
 using Entidades.Filter;
 using System.Collections.Generic;
 
-namespace DAOs.Interfaces
+namespace DAO.Interfaces
 {
     public interface IMarcoDAO : IGenericDAO<Marco>
     {

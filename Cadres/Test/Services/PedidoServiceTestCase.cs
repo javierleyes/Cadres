@@ -1,14 +1,13 @@
-﻿using DAO.Context;
+﻿using Base;
+using DAO.Context;
 using DAO.Implements;
 using Entidades.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Services.Implements;
 using Services.Interfaces;
-using Test.Common;
-using System.Linq;
 using System;
-using Base;
-using DAOs.Implements;
+using System.Linq;
+using Test.Common;
 
 namespace Test.Services
 {
