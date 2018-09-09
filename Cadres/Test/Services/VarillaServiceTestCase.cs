@@ -1,14 +1,13 @@
-﻿using DAO;
-using DAO.Context;
-using Entidades.DTO;
+﻿using Entidades.DTO;
 using Entidades.Filter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Services.Implements;
+using Ninject;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Test.Common;
+using Test.Ninject;
 
 namespace Test.Services
 {
@@ -20,7 +19,9 @@ namespace Test.Services
         [TestInitialize]
         public void SetUp()
         {
-            this.VarillaService = new VarillaService(new VarillaDAO(new CadresContext()));
+            StandardKernel kernel = Bindings.LoadDependancy();
+
+            this.VarillaService = kernel.Get<IVarillaService>();
         }
 
         [TestMethod]

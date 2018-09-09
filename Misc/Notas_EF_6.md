@@ -1,4 +1,4 @@
-Notas EF 6
+## Notas EF 6
 
 Entity states and SaveChanges
 An entity can be in one of five states as defined by the EntityState enumeration. These states are:

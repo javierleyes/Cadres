@@ -1,29 +1,26 @@
-﻿using DAO.Context;
-using DAO.Implements;
+﻿using Base;
 using Entidades.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Services.Implements;
+using Ninject;
 using Services.Interfaces;
-using Test.Common;
-using System.Linq;
 using System;
-using Base;
-using DAOs.Implements;
+using System.Linq;
+using Test.Common;
+using Test.Ninject;
 
 namespace Test.Services
 {
     [TestClass]
     public class PedidoServiceTestCase
     {
-        private PedidoService PedidoService { get; set; }
-        private IMarcoService MarcoService { get; set; }
+        private IPedidoService PedidoService { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.MarcoService = new MarcoService(new MarcoDAO(new CadresContext()));
-            this.PedidoService = new PedidoService(new PedidoDAO(new CadresContext()));
-            this.PedidoService.MarcoService = this.MarcoService;
+            StandardKernel kernel = Bindings.LoadDependancy();
+
+            this.PedidoService = kernel.Get<IPedidoService>();
         }
 
         [TestMethod]
@@ -110,9 +107,6 @@ namespace Test.Services
                 Estado = Estados.EstadoMarco.Pendiente,
                 Varilla = Utils.CrearVarillaDTO(true),
             };
-
-            marcoDTO1.Precio = this.MarcoService.CalcularPrecio(marcoDTO1);
-            marcoDTO2.Precio = this.MarcoService.CalcularPrecio(marcoDTO2);
 
             this.PedidoService.AgregarMarco(pedidoDTO, marcoDTO1);
             this.PedidoService.AgregarMarco(pedidoDTO, marcoDTO2);

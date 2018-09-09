@@ -1,40 +1,31 @@
-﻿using DAO;
-using DAO.Context;
+﻿using DAO.Context;
 using DAO.Implements;
-using DAOs.Implements;
 using Entidades.DTO;
-using Entidades.Filter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Ninject;
 using Services.Implements;
 using Services.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Test.Ninject;
 
 namespace Test.Integracion
 {
     [TestClass]
     public class IntegracionTestCase
     {
-        private CadresContext Context { get; set; }
-        private IMarcoService MarcoService { get; set; }
-        private PedidoService PedidoService { get; set; }
+        private IPedidoService PedidoService { get; set; }
         private IVarillaService VarillaService { get; set; }
+        private IMarcoService MarcoService { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.Context = new CadresContext();
+            StandardKernel kernel = Bindings.LoadDependancy();
 
-            this.VarillaService = new VarillaService(new VarillaDAO(this.Context));
-            this.MarcoService = new MarcoService(new MarcoDAO(this.Context));
-
-            this.PedidoService = new PedidoService(new PedidoDAO(this.Context))
-            {
-                MarcoService = this.MarcoService,
-            };
+            this.PedidoService = kernel.Get<IPedidoService>();
+            this.VarillaService = kernel.Get<IVarillaService>();
+            this.MarcoService = kernel.Get<IMarcoService>();
         }
 
         [TestMethod]

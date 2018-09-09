@@ -1,12 +1,12 @@
 ﻿using DAO.Base;
-using DAOs.Interfaces;
+using DAO.Interfaces;
 using Entidades;
 using Entidades.Filter;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace DAOs.Implements
+namespace DAO.Implements
 {
     public class MarcoDAO : GenericDAO<Marco>, IMarcoDAO
     {
