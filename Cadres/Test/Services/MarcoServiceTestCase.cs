@@ -1,10 +1,9 @@
-﻿using DAO.Context;
-using DAO.Implements;
-using Entidades.DTO;
+﻿using Entidades.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Services.Implements;
+using Ninject;
 using Services.Interfaces;
 using System;
+using Test.IoD;
 
 namespace Test.Services
 {
@@ -16,7 +15,9 @@ namespace Test.Services
         [TestInitialize]
         public void SetUp()
         {
-            this.MarcoService = new MarcoService(new MarcoDAO(new CadresContext()));
+            StandardKernel kernel = Bindings.LoadDependancy();
+
+            this.MarcoService = kernel.Get<IMarcoService>();
         }
 
         [TestMethod]

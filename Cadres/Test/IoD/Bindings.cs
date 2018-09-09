@@ -3,6 +3,8 @@ using DAO.Implements;
 using DAO.Interfaces;
 using Ninject;
 using Ninject.Modules;
+using Services.Implements;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +27,19 @@ namespace Test.IoD
             Bind<IMarcoDAO>().To<MarcoDAO>().WithConstructorArgument("dbContext", Context);
             Bind<IPedidoDAO>().To<PedidoDAO>().WithConstructorArgument("dbContext", Context);
 
+            /* Provisorio ver con lsoro y jluna jaja */
+            IVarillaDAO VarillaDAO = new VarillaDAO(Context);
+            ICompradorDAO CompradorDAO = new CompradorDAO(Context);
+            IMarcoDAO MarcoDAO = new MarcoDAO(Context);
+            IPedidoDAO PedidoDAO = new PedidoDAO(Context);
+
+            MarcoService marcoService = new MarcoService(new MarcoDAO(Context));
+
             /* Services */
-            //Bind<ICompradorService>().To<CompradorService>();
-            //Bind<IVarillaService>().To<VarillaService>();
-            //Bind<IMarcoService>().To<MarcoService>();
-            //Bind<IPedidoService>().To<PedidoService>();
+            Bind<IVarillaService>().To<VarillaService>().WithConstructorArgument("entityDAO", VarillaDAO);
+            Bind<ICompradorService>().To<CompradorService>().WithConstructorArgument("entityDAO", CompradorDAO);
+            Bind<IMarcoService>().To<MarcoService>().WithConstructorArgument("entityDAO", MarcoDAO);
+            Bind<IPedidoService>().To<PedidoService>().WithConstructorArgument("entityDAO", PedidoDAO).WithPropertyValue("MarcoService", marcoService);
         }
 
         public static StandardKernel LoadDependancy()

@@ -83,10 +83,6 @@
       <Project>{A96F45C1-F8EE-4E6A-AFD1-5F5ACEA4A1AE}</Project>
       <Name>DAO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DependancyInjection\DependancyInjection.csproj">
-      <Project>{060fd5dd-6123-4cc6-9fa9-a5c056bdb2eb}</Project>
-      <Name>DependancyInjection</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{DB8C14D1-B51E-4839-B36D-614889C2E4DE}</Project>
       <Name>Entidades</Name>
