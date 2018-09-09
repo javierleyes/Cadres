@@ -12,7 +12,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.IoD
+namespace Test.Ninject
 {
     public class Bindings : NinjectModule
     {

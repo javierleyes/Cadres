@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
 using Services.Interfaces;
 using System;
-using Test.IoD;
+using Test.Ninject;
 
 namespace Test.Services
 {

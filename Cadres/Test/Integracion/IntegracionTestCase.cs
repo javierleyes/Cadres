@@ -7,50 +7,26 @@ using Services.Implements;
 using Services.Interfaces;
 using System;
 using System.Linq;
-using System.Reflection;
+using Test.Ninject;
 
 namespace Test.Integracion
 {
     [TestClass]
     public class IntegracionTestCase
     {
-        private CadresContext Context { get; set; }
-        private IMarcoService MarcoService { get; set; }
-        private PedidoService PedidoService { get; set; }
+        private IPedidoService PedidoService { get; set; }
         private IVarillaService VarillaService { get; set; }
+        private IMarcoService MarcoService { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.Context = new CadresContext();
+            StandardKernel kernel = Bindings.LoadDependancy();
 
-            this.VarillaService = new VarillaService(new VarillaDAO(this.Context));
-            this.MarcoService = new MarcoService(new MarcoDAO(this.Context));
-
-            this.PedidoService = new PedidoService(new PedidoDAO(this.Context))
-            {
-                MarcoService = this.MarcoService,
-            };
+            this.PedidoService = kernel.Get<IPedidoService>();
+            this.VarillaService = kernel.Get<IVarillaService>();
+            this.MarcoService = kernel.Get<IMarcoService>();
         }
-
-        //[TestInitialize]
-        //public void SetUp()
-        //{
-        //    this.Context = new CadresContext();
-
-        //    this.VarillaService = new VarillaService(new VarillaDAO(this.Context));
-        //    this.MarcoService = new MarcoService(new MarcoDAO(this.Context));
-
-        //    this.PedidoService = new PedidoService(new PedidoDAO(this.Context))
-        //    {
-        //        MarcoService = this.MarcoService,
-        //    };
-
-        //    var kernel = new StandardKernel();
-        //    kernel.Load(Assembly.GetExecutingAssembly());
-
-        //    var mailSender = kernel.Get<IMailSender>();
-        //}
 
         [TestMethod]
         public void CrearPedido_OK()
