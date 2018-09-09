@@ -1,5 +1,9 @@
 ## Changelog
 
+**09-09-18, Hash: 483ecb812ddb467125d689e947efb637a0ded8f0**
+
+* Dependency injection with Ninject (Partial)
+
 **01-09-18, Hash: 019d65f6128119fa99be8b7925d680f5f894e742**
 
 * Se implementa Filter para buscar en entidad Varilla y Pedido.
