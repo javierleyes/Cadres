@@ -1,16 +1,16 @@
 ﻿using DAO.Context;
 using DAO.Implements;
 using DAO.Interfaces;
+using Ninject;
 using Ninject.Modules;
-using Services.Implements;
-using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DependancyInjection
+namespace Test.IoD
 {
     public class Bindings : NinjectModule
     {
@@ -30,6 +30,14 @@ namespace DependancyInjection
             //Bind<IVarillaService>().To<VarillaService>();
             //Bind<IMarcoService>().To<MarcoService>();
             //Bind<IPedidoService>().To<PedidoService>();
+        }
+
+        public static StandardKernel LoadDependancy()
+        {
+            var kernel = new StandardKernel();
+            kernel.Load(Assembly.GetExecutingAssembly());
+
+            return kernel;
         }
     }
 }

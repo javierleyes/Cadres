@@ -1,29 +1,28 @@
 ﻿using Base;
-using DAO;
-using DAO.Context;
-using DAO.Implements;
 using DAO.Interfaces;
 using Entidades;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Ninject;
 using System.Collections.Generic;
 using System.Linq;
 using Test.Common;
+using Test.IoD;
 
 namespace Test.DAO
 {
     [TestClass]
     public class PedidoDAOTestCase
     {
-        private CadresContext Context { get; set; }
         private IPedidoDAO PedidoDAO { get; set; }
         private IVarillaDAO VarillaDAO { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.Context = new CadresContext();
-            this.PedidoDAO = new PedidoDAO(this.Context);
-            this.VarillaDAO = new VarillaDAO(this.Context);
+            StandardKernel kernel = Bindings.LoadDependancy();
+
+            this.VarillaDAO = kernel.Get<IVarillaDAO>();
+            this.PedidoDAO = kernel.Get<IPedidoDAO>();
         }
 
         [TestMethod]
