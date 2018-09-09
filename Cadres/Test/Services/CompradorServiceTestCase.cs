@@ -1,27 +1,29 @@
-﻿using DAO.Context;
-using DAO.Implements;
-using Entidades.Filter;
+﻿using Entidades.Filter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Services.Implements;
+using Ninject;
+using Services.Interfaces;
 using Test.Common;
+using Test.Ninject;
 
 namespace Test.Services
 {
     [TestClass]
     public class CompradorServiceTestCase
     {
-        private CompradorService CompradorService { get; set; }
+        private ICompradorService CompradorService { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.CompradorService = new CompradorService(new CompradorDAO(new CadresContext()));
+            StandardKernel kernel = Bindings.LoadDependancy();
+
+            this.CompradorService = kernel.Get<ICompradorService>();
         }
 
         [TestMethod]
         public void GetByFilter()
         {
-            this.CompradorService.EntityDAO.InsertOrUpdate(Utils.CrearComprador());
+            this.CompradorService.Save(Utils.CrearComprador());
 
             FilterComprador filter = new FilterComprador()
             {

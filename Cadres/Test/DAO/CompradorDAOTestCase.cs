@@ -1,25 +1,26 @@
-﻿using DAO.Context;
-using DAO.Implements;
+﻿using DAO.Interfaces;
 using Entidades;
 using Entidades.Filter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Ninject;
 using System.Collections.Generic;
 using System.Linq;
 using Test.Common;
+using Test.Ninject;
 
 namespace Test.DAO
 {
     [TestClass]
     public class CompradorDAOTestCase
     {
-        private CadresContext Context { get; set; }
-        private CompradorDAO CompradorDAO { get; set; }
+        private ICompradorDAO CompradorDAO { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            this.Context = new CadresContext();
-            this.CompradorDAO = new CompradorDAO(this.Context);
+            StandardKernel kernel = Bindings.LoadDependancy();
+
+            this.CompradorDAO = kernel.Get<ICompradorDAO>();
         }
 
         [TestMethod]

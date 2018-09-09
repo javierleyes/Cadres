@@ -1,5 +1,4 @@
 ﻿using DAO.Base;
-using DAO.Implements;
 using DAO.Interfaces;
 using Entidades;
 using Entidades.Filter;
@@ -7,7 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace DAO
+namespace DAO.Implements
 {
     public class VarillaDAO : GenericDAO<Varilla>, IVarillaDAO
     {

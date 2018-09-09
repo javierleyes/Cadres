@@ -1,26 +1,31 @@
-﻿using DAO;
-using DAO.Context;
+﻿using DAO.Context;
+using DAO.Implements;
+using DAO.Interfaces;
 using Entidades;
 using Entidades.Filter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Ninject;
+using Ninject.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Test.Common;
+using Test.Ninject;
 
 namespace Test.DAO
 {
     [TestClass]
     public class VarillaDAOTestCase
     {
-        private VarillaDAO VarillaDAO { get; set; }
-        private CadresContext Context { get; set; }
+        private IVarillaDAO VarillaDAO { get; set; }
 
         [TestInitialize]
         public void SetUp()
         {
-            Context = new CadresContext();
-            this.VarillaDAO = new VarillaDAO(Context);
+            StandardKernel kernel = Bindings.LoadDependancy();
+
+            this.VarillaDAO = kernel.Get<IVarillaDAO>();
         }
 
         [TestMethod]
