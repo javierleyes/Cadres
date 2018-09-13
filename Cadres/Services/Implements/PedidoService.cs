@@ -1,6 +1,6 @@
 ﻿using Assembler;
 using Base;
-using DAO.Implements;
+using DAO.Interfaces;
 using Entidades;
 using Entidades.DTO;
 using Entidades.Filter;
@@ -11,12 +11,13 @@ using System.Linq;
 
 namespace Services.Implements
 {
-    public class PedidoService : GenericService<PedidoDAO, Pedido, int>, IPedidoService
+    public class PedidoService : GenericService<IPedidoDAO, Pedido, int>, IPedidoService
     {
         public IMarcoService MarcoService { get; set; }
 
-        public PedidoService(PedidoDAO entityDAO) : base(entityDAO)
+        public PedidoService(IPedidoDAO entityDAO, IMarcoService marcoService) : base(entityDAO)
         {
+            this.MarcoService = marcoService;
         }
 
         public IList<PedidoDTO> GetDTOAll()

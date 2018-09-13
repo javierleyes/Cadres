@@ -1,4 +1,4 @@
-﻿using DAO.Implements;
+﻿using DAO.Interfaces;
 using Entidades;
 using Entidades.DTO;
 using Entidades.Filter;
@@ -9,9 +9,9 @@ using System.Linq;
 
 namespace Services.Implements
 {
-    public class CompradorService : GenericService<CompradorDAO, Comprador, int>, ICompradorService
+    public class CompradorService : GenericService<ICompradorDAO, Comprador, int>, ICompradorService
     {
-        public CompradorService(CompradorDAO entityDAO) : base(entityDAO)
+        public CompradorService(ICompradorDAO entityDAO) : base(entityDAO)
         {
         }
 

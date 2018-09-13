@@ -1,5 +1,5 @@
 ﻿using Base;
-using DAO.Implements;
+using DAO.Interfaces;
 using Entidades;
 using Entidades.DTO;
 using Entidades.Filter;
@@ -10,9 +10,9 @@ using System.Linq;
 
 namespace Services.Implements
 {
-    public class MarcoService : GenericService<MarcoDAO, Marco, int>, IMarcoService
+    public class MarcoService : GenericService<IMarcoDAO, Marco, int>, IMarcoService
     {
-        public MarcoService(MarcoDAO entityDAO) : base(entityDAO)
+        public MarcoService(IMarcoDAO entityDAO) : base(entityDAO)
         {
         }
 

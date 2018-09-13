@@ -1,4 +1,4 @@
-﻿using DAO.Implements;
+﻿using DAO.Interfaces;
 using Entidades;
 using Entidades.DTO;
 using Entidades.Filter;
@@ -9,9 +9,9 @@ using System.Linq;
 
 namespace Services.Implements
 {
-    public class VarillaService : GenericService<VarillaDAO, Varilla, int>, IVarillaService
+    public class VarillaService : GenericService<IVarillaDAO, Varilla, int>, IVarillaService
     {
-        public VarillaService(VarillaDAO entityDAO) : base(entityDAO)
+        public VarillaService(IVarillaDAO entityDAO) : base(entityDAO)
         {
         }
 

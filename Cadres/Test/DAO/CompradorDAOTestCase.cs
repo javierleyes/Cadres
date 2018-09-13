@@ -18,7 +18,7 @@ namespace Test.DAO
         [TestInitialize]
         public void SetUp()
         {
-            StandardKernel kernel = Bindings.LoadDependancy();
+            var kernel = StartUp.Initialize();
 
             this.CompradorDAO = kernel.Get<ICompradorDAO>();
         }
