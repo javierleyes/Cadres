@@ -1,9 +1,6 @@
-﻿using DAO.Context;
-using DAO.Implements;
-using Entidades.DTO;
+﻿using Entidades.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
-using Services.Implements;
 using Services.Interfaces;
 using System;
 using System.Linq;
@@ -21,7 +18,7 @@ namespace Test.Integracion
         [TestInitialize]
         public void SetUp()
         {
-            StandardKernel kernel = Bindings.LoadDependancy();
+            var kernel = StartUp.Initialize();
 
             this.PedidoService = kernel.Get<IPedidoService>();
             this.VarillaService = kernel.Get<IVarillaService>();

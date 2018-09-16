@@ -1,5 +1,9 @@
 ## Changelog
 
+**16-09-18, Hash: c8a76a65fde92c50118ed88a32d7fc62047f7a80**
+
+* Dependency injection with Ninject (Final) en Test
+
 **09-09-18, Hash: 483ecb812ddb467125d689e947efb637a0ded8f0**
 
 * Dependency injection with Ninject (Partial)

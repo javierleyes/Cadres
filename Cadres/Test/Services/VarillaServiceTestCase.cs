@@ -19,7 +19,7 @@ namespace Test.Services
         [TestInitialize]
         public void SetUp()
         {
-            StandardKernel kernel = Bindings.LoadDependancy();
+            var kernel = StartUp.Initialize();
 
             this.VarillaService = kernel.Get<IVarillaService>();
         }

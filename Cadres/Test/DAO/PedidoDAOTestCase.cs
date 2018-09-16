@@ -19,7 +19,7 @@ namespace Test.DAO
         [TestInitialize]
         public void SetUp()
         {
-            StandardKernel kernel = Bindings.LoadDependancy();
+            var kernel = StartUp.Initialize();
 
             this.VarillaDAO = kernel.Get<IVarillaDAO>();
             this.PedidoDAO = kernel.Get<IPedidoDAO>();
