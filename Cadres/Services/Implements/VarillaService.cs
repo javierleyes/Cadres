@@ -33,7 +33,7 @@ namespace Services.Implements
 
         public IList<VarillaDTO> GetDTOAll()
         {
-            return this.GetAll().Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).ToList();
+            return this.GetAll().Select(x => EntityConverter.ConvertVarillaToVarillaDTO(x)).OrderBy(x => x.Nombre).ToList();
         }
 
         public void DarDeBaja(VarillaDTO varillaDTO)
