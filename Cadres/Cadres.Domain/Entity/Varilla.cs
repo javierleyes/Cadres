@@ -20,7 +20,7 @@ namespace Cadres.Domain.Entity
         public decimal Precio { get; set; }
 
         [Required]
-        [Range(1, 1000)]
+        [Range(0, 1000)]
         public int Cantidad { get; set; }
 
         [Required]
