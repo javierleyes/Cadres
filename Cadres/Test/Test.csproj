@@ -58,15 +58,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Utils.cs" />
-    <Compile Include="DAO\CompradorDAOTestCase.cs" />
-    <Compile Include="DAO\PedidoDAOTestCase.cs" />
     <Compile Include="Integracion\IntegracionTestCase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CompradorServiceTestCase.cs" />
-    <Compile Include="Services\MarcoServiceTestCase.cs" />
-    <Compile Include="Services\PedidoServiceTestCase.cs" />
-    <Compile Include="Services\VarillaServiceTestCase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
