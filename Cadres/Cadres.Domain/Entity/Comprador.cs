@@ -8,7 +8,7 @@ namespace Cadres.Domain.Entity
     public class Comprador : Domain<long>
     {
         [Required]
-        [MaxLength(6), MinLength(3)]
+        [MaxLength(20), MinLength(3)]
         public string Nombre { get; set; }
 
         [Required]

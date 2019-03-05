@@ -10,7 +10,6 @@ namespace Cadres.Domain.Entity
     [Table("Pedido", Schema = "dbo")]
     public class Pedido : Domain<long>
     {
-        [Required]
         [StringLength(256)]
         public string Observaciones { get; set; }
 
@@ -18,6 +17,7 @@ namespace Cadres.Domain.Entity
         public DateTime Fecha { get; set; }
 
         [Required]
+        [Range(1, 4000)]
         public decimal Precio { get; set; }
 
         [Required]
@@ -32,6 +32,7 @@ namespace Cadres.Domain.Entity
         public Pedido()
         {
             this.Marcos = new List<Marco>();
+            this.Fecha = DateTime.Now;
         }
     }
 }

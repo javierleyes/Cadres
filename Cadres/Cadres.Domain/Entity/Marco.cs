@@ -9,15 +9,18 @@ namespace Cadres.Domain.Entity
     public class Marco : Domain<long>
     {
         [Required]
+        [Range(1, 400)]
         public decimal Ancho { get; set; }
 
         [Required]
+        [Range(1, 400)]
         public decimal Largo { get; set; }
 
         [Required]
         public Estados.EstadoMarco Estado { get; set; }
 
         [Required]
+        [Range(1, 4000)]
         public decimal Precio { get; set; }
 
         [Required]
@@ -27,11 +30,7 @@ namespace Cadres.Domain.Entity
         [Required]
         public long VarillaId { get; set; }
 
-        [Required]
-        [ForeignKey("PedidoId")]
-        public virtual Pedido Pedido { get; set; }
-
-        [Required]
-        public long PedidoId { get; set; }
+        [MaxLength(500)]
+        public string Observacio { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Cadres.Data.Migrations
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
-                        Nombre = c.String(nullable: false, maxLength: 6),
+                        Nombre = c.String(nullable: false, maxLength: 20),
                         Telefono = c.String(nullable: false, maxLength: 20),
                         Direccion = c.String(maxLength: 100),
                         PedidoId = c.Long(nullable: false),
@@ -26,7 +26,7 @@ namespace Cadres.Data.Migrations
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
-                        Observaciones = c.String(nullable: false, maxLength: 256),
+                        Observaciones = c.String(maxLength: 256),
                         Fecha = c.DateTime(nullable: false),
                         Precio = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Estado = c.Int(nullable: false),
@@ -44,13 +44,14 @@ namespace Cadres.Data.Migrations
                         Estado = c.Int(nullable: false),
                         Precio = c.Decimal(nullable: false, precision: 18, scale: 2),
                         VarillaId = c.Long(nullable: false),
-                        PedidoId = c.Long(nullable: false),
+                        Observacio = c.String(maxLength: 500),
+                        Pedido_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Pedido", t => t.PedidoId, cascadeDelete: true)
                 .ForeignKey("dbo.Varilla", t => t.VarillaId, cascadeDelete: true)
+                .ForeignKey("dbo.Pedido", t => t.Pedido_Id)
                 .Index(t => t.VarillaId)
-                .Index(t => t.PedidoId);
+                .Index(t => t.Pedido_Id);
             
             CreateTable(
                 "dbo.Varilla",
@@ -70,9 +71,9 @@ namespace Cadres.Data.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Comprador", "PedidoId", "dbo.Pedido");
+            DropForeignKey("dbo.Marco", "Pedido_Id", "dbo.Pedido");
             DropForeignKey("dbo.Marco", "VarillaId", "dbo.Varilla");
-            DropForeignKey("dbo.Marco", "PedidoId", "dbo.Pedido");
-            DropIndex("dbo.Marco", new[] { "PedidoId" });
+            DropIndex("dbo.Marco", new[] { "Pedido_Id" });
             DropIndex("dbo.Marco", new[] { "VarillaId" });
             DropIndex("dbo.Comprador", new[] { "PedidoId" });
             DropTable("dbo.Varilla");

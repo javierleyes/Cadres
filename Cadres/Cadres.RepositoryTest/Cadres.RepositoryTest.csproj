@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompradorRepositoryTestCase.cs" />
+    <Compile Include="MarcoRepositoryTestCase.cs" />
     <Compile Include="PedidoRepositoryTestCase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VarillaRepositoryTestCase.cs" />

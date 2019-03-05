@@ -20,8 +20,7 @@ namespace Cadres.Data.Repository.Implement
             return this.GetAll().Where(x => x.Ancho == filter.Ancho
                                          || x.Largo == filter.Largo
                                          || x.Estado == (Estados.EstadoMarco)filter.Estado
-                                         || x.Varilla.Id == filter.IdVarilla
-                                         || x.Pedido.Id == filter.IdPedido).ToList();
+                                         || x.Varilla.Id == filter.IdVarilla).ToList();
         }
     }
 }
