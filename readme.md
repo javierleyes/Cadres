@@ -28,7 +28,12 @@
 * Se crea entidad Marco, se desacoplado de la entidad Pedido.
 * Refactorizacion de proyectos, se crea carpeta Base, en DAO y Service.
 * Se incluye calculo de precio en MarcoService.
+<<<<<<< HEAD
 * Test Integracið³n, con modalidad mas usual.
+=======
+* Diagrama DER.
+* Test IntegraciÃ³n, con modalidad mas usual.
+>>>>>>> origin/master
 
 **12-08-18, Hash: 74ec0d0537f3d3781818db4af6827c37475a6013**
 
