@@ -61,23 +61,5 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Assembler\Assembler.csproj">
-      <Project>{7C4366C9-713E-434C-8643-FB076ACC546F}</Project>
-      <Name>Assembler</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Base\Base.csproj">
-      <Project>{53EDC033-41EE-408D-85CA-A902B7447E12}</Project>
-      <Name>Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAOs\DAO.csproj">
-      <Project>{A96F45C1-F8EE-4E6A-AFD1-5F5ACEA4A1AE}</Project>
-      <Name>DAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{DB8C14D1-B51E-4839-B36D-614889C2E4DE}</Project>
-      <Name>Entidades</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
