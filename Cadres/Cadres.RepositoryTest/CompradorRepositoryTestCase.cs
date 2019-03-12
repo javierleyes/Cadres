@@ -26,7 +26,7 @@ namespace Cadres.RepositoryTest
         [TestMethod]
         public void CrearComprador_OK()
         {
-            Pedido pedido = PedidoRepository.GetById(1);
+            Pedido pedido = PedidoRepository.GetById(3);
 
             Comprador comprador = new Comprador()
             {
@@ -36,7 +36,7 @@ namespace Cadres.RepositoryTest
                 Pedido = pedido,
             };
 
-            Comprador compradorGuardado = CompradorRepository.Add(comprador);
+            Comprador compradorGuardado = CompradorRepository.Save(comprador);
 
             Assert.AreEqual("Micaela", compradorGuardado.Nombre);
             Assert.AreEqual("Belgrano 231", compradorGuardado.Direccion);
@@ -56,7 +56,7 @@ namespace Cadres.RepositoryTest
                 Pedido = pedido,
             };
 
-            Comprador compradorGuardado = CompradorRepository.Add(comprador);
+            Comprador compradorGuardado = CompradorRepository.Save(comprador);
         }
 
         [TestMethod]
@@ -72,7 +72,7 @@ namespace Cadres.RepositoryTest
                 Pedido = pedido,
             };
 
-            Comprador compradorGuardado = CompradorRepository.Add(comprador);
+            Comprador compradorGuardado = CompradorRepository.Save(comprador);
         }
     }
 }

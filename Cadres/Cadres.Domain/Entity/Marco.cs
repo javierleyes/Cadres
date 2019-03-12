@@ -24,13 +24,15 @@ namespace Cadres.Domain.Entity
         public decimal Precio { get; set; }
 
         [Required]
-        [ForeignKey("VarillaId")]
-        public virtual Varilla Varilla { get; set; }
+        public int Numero { get; set; }
 
         [Required]
         public long VarillaId { get; set; }
 
+        [ForeignKey("VarillaId")]
+        public virtual Varilla Varilla { get; set; }
+        
         [MaxLength(500)]
-        public string Observacio { get; set; }
+        public string Observacion { get; set; }
     }
 }

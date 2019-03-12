@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6F50E14D-4744-4353-A311-83CC1A6CB4B2}</ProjectGuid>
+    <ProjectGuid>{8CC7EC56-560D-4001-9E72-CB1EB7A3CE1A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Services</RootNamespace>
-    <AssemblyName>Services</AssemblyName>
+    <RootNamespace>Cadres.Dto</RootNamespace>
+    <AssemblyName>Cadres.Dto</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,11 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,22 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implements\CompradorService.cs" />
-    <Compile Include="Base\GenericService.cs" />
-    <Compile Include="Implements\MarcoService.cs" />
-    <Compile Include="Implements\PedidoService.cs" />
-    <Compile Include="Implements\VarillaService.cs" />
-    <Compile Include="Interfaces\ICompradorService.cs" />
-    <Compile Include="Base\IGenericService.cs" />
-    <Compile Include="Interfaces\IMarcoService.cs" />
-    <Compile Include="Interfaces\IPedidoService.cs" />
-    <Compile Include="Interfaces\IVarillaService.cs" />
+    <Compile Include="Base\DomainDTO.cs" />
+    <Compile Include="Base\IDomainDTO.cs" />
+    <Compile Include="CompradorDTO.cs" />
+    <Compile Include="MarcoDTO.cs" />
+    <Compile Include="PedidoDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <Compile Include="VarillaDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

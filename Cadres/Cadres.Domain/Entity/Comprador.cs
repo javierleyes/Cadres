@@ -19,10 +19,9 @@ namespace Cadres.Domain.Entity
         public string Direccion { get; set; }
 
         [Required]
+        public long PedidoId { get; set; }
+
         [ForeignKey("PedidoId")]
         public virtual Pedido Pedido { get; set; }
-
-        [Required]
-        public long PedidoId { get; set; }
     }
 }

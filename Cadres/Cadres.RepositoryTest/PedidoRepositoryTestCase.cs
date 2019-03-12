@@ -1,5 +1,6 @@
 ﻿using Cadres.Data.Repository.Interface;
 using Cadres.Domain.Entity;
+using Cadres.Domain.States;
 using Cadres.IoD.Ninject;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
@@ -34,8 +35,8 @@ namespace Cadres.RepositoryTest
                 Fecha = fechaPedido,
                 Observaciones = "Pintado de negro",
                 Precio = 250,
-                Codigo = "1902LU14",
-                Estado = Domain.States.Estados.EstadoPedido.Pendiente,
+                Numero = 3,
+                Estado = Estados.EstadoPedido.Pendiente,
             };
 
             Marco marco = CrearMarco();
@@ -45,15 +46,14 @@ namespace Cadres.RepositoryTest
 
             int cantidadInicial = this.PedidoRepository.GetAll().Count();
 
-            long id = this.PedidoRepository.Add(pedido).Id;
+            long id = this.PedidoRepository.Save(pedido).Id;
 
             Pedido pedidoObtenido = this.PedidoRepository.GetById(id);
 
             Assert.AreEqual(pedidoObtenido.Observaciones, "Pintado de negro");
             Assert.AreEqual(pedidoObtenido.Fecha, fechaPedido);
             Assert.AreEqual(pedidoObtenido.Precio, 250);
-            Assert.AreEqual(pedidoObtenido.Estado, Domain.States.Estados.EstadoPedido.Pendiente);
-            Assert.AreEqual(pedidoObtenido.Codigo, "1902LU14");
+            Assert.AreEqual(pedidoObtenido.Estado, Estados.EstadoPedido.Pendiente);
 
             Assert.IsTrue(pedidoObtenido.Marcos != null);
 
@@ -69,25 +69,25 @@ namespace Cadres.RepositoryTest
             Pedido pedido = new Pedido()
             {
                 Observaciones = "Pintado de negro",
-                Codigo = "1902LU14",
-                Estado = Domain.States.Estados.EstadoPedido.Pendiente,
+                Numero = 4,
+                Estado = Estados.EstadoPedido.Pendiente,
             };
 
-            PedidoRepository.Add(pedido);
+            PedidoRepository.Save(pedido);
         }
 
         [TestMethod]
         [ExpectedException(typeof(DbEntityValidationException))]
-        public void CrearPedidoSinCodigo()
+        public void CrearPedidoSinNumero()
         {
             Pedido pedido = new Pedido()
             {
                 Precio = 250,
                 Observaciones = "Pintado de negro",
-                Estado = Domain.States.Estados.EstadoPedido.Pendiente,
+                Estado = Estados.EstadoPedido.Pendiente,
             };
 
-            PedidoRepository.Add(pedido);
+            PedidoRepository.Save(pedido);
         }
 
         public static Marco CrearMarco()
@@ -97,7 +97,7 @@ namespace Cadres.RepositoryTest
                 Ancho = Convert.ToDecimal(45.5),
                 Largo = Convert.ToDecimal(4.5),
                 Precio = Convert.ToDecimal(71.89),
-                Estado = Domain.States.Estados.EstadoMarco.Pendiente,
+                Estado = Estados.EstadoMarco.Pendiente,
             };
         }
 

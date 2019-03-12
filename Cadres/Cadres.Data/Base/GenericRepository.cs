@@ -53,7 +53,7 @@ namespace Cadres.Data.Base
             return EntitySet;
         }
 
-        public TEntity Add(TEntity entity)
+        public TEntity Save(TEntity entity)
         {
             if (entity == null)
                 throw new ArgumentNullException();

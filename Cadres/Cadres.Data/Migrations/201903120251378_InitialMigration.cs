@@ -30,7 +30,9 @@ namespace Cadres.Data.Migrations
                         Fecha = c.DateTime(nullable: false),
                         Precio = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Estado = c.Int(nullable: false),
-                        Codigo = c.String(nullable: false),
+                        Numero = c.Int(nullable: false),
+                        FechaTerminado = c.DateTime(),
+                        FechaEntrega = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -43,8 +45,9 @@ namespace Cadres.Data.Migrations
                         Largo = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Estado = c.Int(nullable: false),
                         Precio = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Numero = c.Int(nullable: false),
                         VarillaId = c.Long(nullable: false),
-                        Observacio = c.String(maxLength: 500),
+                        Observacion = c.String(maxLength: 500),
                         Pedido_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)

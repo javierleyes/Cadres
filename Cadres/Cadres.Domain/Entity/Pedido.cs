@@ -24,15 +24,20 @@ namespace Cadres.Domain.Entity
         public Estados.EstadoPedido Estado { get; set; }
 
         [Required]
-        public string Codigo { get; set; }
+        public int? Numero { get; set; }
 
         [Required]
         public virtual IList<Marco> Marcos { get; set; }
+
+        public DateTime? FechaTerminado { get; set; }
+
+        public DateTime? FechaEntrega { get; set; }
 
         public Pedido()
         {
             this.Marcos = new List<Marco>();
             this.Fecha = DateTime.Now;
+            this.Numero = null;
         }
     }
 }

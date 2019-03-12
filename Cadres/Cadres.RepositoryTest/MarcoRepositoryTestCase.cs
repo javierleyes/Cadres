@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
@@ -42,7 +43,7 @@ namespace Cadres.RepositoryTest
                 Varilla = varillaObtenida,
             };
 
-            Marco marcoObtenido = MarcoRepository.Add(marco);
+            Marco marcoObtenido = MarcoRepository.Save(marco);
 
             Assert.AreEqual(Convert.ToDecimal(45.5), marcoObtenido.Ancho);
             Assert.AreEqual(Convert.ToDecimal(4.5), marcoObtenido.Largo);
@@ -64,7 +65,7 @@ namespace Cadres.RepositoryTest
                 Varilla = varillaObtenida,
             };
 
-            Marco marcoObtenido = MarcoRepository.Add(marco);
+            Marco marcoObtenido = MarcoRepository.Save(marco);
         }
 
         [TestMethod]
@@ -81,7 +82,7 @@ namespace Cadres.RepositoryTest
                 Varilla = varillaObtenida,
             };
 
-            Marco marcoObtenido = MarcoRepository.Add(marco);
+            Marco marcoObtenido = MarcoRepository.Save(marco);
         }
 
         [TestMethod]
@@ -98,24 +99,7 @@ namespace Cadres.RepositoryTest
                 Varilla = varillaObtenida,
             };
 
-            Marco marcoObtenido = MarcoRepository.Add(marco);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(DbEntityValidationException))]
-        public void CrearMarcoSinVarilla_Error()
-        {
-            Varilla varillaObtenida = VarillaRepository.GetById(1);
-
-            Marco marco = new Marco()
-            {
-                Ancho = Convert.ToDecimal(45.5),
-                Largo = Convert.ToDecimal(4.5),
-                Precio = Convert.ToDecimal(71.89),
-                Estado = Estados.EstadoMarco.Pendiente,
-            };
-
-            Marco marcoObtenido = MarcoRepository.Add(marco);
+            Marco marcoObtenido = MarcoRepository.Save(marco);
         }
     }
 }

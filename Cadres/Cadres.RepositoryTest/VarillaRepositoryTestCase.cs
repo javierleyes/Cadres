@@ -35,7 +35,7 @@ namespace Cadres.RepositoryTest
 
             int cantidadInicial = this.VarillaRepository.GetAll().Count();
 
-            long id = this.VarillaRepository.Add(varilla).Id;
+            long id = this.VarillaRepository.Save(varilla).Id;
 
             Varilla varillaObtenida = this.VarillaRepository.GetById(id);
 
@@ -105,7 +105,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -121,7 +121,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -137,7 +137,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -152,7 +152,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -168,7 +168,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -184,7 +184,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -199,7 +199,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -215,7 +215,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -230,7 +230,7 @@ namespace Cadres.RepositoryTest
                 Disponible = true,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -246,7 +246,7 @@ namespace Cadres.RepositoryTest
                 Disponible = true,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -261,7 +261,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
     }
 }
