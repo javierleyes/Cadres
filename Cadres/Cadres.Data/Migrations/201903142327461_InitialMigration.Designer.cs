@@ -13,7 +13,7 @@ namespace Cadres.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201903120251378_InitialMigration"; }
+            get { return "201903142327461_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

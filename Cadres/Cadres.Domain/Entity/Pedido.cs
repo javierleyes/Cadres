@@ -16,17 +16,15 @@ namespace Cadres.Domain.Entity
         [Required]
         public DateTime Fecha { get; set; }
 
-        [Required]
         [Range(1, 4000)]
-        public decimal Precio { get; set; }
+        public decimal? Precio { get; set; }
 
         [Required]
         public Estados.EstadoPedido Estado { get; set; }
 
         [Required]
-        public int? Numero { get; set; }
+        public int Numero { get; set; }
 
-        [Required]
         public virtual IList<Marco> Marcos { get; set; }
 
         public DateTime? FechaTerminado { get; set; }
@@ -37,7 +35,6 @@ namespace Cadres.Domain.Entity
         {
             this.Marcos = new List<Marco>();
             this.Fecha = DateTime.Now;
-            this.Numero = null;
         }
     }
 }

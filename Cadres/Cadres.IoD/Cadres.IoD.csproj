@@ -64,6 +64,10 @@
       <Project>{FAAFCA51-B05A-405C-875E-44693C95ADB7}</Project>
       <Name>Cadres.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cadres.Service\Cadres.Service.csproj">
+      <Project>{2C1D1C89-8EEA-4ABD-97FF-1BE1ACCF2524}</Project>
+      <Name>Cadres.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

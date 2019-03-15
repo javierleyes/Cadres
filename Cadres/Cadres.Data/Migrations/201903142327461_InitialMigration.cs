@@ -28,7 +28,7 @@ namespace Cadres.Data.Migrations
                         Id = c.Long(nullable: false, identity: true),
                         Observaciones = c.String(maxLength: 256),
                         Fecha = c.DateTime(nullable: false),
-                        Precio = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Precio = c.Decimal(precision: 18, scale: 2),
                         Estado = c.Int(nullable: false),
                         Numero = c.Int(nullable: false),
                         FechaTerminado = c.DateTime(),

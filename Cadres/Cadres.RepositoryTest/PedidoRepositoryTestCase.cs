@@ -8,7 +8,7 @@ using System;
 using System.Data.Entity.Validation;
 using System.Linq;
 
-namespace Cadres.RepositoryTest
+namespace Cadres.RepositoryTestCase
 {
     [TestClass]
     public class PedidoRepositoryTestCase
@@ -29,20 +29,7 @@ namespace Cadres.RepositoryTest
         public void CrearPedido_OK()
         {
             DateTime fechaPedido = DateTime.Now;
-
-            Pedido pedido = new Pedido()
-            {
-                Fecha = fechaPedido,
-                Observaciones = "Pintado de negro",
-                Precio = 250,
-                Numero = 3,
-                Estado = Estados.EstadoPedido.Pendiente,
-            };
-
-            Marco marco = CrearMarco();
-            marco.Varilla = this.VarillaRepository.GetById(1);
-
-            pedido.Marcos.Add(marco);
+            Pedido pedido = CrearPedido(fechaPedido);
 
             int cantidadInicial = this.PedidoRepository.GetAll().Count();
 
@@ -62,32 +49,23 @@ namespace Cadres.RepositoryTest
             Assert.AreEqual(cantidadInicial + 1, this.PedidoRepository.GetAll().Count());
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(DbEntityValidationException))]
-        public void CrearPedidoSinPrecio()
+        private Pedido CrearPedido(DateTime fechaPedido)
         {
             Pedido pedido = new Pedido()
             {
+                Fecha = fechaPedido,
                 Observaciones = "Pintado de negro",
-                Numero = 4,
-                Estado = Estados.EstadoPedido.Pendiente,
-            };
-
-            PedidoRepository.Save(pedido);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(DbEntityValidationException))]
-        public void CrearPedidoSinNumero()
-        {
-            Pedido pedido = new Pedido()
-            {
                 Precio = 250,
-                Observaciones = "Pintado de negro",
+                Numero = 3,
                 Estado = Estados.EstadoPedido.Pendiente,
             };
 
-            PedidoRepository.Save(pedido);
+            Marco marco = CrearMarco();
+            marco.Varilla = this.CrearVarilla();
+
+            pedido.Marcos.Add(marco);
+
+            return pedido;
         }
 
         public static Marco CrearMarco()
@@ -98,6 +76,18 @@ namespace Cadres.RepositoryTest
                 Largo = Convert.ToDecimal(4.5),
                 Precio = Convert.ToDecimal(71.89),
                 Estado = Estados.EstadoMarco.Pendiente,
+            };
+        }
+
+        private Varilla CrearVarilla()
+        {
+            return new Varilla()
+            {
+                Nombre = "Chata 3 kiri",
+                Ancho = 3,
+                Cantidad = 10,
+                Disponible = true,
+                Precio = 160,
             };
         }
 

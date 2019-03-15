@@ -1,6 +1,8 @@
 ﻿using Cadres.Data.Context;
 using Cadres.Data.Repository.Implement;
 using Cadres.Data.Repository.Interface;
+using Cadres.Service.Implement;
+using Cadres.Service.Interface;
 using Ninject.Modules;
 
 namespace Cadres.IoD.Ninject
@@ -19,10 +21,10 @@ namespace Cadres.IoD.Ninject
             Bind<IPedidoRepository>().To<PedidoRepository>().WithConstructorArgument("dbContext", Context);
 
             /* Services */
-            //Bind<ICompradorService>().To<CompradorService>();
-            //Bind<IVarillaService>().To<VarillaService>();
-            //Bind<IMarcoService>().To<MarcoService>();
-            //Bind<IPedidoService>().To<PedidoService>();
+            Bind<ICompradorService>().To<CompradorService>();
+            Bind<IVarillaService>().To<VarillaService>();
+            Bind<IMarcoService>().To<MarcoService>();
+            Bind<IPedidoService>().To<PedidoService>();
         }
     }
 }

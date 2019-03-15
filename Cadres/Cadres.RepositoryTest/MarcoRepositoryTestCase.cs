@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cadres.RepositoryTest
+namespace Cadres.RepositoryTestCase
 {
     [TestClass]
     public class MarcoRepositoryTestCase

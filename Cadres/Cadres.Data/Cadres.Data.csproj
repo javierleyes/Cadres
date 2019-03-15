@@ -58,9 +58,9 @@
     <Compile Include="Filter\MarcoFilter.cs" />
     <Compile Include="Filter\PedidoFilter.cs" />
     <Compile Include="Filter\VarillaFilter.cs" />
-    <Compile Include="Migrations\201903120251378_InitialMigration.cs" />
-    <Compile Include="Migrations\201903120251378_InitialMigration.Designer.cs">
-      <DependentUpon>201903120251378_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201903142327461_InitialMigration.cs" />
+    <Compile Include="Migrations\201903142327461_InitialMigration.Designer.cs">
+      <DependentUpon>201903142327461_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,8 +84,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903120251378_InitialMigration.resx">
-      <DependentUpon>201903120251378_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903142327461_InitialMigration.resx">
+      <DependentUpon>201903142327461_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

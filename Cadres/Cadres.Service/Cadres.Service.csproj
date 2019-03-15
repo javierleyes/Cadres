@@ -43,12 +43,10 @@
   <ItemGroup>
     <Compile Include="Base\GenericService.cs" />
     <Compile Include="Base\IGenericService.cs" />
-    <Compile Include="Implement\CadresService.cs" />
     <Compile Include="Implement\CompradorService.cs" />
     <Compile Include="Implement\MarcoService.cs" />
     <Compile Include="Implement\PedidoService.cs" />
     <Compile Include="Implement\VarillaService.cs" />
-    <Compile Include="Interface\ICadresService.cs" />
     <Compile Include="Interface\ICompradorService.cs" />
     <Compile Include="Interface\IMarcoService.cs" />
     <Compile Include="Interface\IPedidoService.cs" />

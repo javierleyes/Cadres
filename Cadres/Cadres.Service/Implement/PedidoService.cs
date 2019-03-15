@@ -30,6 +30,16 @@ namespace Cadres.Service.Implement
 
             pedido.Marcos.Add(marco);
 
+            if (pedido.Precio == null)
+            {
+                pedido.Precio = marco.Precio;
+            }
+            else
+            {
+                pedido.Precio = pedido.Precio + marco.Precio;
+            }
+
+
             this.EntityRepository.Update(pedido);
         }
 
@@ -40,12 +50,22 @@ namespace Cadres.Service.Implement
 
         public void SetearEstadoEntregado(int numero)
         {
-            ModificarEstado(numero, Estados.EstadoPedido.Entregado);
+            Pedido pedido = this.GetByNumero(numero);
+
+            pedido.Estado = Estados.EstadoPedido.Entregado;
+            pedido.FechaEntrega = DateTime.Now;
+
+            EntityRepository.Update(pedido);
         }
 
         public void SetearEstadoTerminado(int numero)
         {
-            ModificarEstado(numero, Estados.EstadoPedido.Terminado);
+            Pedido pedido = this.GetByNumero(numero);
+
+            pedido.Estado = Estados.EstadoPedido.Terminado;
+            pedido.FechaTerminado = DateTime.Now;
+
+            EntityRepository.Update(pedido);
         }
 
         public void IngresarObservacion(int numeroPedido, string observacion)
@@ -53,15 +73,6 @@ namespace Cadres.Service.Implement
             Pedido pedido = this.EntityRepository.GetAll().Where(x => x.Numero == numeroPedido).FirstOrDefault();
 
             pedido.Observaciones = observacion;
-        }
-
-        private void ModificarEstado(int numero, Estados.EstadoPedido estado)
-        {
-            Pedido pedido = this.GetByNumero(numero);
-
-            pedido.Estado = estado;
-
-            EntityRepository.Update(pedido);
         }
 
         private int GetNumeroPedido()
