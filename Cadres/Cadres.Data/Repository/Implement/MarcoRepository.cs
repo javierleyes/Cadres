@@ -11,9 +11,7 @@ namespace Cadres.Data.Repository.Implement
 {
     public class MarcoRepository : GenericRepository<Marco>, IMarcoRepository
     {
-        public MarcoRepository(DbContext dbContext) : base(dbContext)
-        {
-        }
+        public MarcoRepository(DbContext dbContext) : base(dbContext) { }
 
         public IList<Marco> GetByFilter(MarcoFilter filter)
         {

@@ -14,6 +14,6 @@ namespace Cadres.Data.Filter
 
         public int Estado { get; set; }
 
-        public string Codigo { get; set; }
+        public int Numero { get; set; }
     }
 }

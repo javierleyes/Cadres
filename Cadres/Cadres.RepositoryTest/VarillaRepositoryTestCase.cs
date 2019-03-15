@@ -6,7 +6,7 @@ using Ninject;
 using System.Data.Entity.Validation;
 using System.Linq;
 
-namespace Cadres.RepositoryTest
+namespace Cadres.RepositoryTestCase
 {
     [TestClass]
     public class VarillaRepositoryTestCase
@@ -24,18 +24,11 @@ namespace Cadres.RepositoryTest
         [TestMethod]
         public void PersistirYObtener_OK()
         {
-            Varilla varilla = new Varilla()
-            {
-                Nombre = "Chata 3 kiri",
-                Ancho = 3,
-                Cantidad = 10,
-                Disponible = true,
-                Precio = 160,
-            };
+            Varilla varilla = CrearVarilla();
 
             int cantidadInicial = this.VarillaRepository.GetAll().Count();
 
-            long id = this.VarillaRepository.Add(varilla).Id;
+            long id = this.VarillaRepository.Save(varilla).Id;
 
             Varilla varillaObtenida = this.VarillaRepository.GetById(id);
 
@@ -51,6 +44,8 @@ namespace Cadres.RepositoryTest
         [TestMethod]
         public void ObtenerTodos()
         {
+            this.VarillaRepository.Save(this.CrearVarilla());
+
             int cantidadVarillas = this.VarillaRepository.GetAll().Count();
 
             Assert.IsTrue(cantidadVarillas > 0);
@@ -59,18 +54,20 @@ namespace Cadres.RepositoryTest
         [TestMethod]
         public void ActualizarPrecioVarilla_OK()
         {
-            long idVarilla = 1;
+            Varilla varilla = CrearVarilla();
+
+            this.VarillaRepository.Save(varilla);
 
             decimal precioViejo;
             decimal precioNuevo = 180;
 
-            Varilla varilla = this.VarillaRepository.GetById(idVarilla);
+            Varilla varillaObtenida = this.VarillaRepository.GetById(varilla.Id);
 
             precioViejo = varilla.Precio;
 
-            varilla.Precio = precioNuevo;
+            varillaObtenida.Precio = precioNuevo;
 
-            varilla = this.VarillaRepository.Update(varilla);
+            varilla = this.VarillaRepository.Update(varillaObtenida);
 
             Assert.AreEqual(precioNuevo, varilla.Precio);
         }
@@ -79,18 +76,20 @@ namespace Cadres.RepositoryTest
         [ExpectedException(typeof(DbEntityValidationException))]
         public void ActualizarPrecioVarilla_Error()
         {
-            long idVarilla = 1;
+            Varilla varilla = CrearVarilla();
+
+            this.VarillaRepository.Save(varilla);
 
             decimal precioViejo;
             decimal precioNuevo = 0;
 
-            Varilla varilla = this.VarillaRepository.GetById(idVarilla);
+            Varilla varillaObtenida = this.VarillaRepository.GetById(varilla.Id);
 
             precioViejo = varilla.Precio;
 
-            varilla.Precio = precioNuevo;
+            varillaObtenida.Precio = precioNuevo;
 
-            varilla = this.VarillaRepository.Update(varilla);
+            varilla = this.VarillaRepository.Update(varillaObtenida);
         }
 
         [TestMethod]
@@ -105,7 +104,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -121,7 +120,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -137,7 +136,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -152,7 +151,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -168,7 +167,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -184,7 +183,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -199,7 +198,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -215,7 +214,7 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -230,7 +229,7 @@ namespace Cadres.RepositoryTest
                 Disponible = true,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -246,7 +245,7 @@ namespace Cadres.RepositoryTest
                 Disponible = true,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
         }
 
         [TestMethod]
@@ -261,7 +260,19 @@ namespace Cadres.RepositoryTest
                 Precio = 160,
             };
 
-            this.VarillaRepository.Add(varilla);
+            this.VarillaRepository.Save(varilla);
+        }
+
+        private Varilla CrearVarilla()
+        {
+            return new Varilla()
+            {
+                Nombre = "Chata 3 kiri",
+                Ancho = 3,
+                Cantidad = 10,
+                Disponible = true,
+                Precio = 160,
+            };
         }
     }
 }

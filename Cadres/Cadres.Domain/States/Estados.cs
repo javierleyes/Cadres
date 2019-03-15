@@ -23,6 +23,9 @@ namespace Cadres.Domain.States
 
             [Description("Listo")]
             Listo = 1,
+
+            [Description("Sin materiales")]
+            SinMateriales = 2,
         }
     }
 }

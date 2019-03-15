@@ -1,6 +1,5 @@
 ﻿using Cadres.Data.Base;
 using Cadres.Data.Filter;
-using Cadres.Domain;
 using Cadres.Domain.Entity;
 using System.Collections.Generic;
 

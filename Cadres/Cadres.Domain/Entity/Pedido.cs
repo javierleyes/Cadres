@@ -16,18 +16,20 @@ namespace Cadres.Domain.Entity
         [Required]
         public DateTime Fecha { get; set; }
 
-        [Required]
         [Range(1, 4000)]
-        public decimal Precio { get; set; }
+        public decimal? Precio { get; set; }
 
         [Required]
         public Estados.EstadoPedido Estado { get; set; }
 
         [Required]
-        public string Codigo { get; set; }
+        public int Numero { get; set; }
 
-        [Required]
         public virtual IList<Marco> Marcos { get; set; }
+
+        public DateTime? FechaTerminado { get; set; }
+
+        public DateTime? FechaEntrega { get; set; }
 
         public Pedido()
         {

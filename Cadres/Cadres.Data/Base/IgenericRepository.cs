@@ -12,7 +12,7 @@ namespace Cadres.Data.Base
 
         IQueryable<TEntity> GetAll();
 
-        TEntity Add(TEntity entity);
+        TEntity Save(TEntity entity);
 
         TEntity Update(TEntity entity);
     }

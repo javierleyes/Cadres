@@ -19,7 +19,7 @@ namespace Cadres.Data.Repository.Implement
         {
             // Comparar fecha
             return this.GetAll().Where(x => (x.Estado == (Estados.EstadoPedido)filter.Estado)
-                                         || (x.Codigo == filter.Codigo)
+                                         || (x.Numero == filter.Numero)
                                          || ((x.Fecha.Date >= filter.FechaDesde.Date) && (x.Fecha.Date <= filter.FechaHasta.Date))).ToList();
 
         }
