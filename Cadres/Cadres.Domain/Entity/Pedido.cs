@@ -14,7 +14,7 @@ namespace Cadres.Domain.Entity
         public string Observaciones { get; set; }
 
         [Required]
-        public DateTime Fecha { get; set; }
+        public DateTime FechaIngreso { get; set; }
 
         [Range(1, 4000)]
         public decimal? Precio { get; set; }
@@ -34,7 +34,7 @@ namespace Cadres.Domain.Entity
         public Pedido()
         {
             this.Marcos = new List<Marco>();
-            this.Fecha = DateTime.Now;
+            this.FechaIngreso = DateTime.Now;
         }
     }
 }

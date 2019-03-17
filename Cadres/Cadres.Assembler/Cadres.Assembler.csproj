@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9CFE8461-9EBF-4FCD-B025-B88225E17501}</ProjectGuid>
+    <ProjectGuid>{CF9D4094-6A56-438D-868A-F7B9F6F50E31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cadres.IoD</RootNamespace>
-    <AssemblyName>Cadres.IoD</AssemblyName>
+    <RootNamespace>Cadres.Assembler</RootNamespace>
+    <AssemblyName>Cadres.Assembler</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -34,17 +34,7 @@
     <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
@@ -57,23 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ninject\Bindings.cs" />
-    <Compile Include="Ninject\StartUp.cs" />
+    <Compile Include="Base\GenericAssembler.cs" />
+    <Compile Include="Base\IGenericAssembler.cs" />
+    <Compile Include="Implement\MarcoAssembler.cs" />
+    <Compile Include="Interface\IMarcoAssembler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cadres.Assembler\Cadres.Assembler.csproj">
-      <Project>{CF9D4094-6A56-438D-868A-F7B9F6F50E31}</Project>
-      <Name>Cadres.Assembler</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Cadres.Data\Cadres.Data.csproj">
-      <Project>{FAAFCA51-B05A-405C-875E-44693C95ADB7}</Project>
-      <Name>Cadres.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Cadres.Domain\Cadres.Domain.csproj">
       <Project>{9C807251-A587-40CD-8096-6FBC87D2D368}</Project>
       <Name>Cadres.Domain</Name>
@@ -81,10 +64,6 @@
     <ProjectReference Include="..\Cadres.Dto\Cadres.Dto.csproj">
       <Project>{8CC7EC56-560D-4001-9E72-CB1EB7A3CE1A}</Project>
       <Name>Cadres.Dto</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Cadres.Service\Cadres.Service.csproj">
-      <Project>{2C1D1C89-8EEA-4ABD-97FF-1BE1ACCF2524}</Project>
-      <Name>Cadres.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

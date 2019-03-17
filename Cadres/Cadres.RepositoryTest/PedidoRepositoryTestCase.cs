@@ -5,7 +5,6 @@ using Cadres.IoD.Ninject;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
 using System;
-using System.Data.Entity.Validation;
 using System.Linq;
 
 namespace Cadres.RepositoryTestCase
@@ -17,7 +16,7 @@ namespace Cadres.RepositoryTestCase
         private IVarillaRepository VarillaRepository { get; set; }
 
         [TestInitialize]
-        public void SetUp()
+        public void TestInitialize()
         {
             var kernel = StartUp.Initialize();
 
@@ -38,7 +37,7 @@ namespace Cadres.RepositoryTestCase
             Pedido pedidoObtenido = this.PedidoRepository.GetById(id);
 
             Assert.AreEqual(pedidoObtenido.Observaciones, "Pintado de negro");
-            Assert.AreEqual(pedidoObtenido.Fecha, fechaPedido);
+            Assert.AreEqual(pedidoObtenido.FechaIngreso, fechaPedido);
             Assert.AreEqual(pedidoObtenido.Precio, 250);
             Assert.AreEqual(pedidoObtenido.Estado, Estados.EstadoPedido.Pendiente);
 
@@ -53,7 +52,7 @@ namespace Cadres.RepositoryTestCase
         {
             Pedido pedido = new Pedido()
             {
-                Fecha = fechaPedido,
+                FechaIngreso = fechaPedido,
                 Observaciones = "Pintado de negro",
                 Precio = 250,
                 Numero = 3,

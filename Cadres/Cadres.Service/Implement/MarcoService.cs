@@ -1,4 +1,5 @@
-﻿using Cadres.Data.Repository.Interface;
+﻿using Cadres.Assembler.Interface;
+using Cadres.Data.Repository.Interface;
 using Cadres.Domain.Entity;
 using Cadres.Domain.States;
 using Cadres.Dto;
@@ -11,26 +12,26 @@ namespace Cadres.Service.Implement
     public class MarcoService : GenericService<IMarcoRepository, Marco, long>, IMarcoService
     {
         public IVarillaRepository VarillaRepository { get; set; }
+        public IMarcoAssembler MarcoAssembler { get; set; }
 
-        public MarcoService(IMarcoRepository entityRepository, IVarillaRepository varillaRepository) : base(entityRepository)
+        public MarcoService(IMarcoRepository entityRepository, IVarillaRepository varillaRepository, IMarcoAssembler marcoAssembler) : base(entityRepository)
         {
             this.VarillaRepository = varillaRepository;
+            this.MarcoAssembler = marcoAssembler;
         }
 
-        public Marco CrearMarco(MarcoDTO marcoDTO)
+        public MarcoDTO CrearMarco(MarcoDTO marcoDTO)
         {
-            Marco marco = new Marco()
-            {
-                Ancho = marcoDTO.Ancho,
-                Largo = marcoDTO.Largo,
-                Estado = Estados.EstadoMarco.Pendiente,
-                Numero = GetNumeroMarco(),
-                Observacion = marcoDTO.Observacion,
-                Precio = CalcularPrecio(marcoDTO),
-                Varilla = VarillaRepository.GetById(marcoDTO.VarillaId),
-            };
+            Marco marco = this.MarcoAssembler.FromTo(marcoDTO);
 
-            return this.EntityRepository.Save(marco);
+            marco.Numero = GetNumeroMarco();
+            marco.Estado = Estados.EstadoMarco.Pendiente;
+            marco.Precio = CalcularPrecio(marcoDTO);
+            marco.Varilla = VarillaRepository.GetById(marcoDTO.VarillaId);
+
+            this.EntityRepository.Save(marco);
+
+            return this.MarcoAssembler.ToDTO(marco);
         }
 
         public decimal CalcularPrecio(MarcoDTO marco)
@@ -61,9 +62,16 @@ namespace Cadres.Service.Implement
             ModificarEstado(numero, Estados.EstadoMarco.SinMateriales);
         }
 
+        public MarcoDTO GetByNumero(int numero)
+        {
+            Marco marco = this.GetEntidadByNumero(numero);
+
+            return this.MarcoAssembler.ToDTO(marco);
+        }
+
         private void ModificarEstado(int numero, Estados.EstadoMarco estado)
         {
-            Marco marco = this.GetByNumero(numero);
+            Marco marco = this.GetEntidadByNumero(numero);
 
             marco.Estado = estado;
 
@@ -80,7 +88,7 @@ namespace Cadres.Service.Implement
             return this.EntityRepository.GetAll().Count() + 1;
         }
 
-        private Marco GetByNumero(int numero)
+        private Marco GetEntidadByNumero(int numero)
         {
             return this.EntityRepository.GetAll().Where(x => x.Numero == numero).FirstOrDefault();
         }

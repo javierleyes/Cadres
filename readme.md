@@ -1,5 +1,9 @@
 ## Changelog
 
+**17-03-19, Hash: df5134fc1e1f14f9940070ddd2b7e8bf5f734415**
+
+* Agrego proyecto para assembler con AutoMapper, falta integrarlo con Ninject
+
 **14-03-19, Hash: ffe3d1b63f00b44d6ca9f2451349b737a8e8c93f**
 
 * Reestructuración de servicios

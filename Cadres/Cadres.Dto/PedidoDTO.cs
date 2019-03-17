@@ -1,9 +1,6 @@
 ﻿using Cadres.Dto.Base;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cadres.Dto
 {
@@ -11,14 +8,24 @@ namespace Cadres.Dto
     {
         public string Observaciones { get; set; }
 
-        public DateTime Fecha { get; set; }
+        public DateTime FechaIngreso { get; set; }
 
-        public decimal Precio { get; set; }
+        public decimal? Precio { get; set; }
 
-        public int Estado { get; set; }
+        public string Estado { get; set; }
 
         public int Numero { get; set; }
 
-        public virtual IList<long> MarcosIds { get; set; }
+        public virtual IList<long> MarcoIds { get; set; }
+
+        public DateTime? FechaTerminado { get; set; }
+
+        public DateTime? FechaEntrega { get; set; }
+
+        public PedidoDTO()
+        {
+            this.MarcoIds = new List<long>();
+        }
+
     }
 }

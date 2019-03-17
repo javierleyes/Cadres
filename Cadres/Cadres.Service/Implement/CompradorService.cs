@@ -17,17 +17,22 @@ namespace Cadres.Service.Implement
 
         public CompradorDTO CrearComprador(CompradorDTO compradorDTO)
         {
-            Comprador comprador = new Comprador()
-            {
-                Nombre = compradorDTO.Nombre,
-                Direccion = compradorDTO.Direccion,
-                Telefono = compradorDTO.Telefono,
-                Pedido = this.PedidoService.GetById(compradorDTO.PedidoId),
-            };
+            Comprador comprador = this.FromTo(compradorDTO);
 
             compradorDTO.Id = this.EntityRepository.Save(comprador).Id;
 
             return compradorDTO;
+        }
+
+        private Comprador FromTo(CompradorDTO dto)
+        {
+            return new Comprador()
+            {
+                Nombre = dto.Nombre,
+                Direccion = dto.Direccion,
+                Telefono = dto.Telefono,
+                Pedido = this.PedidoService.GetById(dto.PedidoId),
+            };
         }
     }
 }

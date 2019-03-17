@@ -7,7 +7,9 @@ namespace Cadres.Service.Interface
 {
     public interface IMarcoService : IGenericService<IMarcoRepository, Marco, long>
     {
-        Marco CrearMarco(MarcoDTO marcoDTO);
+        MarcoDTO CrearMarco(MarcoDTO marcoDTO);
+
+        MarcoDTO GetByNumero(int numero);
 
         void SetEstadoListo(int numero);
 

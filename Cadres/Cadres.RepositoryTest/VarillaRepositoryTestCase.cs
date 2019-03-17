@@ -14,7 +14,7 @@ namespace Cadres.RepositoryTestCase
         private IVarillaRepository VarillaRepository { get; set; }
 
         [TestInitialize]
-        public void SetUp()
+        public void TestInitialize()
         {
             var kernel = StartUp.Initialize();
 

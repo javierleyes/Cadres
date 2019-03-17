@@ -16,7 +16,7 @@ namespace Cadres.RepositoryTestCase
         public IPedidoRepository PedidoRepository { get; set; }
 
         [TestInitialize]
-        public void SetUp()
+        public void TestInitialize()
         {
             var kernel = StartUp.Initialize();
 
@@ -80,7 +80,7 @@ namespace Cadres.RepositoryTestCase
         {
             Pedido pedido = new Pedido()
             {
-                Fecha = DateTime.Now,
+                FechaIngreso = DateTime.Now,
                 Observaciones = "Pintado de negro",
                 Precio = 250,
                 Numero = 3,

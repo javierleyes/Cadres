@@ -5,17 +5,7 @@ using System.Linq;
 
 namespace Cadres.Data.Base
 {
-    // Generic method
-    public class GenericRepository<TEntity, TKey> : GenericRepository<TEntity, TKey, DbContext>
-    where TEntity : Domain<TKey>
-    where TKey : IEquatable<TKey>
-    {
-        public GenericRepository(DbContext dbContext) : base(dbContext)
-        {
-        }
-    }
-
-    // When Id is int
+    // When Id is long
     public class GenericRepository<TEntity> : GenericRepository<TEntity, long, DbContext>
         where TEntity : Domain<long>
     {
@@ -24,6 +14,16 @@ namespace Cadres.Data.Base
         }
     }
 
+    public class GenericRepository<TEntity, TKey> : GenericRepository<TEntity, TKey, DbContext>
+        where TEntity : Domain<TKey>
+        where TKey : IEquatable<TKey>
+    {
+        public GenericRepository(DbContext dbContext) : base(dbContext)
+        {
+        }
+    }
+
+    // Generic 
     public class GenericRepository<TEntity, TKey, TDbContext> : IGenericRepository<TEntity, TKey>
         where TEntity : class, IDomain<TKey>
         where TKey : IEquatable<TKey>

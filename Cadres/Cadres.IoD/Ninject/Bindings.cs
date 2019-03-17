@@ -1,4 +1,7 @@
-﻿using Cadres.Data.Context;
+﻿using AutoMapper;
+using Cadres.Assembler.Implement;
+using Cadres.Assembler.Interface;
+using Cadres.Data.Context;
 using Cadres.Data.Repository.Implement;
 using Cadres.Data.Repository.Interface;
 using Cadres.Service.Implement;
@@ -14,11 +17,16 @@ namespace Cadres.IoD.Ninject
             /* Context */
             CadresContext Context = new CadresContext();
 
-            /* DAO */
+            /* Repository */
             Bind<IVarillaRepository>().To<VarillaRepository>().WithConstructorArgument("dbContext", Context);
             Bind<ICompradorRepository>().To<CompradorRepository>().WithConstructorArgument("dbContext", Context);
             Bind<IMarcoRepository>().To<MarcoRepository>().WithConstructorArgument("dbContext", Context);
             Bind<IPedidoRepository>().To<PedidoRepository>().WithConstructorArgument("dbContext", Context);
+
+            /* Assembler */
+            Mapper.Initialize(cfg => { cfg.AddProfile(new MarcoMappingProfile()); });
+
+            Bind<IMarcoAssembler>().To<MarcoAssembler>();
 
             /* Services */
             Bind<ICompradorService>().To<CompradorService>();

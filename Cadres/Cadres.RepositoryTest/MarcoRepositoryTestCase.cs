@@ -5,12 +5,7 @@ using Cadres.IoD.Ninject;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core;
 using System.Data.Entity.Validation;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cadres.RepositoryTestCase
 {
@@ -21,7 +16,7 @@ namespace Cadres.RepositoryTestCase
         public IVarillaRepository VarillaRepository { get; set; }
 
         [TestInitialize]
-        public void SetUp()
+        public void TestInitialize()
         {
             var kernel = StartUp.Initialize();
 

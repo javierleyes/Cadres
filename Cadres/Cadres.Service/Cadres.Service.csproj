@@ -54,6 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Cadres.Assembler\Cadres.Assembler.csproj">
+      <Project>{CF9D4094-6A56-438D-868A-F7B9F6F50E31}</Project>
+      <Name>Cadres.Assembler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cadres.Data\Cadres.Data.csproj">
       <Project>{FAAFCA51-B05A-405C-875E-44693C95ADB7}</Project>
       <Name>Cadres.Data</Name>

@@ -12,14 +12,7 @@ namespace Cadres.Service.Implement
 
         public VarillaDTO CrearNueva(VarillaDTO varillaDTO)
         {
-            Varilla varilla = new Varilla()
-            {
-                Ancho = varillaDTO.Ancho,
-                Cantidad = varillaDTO.Cantidad,
-                Disponible = varillaDTO.Disponible,
-                Nombre = varillaDTO.Nombre,
-                Precio = varillaDTO.Precio,
-            };
+            Varilla varilla = this.FromTo(varillaDTO);
 
             varillaDTO.Id = EntityRepository.Save(varilla).Id;
 
@@ -51,6 +44,18 @@ namespace Cadres.Service.Implement
             varilla.Precio = precio;
 
             EntityRepository.Update(varilla);
+        }
+
+        private Varilla FromTo(VarillaDTO dto)
+        {
+            return new Varilla()
+            {
+                Ancho = dto.Ancho,
+                Cantidad = dto.Cantidad,
+                Disponible = dto.Disponible,
+                Nombre = dto.Nombre,
+                Precio = dto.Precio,
+            };
         }
     }
 }

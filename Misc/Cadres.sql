@@ -1,4 +1,6 @@
 
+DROP DATABASE bd
+
 DELETE dbo.Varilla
 DELETE dbo.Marco
 DELETE dbo.Comprador

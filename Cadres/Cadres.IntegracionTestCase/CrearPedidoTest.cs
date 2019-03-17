@@ -1,5 +1,4 @@
-﻿using Cadres.Domain.Entity;
-using Cadres.Domain.States;
+﻿using Cadres.Domain.States;
 using Cadres.Dto;
 using Cadres.IoD.Ninject;
 using Cadres.Service.Interface;
@@ -17,15 +16,17 @@ namespace Cadres.IntegracionTestCase
         public IMarcoService MarcoService { get; set; }
         public IVarillaService VarillaService { get; set; }
 
-        [TestInitialize]
-        public void SetUp()
-        {
-            var kernel = StartUp.Initialize();
+        public StandardKernel Kernel { get; set; }
 
-            this.CompradorService = kernel.Get<ICompradorService>();
-            this.PedidoService = kernel.Get<IPedidoService>();
-            this.MarcoService = kernel.Get<IMarcoService>();
-            this.VarillaService = kernel.Get<IVarillaService>();
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            this.Kernel = StartUp.Initialize();
+
+            this.CompradorService = Kernel.Get<ICompradorService>();
+            this.PedidoService = Kernel.Get<IPedidoService>();
+            this.MarcoService = Kernel.Get<IMarcoService>();
+            this.VarillaService = Kernel.Get<IVarillaService>();
         }
 
         [TestMethod]
@@ -33,17 +34,20 @@ namespace Cadres.IntegracionTestCase
         {
             // Crear pedido 
 
-            Pedido pedido = this.PedidoService.CrearNuevo();
+            PedidoDTO pedido = this.PedidoService.CrearNuevo();
 
-            Assert.AreEqual(pedido.Estado, Estados.EstadoPedido.Pendiente);
+            Assert.AreEqual(pedido.Estado, Estados.EstadoPedido.Pendiente.ToString());
+            Assert.IsTrue(pedido.FechaTerminado == null);
+            Assert.IsTrue(pedido.FechaEntrega == null);
+            Assert.IsTrue(pedido.FechaIngreso != null);
 
             // Agregar marco
 
             MarcoDTO marcoDTO = CrearMarcoDTO();
 
-            Marco marco = this.MarcoService.CrearMarco(marcoDTO);
+            MarcoDTO marco = this.MarcoService.CrearMarco(marcoDTO);
 
-            this.PedidoService.AgregarMarco(pedido.Numero, marco);
+            this.PedidoService.AgregarMarco(pedido.Numero, marco.Numero);
 
             // Crear comprador
 
@@ -57,12 +61,18 @@ namespace Cadres.IntegracionTestCase
 
             this.PedidoService.SetearEstadoTerminado(pedido.Numero);
 
-            Assert.AreEqual(pedido.Estado, Estados.EstadoPedido.Terminado);
+            pedido = this.PedidoService.GetByNumero(pedido.Numero);
+
+            Assert.AreEqual(pedido.Estado, Estados.EstadoPedido.Terminado.ToString());
+            Assert.IsTrue(pedido.FechaTerminado != null);
 
             this.PedidoService.SetearEstadoEntregado(pedido.Numero);
 
+            pedido = this.PedidoService.GetByNumero(pedido.Numero);
+
             Assert.AreEqual(pedido.Precio, Convert.ToDecimal("392"));
-            Assert.AreEqual(pedido.Estado, Estados.EstadoPedido.Entregado);
+            Assert.AreEqual(pedido.Estado, Estados.EstadoPedido.Entregado.ToString());
+            Assert.IsTrue(pedido.FechaEntrega != null);
         }
 
         [TestMethod]
@@ -70,17 +80,17 @@ namespace Cadres.IntegracionTestCase
         {
             // Crear pedido 
 
-            Pedido pedido = this.PedidoService.CrearNuevo();
+            PedidoDTO pedido = this.PedidoService.CrearNuevo();
 
             // Agregar marco
 
             MarcoDTO marcoDTO = CrearMarcoDTO();
 
-            Marco marco = this.MarcoService.CrearMarco(marcoDTO);
-            Marco marcoDos = this.MarcoService.CrearMarco(marcoDTO);
+            MarcoDTO marco = this.MarcoService.CrearMarco(marcoDTO);
+            MarcoDTO marcoDos = this.MarcoService.CrearMarco(marcoDTO);
 
-            this.PedidoService.AgregarMarco(pedido.Numero, marco);
-            this.PedidoService.AgregarMarco(pedido.Numero, marcoDos);
+            this.PedidoService.AgregarMarco(pedido.Numero, marco.Numero);
+            this.PedidoService.AgregarMarco(pedido.Numero, marcoDos.Numero);
 
             // Crear comprador
 
@@ -97,6 +107,8 @@ namespace Cadres.IntegracionTestCase
 
             this.PedidoService.SetearEstadoEntregado(pedido.Numero);
 
+            pedido = this.PedidoService.GetByNumero(pedido.Numero);
+
             Assert.AreEqual(pedido.Precio, Convert.ToDecimal("784"));
         }
 
@@ -110,7 +122,7 @@ namespace Cadres.IntegracionTestCase
             };
         }
 
-        private CompradorDTO CrearCompradorDTO(Pedido pedido)
+        private CompradorDTO CrearCompradorDTO(PedidoDTO pedido)
         {
             return new CompradorDTO()
             {

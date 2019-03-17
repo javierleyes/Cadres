@@ -3,7 +3,7 @@ namespace Cadres.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class InitialMigrations : DbMigration
     {
         public override void Up()
         {
@@ -27,7 +27,7 @@ namespace Cadres.Data.Migrations
                     {
                         Id = c.Long(nullable: false, identity: true),
                         Observaciones = c.String(maxLength: 256),
-                        Fecha = c.DateTime(nullable: false),
+                        FechaIngreso = c.DateTime(nullable: false),
                         Precio = c.Decimal(precision: 18, scale: 2),
                         Estado = c.Int(nullable: false),
                         Numero = c.Int(nullable: false),
