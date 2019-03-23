@@ -1,5 +1,5 @@
 
-DROP DATABASE bd
+DROP DATABASE CADRES
 
 DELETE dbo.Varilla
 DELETE dbo.Marco

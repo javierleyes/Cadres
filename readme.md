@@ -1,5 +1,10 @@
 ## Changelog
 
+**23-03-19, Hash: a9fdbce2d351404f5598ad991a0cd1d0d69c6007**
+
+* Integración de Ninject con proyecto Web
+* ABM básico de varilla
+
 **17-03-19, Hash: df5134fc1e1f14f9940070ddd2b7e8bf5f734415**
 
 * Agrego proyecto para assembler con AutoMapper, falta integrarlo con Ninject

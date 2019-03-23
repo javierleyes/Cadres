@@ -1,4 +1,6 @@
-﻿using Cadres.Data.Repository.Interface;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Cadres.Data.Repository.Interface;
 using Cadres.Domain.Entity;
 using Cadres.Dto;
 using Cadres.Service.Base;
@@ -28,6 +30,25 @@ namespace Cadres.Service.Implement
             EntityRepository.Update(varilla);
         }
 
+        public IList<VarillaDTO> GetAllDTO()
+        {
+            IList<VarillaDTO> dtos = new List<VarillaDTO>();
+
+            IList<Varilla> varillas = this.EntityRepository.GetAll().ToList();
+
+            foreach (Varilla varilla in varillas)
+            {
+                dtos.Add(this.ToDTO(varilla));
+            }
+
+            return dtos;
+        }
+
+        public VarillaDTO GetDTOById(long id)
+        {
+            return this.ToDTO(this.EntityRepository.GetById(id));
+        }
+
         public void SetCantidad(long id, int cantidad)
         {
             Varilla varilla = EntityRepository.GetById(id);
@@ -55,6 +76,18 @@ namespace Cadres.Service.Implement
                 Disponible = dto.Disponible,
                 Nombre = dto.Nombre,
                 Precio = dto.Precio,
+            };
+        }
+        private VarillaDTO ToDTO(Varilla entity)
+        {
+            return new VarillaDTO()
+            {
+                Id = entity.Id,
+                Ancho = entity.Ancho,
+                Nombre = entity.Nombre,
+                Precio = entity.Precio,
+                Cantidad = entity.Cantidad,
+                Disponible = entity.Disponible,
             };
         }
     }

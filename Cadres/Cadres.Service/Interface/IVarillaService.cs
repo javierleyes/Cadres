@@ -2,6 +2,7 @@
 using Cadres.Domain.Entity;
 using Cadres.Dto;
 using Cadres.Service.Base;
+using System.Collections.Generic;
 
 namespace Cadres.Service.Interface
 {
@@ -14,5 +15,9 @@ namespace Cadres.Service.Interface
         void SetCantidad(long id, int cantidad);
 
         void SetPrecio(long id, decimal precio);
+
+        IList<VarillaDTO> GetAllDTO();
+
+        VarillaDTO GetDTOById(long id);
     }
 }
