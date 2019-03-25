@@ -163,6 +163,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CalcularPrecioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VarillaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -214,6 +215,8 @@
     <Content Include="Views\Varilla\Edit.cshtml" />
     <Content Include="Views\Varilla\Details.cshtml" />
     <Content Include="Views\Varilla\Create.cshtml" />
+    <Content Include="Views\CalcularPrecio\Index.cshtml" />
+    <Content Include="Views\CalcularPrecio\Calcular.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

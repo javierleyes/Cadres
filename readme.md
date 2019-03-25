@@ -1,5 +1,9 @@
 ## Changelog
 
+**24-03-19, Hash: 6cc7275664280ae9e829373bd74910c537c8dc4a**
+
+* Vista para calcular el precio de un marco ingresando sus medidas y su varilla correspondiente
+
 **23-03-19, Hash: a9fdbce2d351404f5598ad991a0cd1d0d69c6007**
 
 * Integración de Ninject con proyecto Web

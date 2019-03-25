@@ -43,6 +43,10 @@
   <ItemGroup>
     <Compile Include="Base\GenericService.cs" />
     <Compile Include="Base\IGenericService.cs" />
+    <Compile Include="Filter\CompradorFilter.cs" />
+    <Compile Include="Filter\MarcoFilter.cs" />
+    <Compile Include="Filter\PedidoFilter.cs" />
+    <Compile Include="Filter\VarillaFilter.cs" />
     <Compile Include="Implement\CompradorService.cs" />
     <Compile Include="Implement\MarcoService.cs" />
     <Compile Include="Implement\PedidoService.cs" />

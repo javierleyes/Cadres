@@ -1,0 +1,51 @@
+﻿@model Cadres.Dto.MarcoDTO
+
+@{
+    ViewBag.Title = "Calcular precio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Calcular</h2>
+
+<div>
+
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ancho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ancho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Largo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Largo)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Varilla")
+        </dt>
+
+        <dd>
+            @ViewBag.NombreVarilla
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Calcular otro", "Index")
+</p>
