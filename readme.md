@@ -1,5 +1,9 @@
 ## Changelog
 
+**27-03-19, Hash: 4e9f45e7e146906b17d188575c8f3f52e3ee27ea**
+
+* Refactorizo vista Details de calcular precio, en dropdownlist con entity y binding automatic
+
 **24-03-19, Hash: 6cc7275664280ae9e829373bd74910c537c8dc4a**
 
 * Vista para calcular el precio de un marco ingresando sus medidas y su varilla correspondiente

@@ -1,8 +1,7 @@
 ﻿using Cadres.Dto;
 using Cadres.Service.Filter;
 using Cadres.Service.Interface;
-using System;
-using System.Linq;
+using Cadres.Web.Models.DTO.CalcularPrecio;
 using System.Web.Mvc;
 
 namespace Cadres.Web.Controllers
@@ -21,34 +20,22 @@ namespace Cadres.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.VarillasDisponibles = this.VarillaService.GetByFilter(new VarillaFilter() { Disponible = true }).Select(x => x.Nombre);
+            ViewBag.VarillasDisponibles = this.VarillaService.GetByFilter(new VarillaFilter() { Disponible = true });
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult Calcular(FormCollection values)
+        public ActionResult Calcular(CalcularPrecioView dto)
         {
-            if (String.IsNullOrEmpty(values["Ancho"]) || String.IsNullOrEmpty(values["Largo"]) || String.IsNullOrEmpty(values["Varilla"]))
-            {
-                // cambiar mensaje
-                throw new Exception("El valor ingresado incorrecto");
-            }
-
-            var varilla = this.VarillaService.GetByFilter(new VarillaFilter() { Nombre = values["Varilla"].ToString() }).SingleOrDefault();
-
-            if (String.IsNullOrEmpty(varilla.Nombre))
-            {
-                // cambiar mensaje
-                throw new Exception("La varilla no existe");
-            }
+            var varilla = this.VarillaService.GetDTOById(dto.VarillaId);
 
             ViewBag.NombreVarilla = varilla.Nombre;
 
             var marco = new MarcoDTO()
             {
-                Ancho = Convert.ToDecimal(values["Ancho"]),
-                Largo = Convert.ToDecimal(values["Largo"]),
+                Ancho = dto.Ancho,
+                Largo = dto.Largo,
                 VarillaId = varilla.Id,
             };
 
