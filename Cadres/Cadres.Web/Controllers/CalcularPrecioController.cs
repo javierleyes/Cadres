@@ -2,6 +2,7 @@
 using Cadres.Service.Filter;
 using Cadres.Service.Interface;
 using Cadres.Web.Models.DTO.CalcularPrecio;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace Cadres.Web.Controllers
@@ -18,14 +19,31 @@ namespace Cadres.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Create()
         {
             ViewBag.VarillasDisponibles = this.VarillaService.GetByFilter(new VarillaFilter() { Disponible = true });
+
+            TempData["VarillasDisponibles"] = ViewBag.VarillasDisponibles;
 
             return View();
         }
 
         [HttpPost]
+        public ActionResult Create(CalcularPrecioView dto)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Calcular", dto);
+            }
+
+            ViewBag.VarillasDisponibles = TempData["VarillasDisponibles"] as IList<VarillaDTO>;
+
+            TempData.Keep();
+
+            return View(dto);
+        }
+
+        [HttpGet]
         public ActionResult Calcular(CalcularPrecioView dto)
         {
             var varilla = this.VarillaService.GetDTOById(dto.VarillaId);

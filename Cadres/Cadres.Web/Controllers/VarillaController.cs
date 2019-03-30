@@ -1,5 +1,6 @@
 ﻿using Cadres.Dto;
 using Cadres.Service.Interface;
+using PagedList;
 using System.Web.Mvc;
 
 namespace Cadres.Web.Controllers
@@ -14,10 +15,17 @@ namespace Cadres.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var varillas = this.VarillaService.GetAllDTO();
-            return View(varillas);
+
+            // resultados por pagina
+            int pageSize = 6;
+
+            // numero de pagina
+            int pageNumber = (page ?? 1);
+
+            return View(varillas.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]
@@ -30,10 +38,15 @@ namespace Cadres.Web.Controllers
         [HttpPost]
         public ActionResult Edit(VarillaDTO dto)
         {
-            this.VarillaService.SetPrecio(dto.Id, dto.Precio);
-            this.VarillaService.SetCantidad(dto.Id, dto.Cantidad);
+            if (ModelState.IsValid)
+            {
+                this.VarillaService.SetPrecio(dto.Id, dto.Precio);
+                this.VarillaService.SetCantidad(dto.Id, dto.Cantidad);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+
+            return View(dto);
         }
 
         [HttpGet]
@@ -52,8 +65,14 @@ namespace Cadres.Web.Controllers
         [HttpPost]
         public ActionResult Create(VarillaDTO dto)
         {
-            this.VarillaService.CrearNueva(dto);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                this.VarillaService.CrearNueva(dto);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(dto);
         }
     }
 }

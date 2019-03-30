@@ -1,5 +1,10 @@
 ## Changelog
 
+**30-03-19, Hash: c414b666faab036a612987970dd5f0b5253a2a49**
+
+* Agrego validations en vista de varillas y calcular precio.
+* Paginado de varillas
+
 **27-03-19, Hash: 4e9f45e7e146906b17d188575c8f3f52e3ee27ea**
 
 * Refactorizo vista Details de calcular precio, en dropdownlist con entity y binding automatic
