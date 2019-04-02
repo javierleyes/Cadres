@@ -1,0 +1,21 @@
+version: "3"
+services:
+    sql:
+        build:
+            context: .
+            dockerfile: dockerfile-sql
+        ports:
+            - "1433:1433"
+    iis:
+        build:
+            context: .
+            dockerfile: dockerfile-app
+        depends_on:
+            - "sql"
+        ports:
+            - "8000:80"
+            
+# networks:
+    # defaults:
+        # external:
+            # name:nat

@@ -54,10 +54,6 @@
     <Compile Include="Base\GenericRepository.cs" />
     <Compile Include="Base\IgenericRepository.cs" />
     <Compile Include="Context\CadresContext.cs" />
-    <Compile Include="Filter\CompradorFilter.cs" />
-    <Compile Include="Filter\MarcoFilter.cs" />
-    <Compile Include="Filter\PedidoFilter.cs" />
-    <Compile Include="Filter\VarillaFilter.cs" />
     <Compile Include="Migrations\201903161632238_InitialMigrations.cs" />
     <Compile Include="Migrations\201903161632238_InitialMigrations.Designer.cs">
       <DependentUpon>201903161632238_InitialMigrations.cs</DependentUpon>

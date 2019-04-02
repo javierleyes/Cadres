@@ -1,0 +1,4 @@
+FROM microsoft/mssql-server-windows-express
+
+ENV sa_password Factory.07
+ENV ACCEPT_EULA Y
