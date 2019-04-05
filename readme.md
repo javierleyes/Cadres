@@ -1,5 +1,9 @@
 ## Changelog
 
+**04-04-19, Hash: ee1ff7e6b7c7e5b2f48e88fdda67a2a4f6fdf33b**
+
+* Modal en detalles
+
 **01-04-19, Hash: e15263412f75c65c8bf67c4e68b969eb4e411ce4**
 
 * Agrego archivos para docker
