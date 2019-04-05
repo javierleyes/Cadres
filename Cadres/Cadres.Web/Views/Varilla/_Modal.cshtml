@@ -1,0 +1,67 @@
+﻿@model Cadres.Dto.VarillaDTO
+
+<a data-toggle="modal" style="cursor:pointer" data-target="#@ViewBag.NameModal">
+    <span class="glyphicon glyphicon-list-alt"></span>
+</a>
+
+<div class="modal fade" tabindex="-1" id="@ViewBag.NameModal" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">@Html.DisplayFor(model => model.Nombre)</h3>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        @*<dt>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                            </dt>*@
+
+                        @*<dd>
+                                @Html.DisplayFor(model => model.Nombre)
+                            </dd>*@
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Ancho)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Ancho)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Precio)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Precio)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Cantidad)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Cantidad)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Disponible)
+                        </dt>
+
+                        <dd>
+                            @if (Model.Disponible)
+                            {
+                                <p>Si</p>
+                            }
+                            else
+                            {
+                                <p>No</p>
+                            }
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

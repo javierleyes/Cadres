@@ -53,7 +53,10 @@ namespace Cadres.Web.Controllers
         public ActionResult Details(long id)
         {
             var varilla = this.VarillaService.GetDTOById(id);
-            return View(varilla);
+
+            ViewBag.NameModal = varilla.Id;
+
+            return PartialView("_Modal", varilla);
         }
 
         [HttpGet]
