@@ -171,6 +171,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CalcularPrecioController.cs" />
+    <Compile Include="Controllers\DocumentacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VarillaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -241,6 +242,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Views\Varilla\Edit.cshtml" />
+    <Content Include="Views\Documentacion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
