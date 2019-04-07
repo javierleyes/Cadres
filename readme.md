@@ -1,5 +1,9 @@
 ## Changelog
 
+**07-04-19, Hash: 8a50c8d1784ab439414770dcd336e8ab12995db3**
+
+* Vistas de administracion de varillas lista
+
 **04-04-19, Hash: ee1ff7e6b7c7e5b2f48e88fdda67a2a4f6fdf33b**
 
 * Modal en detalles
