@@ -5,22 +5,14 @@
 </a>
 
 <div class="modal fade" tabindex="-1" id="@ViewBag.NameModal" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">@Html.DisplayFor(model => model.Nombre)</h3>
             </div>
             <div class="modal-body">
                 <div>
-                    <dl class="dl-horizontal">
-                        @*<dt>
-                                @Html.DisplayNameFor(model => model.Nombre)
-                            </dt>*@
-
-                        @*<dd>
-                                @Html.DisplayFor(model => model.Nombre)
-                            </dd>*@
-
+                    <dl>
                         <dt>
                             @Html.DisplayNameFor(model => model.Ancho)
                         </dt>
@@ -28,6 +20,8 @@
                         <dd>
                             @Html.DisplayFor(model => model.Ancho)
                         </dd>
+
+                        <br />
 
                         <dt>
                             @Html.DisplayNameFor(model => model.Precio)
@@ -37,6 +31,8 @@
                             @Html.DisplayFor(model => model.Precio)
                         </dd>
 
+                        <br />
+
                         <dt>
                             @Html.DisplayNameFor(model => model.Cantidad)
                         </dt>
@@ -44,6 +40,8 @@
                         <dd>
                             @Html.DisplayFor(model => model.Cantidad)
                         </dd>
+
+                        <br />
 
                         <dt>
                             @Html.DisplayNameFor(model => model.Disponible)

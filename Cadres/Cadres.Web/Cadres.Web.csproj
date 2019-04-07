@@ -176,7 +176,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\Base\GenericView.cs" />
+    <Compile Include="Models\DTO\Base\IGenericView.cs" />
     <Compile Include="Models\DTO\CalcularPrecio\CalcularPrecioView.cs" />
+    <Compile Include="Models\DTO\Varilla\VarillaEditView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -231,13 +234,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Varilla\Index.cshtml" />
-    <Content Include="Views\Varilla\Edit.cshtml" />
     <Content Include="Views\Varilla\Create.cshtml" />
     <Content Include="Views\CalcularPrecio\Calcular.cshtml" />
     <Content Include="Views\CalcularPrecio\Create.cshtml" />
     <Content Include="Views\Varilla\_Modal.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Views\Varilla\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,7 +15,7 @@ namespace Cadres.Web.Models.DTO.CalcularPrecio
 
         [Required]
         [DisplayName("Varilla")]
-        [Range(1, 100)]
+        [Range(1, 1000)]
         public long VarillaId { get; set; }
     }
 }

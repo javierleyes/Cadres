@@ -1,15 +1,12 @@
-﻿using Cadres.Dto.Base;
+﻿using Cadres.Web.Models.DTO.Base;
 using System.ComponentModel.DataAnnotations;
 
-namespace Cadres.Dto
+namespace Cadres.Web.Models.DTO.Varilla
 {
-    public class VarillaDTO : DomainDTO<long>
+    public class VarillaEditView : GenericView<long>
     {
-        [Required]
         public string Nombre { get; set; }
 
-        [Required]
-        [Range(1, 7)]
         public decimal Ancho { get; set; }
 
         [Required]

@@ -13,22 +13,24 @@ namespace Cadres.Service.Implement
     {
         public VarillaService(IVarillaRepository entityRepository) : base(entityRepository) { }
 
+        public void Actualizar(VarillaDTO dto)
+        {
+            Varilla varilla = EntityRepository.GetById(dto.Id);
+            varilla.Disponible = dto.Disponible;
+            varilla.Cantidad = dto.Cantidad;
+            varilla.Precio = dto.Precio;
+
+            EntityRepository.Update(varilla);
+        }
+
         public VarillaDTO CrearNueva(VarillaDTO varillaDTO)
         {
             Varilla varilla = this.FromTo(varillaDTO);
+            varilla.Disponible = true;
 
             varillaDTO.Id = EntityRepository.Save(varilla).Id;
 
             return varillaDTO;
-        }
-
-        public void DarDeBaja(long id)
-        {
-            Varilla varilla = EntityRepository.GetById(id);
-
-            varilla.Disponible = false;
-
-            EntityRepository.Update(varilla);
         }
 
         public IList<VarillaDTO> GetAllDTO()
@@ -62,24 +64,6 @@ namespace Cadres.Service.Implement
         public VarillaDTO GetDTOById(long id)
         {
             return this.ToDTO(this.EntityRepository.GetById(id));
-        }
-
-        public void SetCantidad(long id, int cantidad)
-        {
-            Varilla varilla = EntityRepository.GetById(id);
-
-            varilla.Cantidad = cantidad;
-
-            EntityRepository.Update(varilla);
-        }
-
-        public void SetPrecio(long id, decimal precio)
-        {
-            Varilla varilla = EntityRepository.GetById(id);
-
-            varilla.Precio = precio;
-
-            EntityRepository.Update(varilla);
         }
 
         private Varilla FromTo(VarillaDTO dto)

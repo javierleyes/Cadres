@@ -11,11 +11,7 @@ namespace Cadres.Service.Interface
     {
         VarillaDTO CrearNueva(VarillaDTO varillaDTO);
 
-        void SetCantidad(long id, int cantidad);
-
-        void SetPrecio(long id, decimal precio);
-
-        void DarDeBaja(long id);
+        void Actualizar(VarillaDTO dto);
 
         IList<VarillaDTO> GetAllDTO();
 
