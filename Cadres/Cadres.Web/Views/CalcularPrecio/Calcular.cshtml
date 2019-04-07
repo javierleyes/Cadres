@@ -12,6 +12,7 @@
     <hr />
 
     <dl class="dl-horizontal">
+
         <dt>
             @Html.DisplayNameFor(model => model.Ancho)
         </dt>
@@ -19,6 +20,8 @@
         <dd>
             @Html.DisplayFor(model => model.Ancho)
         </dd>
+
+        <br />
 
         <dt>
             @Html.DisplayNameFor(model => model.Largo)
@@ -28,6 +31,8 @@
             @Html.DisplayFor(model => model.Largo)
         </dd>
 
+        <br />
+
         <dt>
             @Html.DisplayName("Varilla")
         </dt>
@@ -35,6 +40,8 @@
         <dd>
             @ViewBag.NombreVarilla
         </dd>
+
+        <br />
 
         <dt>
             @Html.DisplayNameFor(model => model.Precio)
@@ -45,7 +52,11 @@
         </dd>
 
     </dl>
+
 </div>
-<p>
-    @Html.ActionLink("Calcular otro", "Create")
-</p>
+
+<a style="cursor:pointer">
+    <span class="glyphicon glyphicon-arrow-left">
+        @Html.ActionLink(" Calcular otro", "Create")
+    </span>
+</a>

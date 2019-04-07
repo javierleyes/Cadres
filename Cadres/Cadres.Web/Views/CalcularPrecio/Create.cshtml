@@ -7,12 +7,12 @@
 
 <h2>Ingresar los datos del marco</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        
+
         <hr />
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -42,13 +42,16 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-6 col-md-6">
+                <input type="submit" value="Calcular" class="btn btn-primary" />
             </div>
         </div>
+
     </div>
 }
 
-<div>
-    @Html.ActionLink("volver", "Index", "Home")
-</div>
+<a style="cursor:pointer">
+    <span class="glyphicon glyphicon-home">
+        @Html.ActionLink(" volver", "Index", "Home")
+    </span>
+</a>
