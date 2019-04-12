@@ -1,4 +1,5 @@
 ﻿using Cadres.Dto.Base;
+using System.ComponentModel;
 
 namespace Cadres.Dto
 {
@@ -14,6 +15,7 @@ namespace Cadres.Dto
 
         public string Observacion { get; set; }
 
+        [DisplayName("Varilla")]
         public long VarillaId { get; set; }
 
         public string Estado { get; set; }

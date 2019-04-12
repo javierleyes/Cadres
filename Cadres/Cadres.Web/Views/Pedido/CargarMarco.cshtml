@@ -1,0 +1,62 @@
+﻿@model Cadres.Web.Models.DTO.CalcularPrecio.CalcularPrecioView
+
+
+@{
+    ViewBag.Title = "Ingresar marcos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Paso 2: Agregar marco</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ancho, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ancho, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ancho, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Largo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Largo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Largo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VarillaId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.VarillaId, new SelectList(ViewBag.Varillas, "Id", "Nombre"), "Seleccionar", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.VarillaId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-6">
+                <input type="submit" value="Agregar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+@{
+    var marcos = (IList<Cadres.Dto.MarcoDTO>)@ViewBag.Marcos;
+    @Html.RenderPartial("_MarcosIngresados", marcos);
+}
+
+<div class="form-group">
+    <div class="col-md-12">
+        <input type="submit" value="Finalizar" class="btn btn-primary pull-right" />
+    </div>
+</div>

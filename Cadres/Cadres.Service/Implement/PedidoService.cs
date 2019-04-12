@@ -1,10 +1,13 @@
-﻿using Cadres.Data.Repository.Interface;
+﻿using Cadres.Assembler.Interface;
+using Cadres.Data.Repository.Interface;
 using Cadres.Domain.Entity;
 using Cadres.Domain.States;
 using Cadres.Dto;
 using Cadres.Service.Base;
+using Cadres.Service.Filter;
 using Cadres.Service.Interface;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Cadres.Service.Implement
@@ -13,9 +16,12 @@ namespace Cadres.Service.Implement
     {
         public IMarcoRepository MarcoRepository { get; set; }
 
-        public PedidoService(IPedidoRepository entityRepository, IMarcoRepository marcoRepository) : base(entityRepository)
+        public IMarcoAssembler MarcoAssembler { get; set; }
+
+        public PedidoService(IPedidoRepository entityRepository, IMarcoRepository marcoRepository, IMarcoAssembler marcoAssembler) : base(entityRepository)
         {
             this.MarcoRepository = marcoRepository;
+            this.MarcoAssembler = marcoAssembler;
         }
 
         public PedidoDTO CrearNuevo()
@@ -115,10 +121,37 @@ namespace Cadres.Service.Implement
             return dto;
         }
 
-        private int GetNumeroPedido()
+        public int GetNumeroPedido()
         {
             return this.EntityRepository.GetAll().Count() + 1;
         }
 
+        public IList<PedidoDTO> GetByFilter(PedidoFilter filter)
+        {
+            IList<PedidoDTO> dtos = new List<PedidoDTO>();
+
+            IList<Pedido> pedidos = this.EntityRepository.GetAll().Where(x => (int)x.Estado == filter.Estado).ToList();
+
+            foreach (Pedido pedido in pedidos)
+            {
+                dtos.Add(this.ToDTO(pedido));
+            }
+
+            return dtos;
+        }
+
+        public IList<MarcoDTO> GetMarcosByNumeroPedido(int numero)
+        {
+            IList<MarcoDTO> dtos = new List<MarcoDTO>();
+
+            Pedido pedido = this.GetEntidadByNumero(numero);
+
+            foreach (Marco marco in pedido.Marcos)
+            {
+                dtos.Add(this.MarcoAssembler.ToDTO(marco));
+            }
+
+            return dtos;
+        }
     }
 }

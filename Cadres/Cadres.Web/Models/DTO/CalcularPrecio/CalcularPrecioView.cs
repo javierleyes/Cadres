@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Cadres.Web.Models.DTO.CalcularPrecio
 {
+    // poner en carpeta shared
     public class CalcularPrecioView
     {
         [Required]

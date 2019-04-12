@@ -2,6 +2,8 @@
 using Cadres.Domain.Entity;
 using Cadres.Dto;
 using Cadres.Service.Base;
+using Cadres.Service.Filter;
+using System.Collections.Generic;
 
 namespace Cadres.Service.Interface
 {
@@ -11,6 +13,8 @@ namespace Cadres.Service.Interface
 
         PedidoDTO GetByNumero(int numero);
 
+        IList<MarcoDTO> GetMarcosByNumeroPedido(int numero);
+
         void AgregarMarco(int numero, int numeroMarco);
 
         void SetearEstadoTerminado(int numero);
@@ -18,5 +22,9 @@ namespace Cadres.Service.Interface
         void SetearEstadoEntregado(int numero);
 
         void IngresarObservacion(int numeroPedido, string observacion);
+
+        IList<PedidoDTO> GetByFilter(PedidoFilter filter);
+
+        int GetNumeroPedido();
     }
 }

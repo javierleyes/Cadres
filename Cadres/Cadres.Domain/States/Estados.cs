@@ -6,26 +6,32 @@ namespace Cadres.Domain.States
     {
         public enum EstadoPedido
         {
+            [Description("Ingresado")]
+            Ingresado = 0,
+
             [Description("Pendiente")]
-            Pendiente = 0,
+            Pendiente = 1,
 
             [Description("Terminado")]
-            Terminado = 1,
+            Terminado = 2,
 
             [Description("Entregado")]
-            Entregado = 2,
+            Entregado = 3,
         }
 
         public enum EstadoMarco
         {
+            [Description("Ingresado")]
+            Ingresado = 0,
+
             [Description("Pendiente")]
-            Pendiente = 0,
+            Pendiente = 1,
 
             [Description("Listo")]
-            Listo = 1,
+            Listo = 2,
 
             [Description("Sin materiales")]
-            SinMateriales = 2,
+            SinMateriales = 3,
         }
     }
 }
