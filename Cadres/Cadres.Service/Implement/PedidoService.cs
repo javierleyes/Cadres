@@ -29,7 +29,7 @@ namespace Cadres.Service.Implement
             Pedido pedido = new Pedido()
             {
                 Numero = GetNumeroPedido(),
-                Estado = Estados.EstadoPedido.Pendiente,
+                Estado = Estados.EstadoPedido.Ingresado,
                 FechaIngreso = DateTime.Now,
             };
 
@@ -59,6 +59,15 @@ namespace Cadres.Service.Implement
             this.EntityRepository.Update(pedido);
         }
 
+        public void SetearEstadoIngresado(int numero)
+        {
+            Pedido pedido = this.GetEntidadByNumero(numero);
+
+            pedido.Estado = Estados.EstadoPedido.Pendiente;
+            pedido.FechaIngreso = DateTime.Now;
+
+            EntityRepository.Update(pedido);
+        }
 
         public void SetearEstadoEntregado(int numero)
         {

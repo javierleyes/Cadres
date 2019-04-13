@@ -55,8 +55,12 @@
     @Html.RenderPartial("_MarcosIngresados", marcos);
 }
 
+<br />
+
 <div class="form-group">
     <div class="col-md-12">
         <input type="submit" value="Finalizar" class="btn btn-primary pull-right" />
     </div>
 </div>
+
+<a class="btn btn-primary pull-right" href="@Url.Action("RegistrarPedido", "Pedido")">Finalizar</a>

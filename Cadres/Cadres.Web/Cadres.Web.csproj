@@ -182,7 +182,6 @@
     <Compile Include="Models\DTO\Base\IGenericView.cs" />
     <Compile Include="Models\DTO\CalcularPrecio\CalcularPrecioView.cs" />
     <Compile Include="Models\DTO\Pedido\CrearPedidoView.cs" />
-    <Compile Include="Models\DTO\Varilla\VarillaEditView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

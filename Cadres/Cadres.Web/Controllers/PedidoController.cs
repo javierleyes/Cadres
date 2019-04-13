@@ -12,12 +12,14 @@ namespace Cadres.Web.Controllers
         public IPedidoService PedidoService { get; set; }
         public IVarillaService VarillaService { get; set; }
         public IMarcoService MarcoService { get; set; }
+        public ICompradorService CompradorService { get; set; }
 
-        public PedidoController(IPedidoService pedidoService, IVarillaService varillaService, IMarcoService marcoService)
+        public PedidoController(IPedidoService pedidoService, IVarillaService varillaService, IMarcoService marcoService, ICompradorService compradorService)
         {
             this.PedidoService = pedidoService;
             this.VarillaService = varillaService;
             this.MarcoService = marcoService;
+            this.CompradorService = compradorService;
         }
 
         [HttpGet]
@@ -50,9 +52,11 @@ namespace Cadres.Web.Controllers
                 {
                     Nombre = datos.Nombre,
                     Telefono = datos.Telefono,
-                    Direccion = datos.Dirección,
+                    Direccion = datos.Direccion,
                     PedidoId = pedido.Id,
                 };
+
+                this.CompradorService.CrearComprador(comprador);
 
                 TempData["NumeroPedido"] = pedido.Numero;
 
@@ -102,6 +106,16 @@ namespace Cadres.Web.Controllers
             TempData.Keep();
 
             return View(dto);
+        }
+
+        [HttpGet]
+        public ActionResult RegistrarPedido()
+        {
+            int numeroPedido = (int)TempData["NumeroPedido"];
+
+            this.PedidoService.SetearEstadoIngresado(numeroPedido);
+
+            return RedirectToAction("Index");
         }
     }
 }

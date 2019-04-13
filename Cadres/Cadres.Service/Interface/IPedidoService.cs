@@ -17,6 +17,8 @@ namespace Cadres.Service.Interface
 
         void AgregarMarco(int numero, int numeroMarco);
 
+        void SetearEstadoIngresado(int numero);
+
         void SetearEstadoTerminado(int numero);
 
         void SetearEstadoEntregado(int numero);

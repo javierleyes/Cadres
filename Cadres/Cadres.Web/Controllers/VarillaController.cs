@@ -1,6 +1,5 @@
 ﻿using Cadres.Dto;
 using Cadres.Service.Interface;
-using Cadres.Web.Models.DTO.Varilla;
 using PagedList;
 using System.Web.Mvc;
 
@@ -34,7 +33,7 @@ namespace Cadres.Web.Controllers
         {
             var varilla = this.VarillaService.GetDTOById(id);
 
-            VarillaEditView view = new VarillaEditView()
+            VarillaDTO dto = new VarillaDTO()
             {
                 Id = varilla.Id,
                 Nombre = varilla.Nombre,
@@ -44,23 +43,15 @@ namespace Cadres.Web.Controllers
                 Disponible = varilla.Disponible,
             };
 
-            return View(view);
+            return View(dto);
         }
 
         [HttpPost]
-        public ActionResult Edit(VarillaEditView dto)
+        public ActionResult Edit(VarillaDTO dto)
         {
             if (ModelState.IsValid)
             {
-                VarillaDTO varilla = new VarillaDTO()
-                {
-                    Id = dto.Id,
-                    Cantidad = dto.Cantidad,
-                    Precio = dto.Precio,
-                    Disponible = dto.Disponible,
-                };
-
-                this.VarillaService.Actualizar(varilla);
+                this.VarillaService.Actualizar(dto);
 
                 return RedirectToAction("Index");
             }

@@ -36,3 +36,9 @@ INSERT INTO dbo.Varilla VALUES ('Italiana 4,5 cedro', 4.5, 450, 1, 1)
 -- PEDIDOS
 INSERT INTO dbo.Pedido VALUES ('Este marco ya se realizo', '20190406', 450, 0, 1, NULL, NULL)
 
+-- SEGUIMIENTO PEDIDO
+SELECT TOP 1 * FROM dbo.Pedido ORDER BY Id DESC
+
+SELECT * FROM dbo.Marco WHERE Pedido_Id IN (SELECT TOP 1 Id FROM dbo.Pedido ORDER BY Id DESC)
+
+SELECT * FROM dbo.Comprador WHERE PedidoId = (SELECT TOP 1 Id FROM dbo.Pedido ORDER BY Id DESC)
