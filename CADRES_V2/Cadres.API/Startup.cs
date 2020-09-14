@@ -1,17 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Cadres.Infrastructure;
+using Cadres.Infrastructure.Repository;
+using Cadres.Infrastructure.Repository.Interface;
+using Cadres.Service;
+using Cadres.Service.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
-namespace Cadres.API
+namespace Cadres.Api
 {
     public class Startup
     {
@@ -26,6 +25,16 @@ namespace Cadres.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // IoC Context 
+            services.AddDbContext<ApplicationDBContext>(option => option.UseLazyLoadingProxies().UseSqlServer(Configuration.GetSection("AppSettings").GetSection("ConnectionString").Value));
+
+            // IoC repositories
+            services.AddTransient<IRodRepository, RodRepository>();
+
+            // IoC Services
+            services.AddTransient<IFrameService, FrameService>();
+            services.AddTransient<IRodService, RodService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

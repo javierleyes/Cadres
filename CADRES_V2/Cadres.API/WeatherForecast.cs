@@ -1,6 +1,6 @@
 using System;
 
-namespace Cadres.API
+namespace Cadres.Api
 {
     public class WeatherForecast
     {

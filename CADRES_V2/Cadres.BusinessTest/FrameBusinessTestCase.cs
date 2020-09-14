@@ -26,7 +26,7 @@ namespace Cadres.BusinessTest
             Assert.AreEqual(40, frame.Width);
             Assert.AreEqual(60, frame.Large);
             Assert.AreEqual(FrameStatus.FrameMakingStatus.Pending, frame.MakingStatus);
-            Assert.AreEqual(179.2, frame.Price);
+            Assert.AreEqual(434, frame.Price);
             Assert.AreEqual(ROD_NAME, frame.Rod.Name);
             Assert.AreEqual(ROD_ANGLE, frame.Rod.Width);
         }
